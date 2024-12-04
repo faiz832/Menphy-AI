@@ -21,8 +21,8 @@ class Diagnosis extends Model
         return $this->belongsTo(MentalDisorder::class);
     }
 
-    public function recommendations()
+    public function recommendation()
     {
-        return $this->hasMany(Recommendation::class);
+        return $this->hasOne(Recommendation::class);
     }
 }
