@@ -54,7 +54,6 @@ class DiagnosisController extends Controller
             'user_id' => Auth::user()->id,
             'mental_disorder_id' => MentalDisorder::where('name', $results[0]['mental_disorder'])->first()->id,
             'cf' => $results[0]['cf'],
-            'diagnosis_date' => now(),
         ]);
 
         // Generate rekomendasi

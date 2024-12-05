@@ -9,7 +9,7 @@ class Diagnosis extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'mental_disorder_id', 'cf', 'diagnosis_date'];
+    protected $fillable = ['user_id', 'mental_disorder_id', 'cf'];
 
     public function user()
     {
