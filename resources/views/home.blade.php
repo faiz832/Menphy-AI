@@ -18,7 +18,16 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
+    <div class="bg-white px-8 py-4 flex justify-between">
+        <div class="shrink-0 flex items-center">
+            <a href="{{ route('home') }}">
+                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+            </a>
+        </div>
+        <a href="{{ route('login') }}"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Login</a>
+    </div>
+    <div class="mt-40 mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-center mb-8">Welcome to Menphy AI</h1>
         <p class="text-xl text-center mb-8">Your personal mental health therapy assistant</p>
         <div class="text-center">

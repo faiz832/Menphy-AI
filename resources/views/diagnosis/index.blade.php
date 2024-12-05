@@ -20,17 +20,19 @@
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold text-center mb-8">Mental Health Self-Diagnosis</h1>
-        <form action="{{ route('diagnosis.process') }}" method="POST">
+        <form action="{{ route('diagnosis.process') }}" method="POST" class="max-w-3xl mx-auto">
             @csrf
             @foreach ($questions as $question)
-                <div class="mb-3">
-                    <label>{{ $question->question_text }}</label><br>
-                    <label>
-                        <input type="radio" name="answers[Q{{ $question->id }}]" value="yes" required> Ya
-                    </label>
-                    <label>
-                        <input type="radio" name="answers[Q{{ $question->id }}]" value="no" required> Tidak
-                    </label>
+                <div class="mb-4 w-full flex flex-col items-center">
+                    <label>{{ $question->question_text }}</label>
+                    <div class="w-full flex justify-center gap-8">
+                        <label>
+                            <input type="radio" name="answers[Q{{ $question->id }}]" value="yes" required> Ya
+                        </label>
+                        <label>
+                            <input type="radio" name="answers[Q{{ $question->id }}]" value="no" required> Tidak
+                        </label>
+                    </div>
                 </div>
             @endforeach
             <div class="text-center mt-8">
