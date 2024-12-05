@@ -96,10 +96,10 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ number_format($diagnosis->cf) }}%
+                                        {{ number_format($diagnosis->cf, 2) }}%
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500">
-                                        <div class="truncate max-w-xs"
+                                        <div class="truncate max-w-sm"
                                             title="{{ $diagnosis->recommendation->recommendation_text }}">
                                             {{ Str::limit($diagnosis->recommendation->recommendation_text, 100) }}
                                         </div>

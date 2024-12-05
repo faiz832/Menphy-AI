@@ -6,11 +6,13 @@ use Illuminate\Database\Seeder;
 use App\Models\MentalDisorder;
 use App\Models\Question;
 use App\Models\Rule;
+use App\Models\Symptom;
 
 class MentalHealthSeeder extends Seeder
 {
     public function run()
     {
+        // Mental Disorders
         $disorders = [
             ['name' => 'Psikosomatik', 'description' => 'Gangguan mental dengan gejala fisik.'],
             ['name' => 'Kecemasan', 'description' => 'Perasaan cemas berlebihan.'],
@@ -25,82 +27,113 @@ class MentalHealthSeeder extends Seeder
             MentalDisorder::create($disorder);
         }
 
-        $questions = [
+        // Symptoms
+        $symptoms = [
             // Psikosomatik
-            ['mental_disorder_id' => 1, 'question_text' => 'Apakah Anda sering merasa sakit fisik tanpa penyebab medis yang jelas?'],
-            ['mental_disorder_id' => 1, 'question_text' => 'Apakah stres sering membuat tubuh Anda terasa sakit?'],
-            ['mental_disorder_id' => 1, 'question_text' => 'Apakah Anda sering mengalami gangguan pencernaan saat merasa cemas?'],
-            ['mental_disorder_id' => 1, 'question_text' => 'Apakah Anda sering merasa lelah tanpa alasan yang jelas?'],
+            ['name' => 'Sakit kepala berulang', 'disorder' => 'Psikosomatik'],
+            ['name' => 'Kelelahan kronis', 'disorder' => 'Psikosomatik'],
+            ['name' => 'Nyeri otot tanpa sebab jelas', 'disorder' => 'Psikosomatik'],
+            ['name' => 'Gangguan pencernaan', 'disorder' => 'Psikosomatik'],
 
             // Kecemasan
-            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda sering merasa khawatir berlebihan terhadap situasi sehari-hari?'],
-            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda sulit tidur karena terlalu banyak berpikir?'],
-            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda sering merasa tegang atau gelisah dalam lingkungan sosial?'],
-            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda sering merasa jantung berdebar-debar tanpa sebab yang jelas?'],
+            ['name' => 'Kekhawatiran berlebihan', 'disorder' => 'Kecemasan'],
+            ['name' => 'Serangan panik', 'disorder' => 'Kecemasan'],
+            ['name' => 'Ketegangan otot', 'disorder' => 'Kecemasan'],
+            ['name' => 'Sulit berkonsentrasi', 'disorder' => 'Kecemasan'],
 
             // PTSD
-            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda sering menghindari situasi yang mengingatkan pada peristiwa traumatis?'],
-            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda mengalami kilas balik (flashback) terhadap peristiwa traumatis?'],
-            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda sering mengalami mimpi buruk tentang peristiwa traumatis?'],
-            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda merasa mudah terkejut atau cemas secara berlebihan?'],
+            ['name' => 'Kilas balik traumatis', 'disorder' => 'PTSD'],
+            ['name' => 'Mimpi buruk', 'disorder' => 'PTSD'],
+            ['name' => 'Menghindari situasi yang mengingatkan trauma', 'disorder' => 'PTSD'],
+            ['name' => 'Reaksi berlebihan terhadap suara keras', 'disorder' => 'PTSD'],
 
             // Depresi
-            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda merasa sedih atau kosong hampir setiap hari?'],
-            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda kehilangan minat pada aktivitas yang biasanya Anda nikmati?'],
-            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda merasa kelelahan sepanjang waktu meskipun tidak melakukan banyak aktivitas?'],
-            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda sering merasa tidak berharga atau bersalah secara berlebihan?'],
+            ['name' => 'Perasaan sedih berkepanjangan', 'disorder' => 'Depresi'],
+            ['name' => 'Kehilangan minat', 'disorder' => 'Depresi'],
+            ['name' => 'Perubahan pola tidur', 'disorder' => 'Depresi'],
+            ['name' => 'Pikiran tentang kematian', 'disorder' => 'Depresi'],
 
             // Psikosis
-            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda pernah mendengar suara yang tidak didengar orang lain?'],
-            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda merasa orang lain mencoba mengendalikan pikiran Anda?'],
-            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda merasa sulit membedakan antara kenyataan dan imajinasi?'],
-            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda pernah melihat sesuatu yang tidak nyata?'],
+            ['name' => 'Halusinasi', 'disorder' => 'Psikosis'],
+            ['name' => 'Delusi', 'disorder' => 'Psikosis'],
+            ['name' => 'Pikiran tidak terorganisir', 'disorder' => 'Psikosis'],
+            ['name' => 'Perilaku aneh', 'disorder' => 'Psikosis'],
 
             // Skizofrenia
-            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa terisolasi dari keluarga atau teman?'],
-            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa sulit untuk mengekspresikan emosi?'],
-            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda sering memiliki pikiran yang tidak logis atau tidak teratur?'],
-            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa ada orang lain yang mencoba mencelakai Anda tanpa sebab jelas?'],
+            ['name' => 'Halusinasi persisten', 'disorder' => 'Skizofrenia'],
+            ['name' => 'Delusi kompleks', 'disorder' => 'Skizofrenia'],
+            ['name' => 'Penarikan sosial', 'disorder' => 'Skizofrenia'],
+            ['name' => 'Penurunan fungsi sehari-hari', 'disorder' => 'Skizofrenia'],
 
             // Bipolar
-            ['mental_disorder_id' => 7, 'question_text' => 'Apakah Anda sering mengalami perubahan suasana hati yang ekstrim?'],
-            ['mental_disorder_id' => 7, 'question_text' => 'Apakah Anda pernah merasa sangat energik dan tidak membutuhkan tidur?'],
-            ['mental_disorder_id' => 7, 'question_text' => 'Apakah Anda pernah merasa sangat sedih atau putus asa tanpa alasan jelas?'],
-            ['mental_disorder_id' => 7, 'question_text' => 'Apakah Anda pernah memiliki periode di mana Anda merasa sangat percaya diri secara berlebihan?'],
+            ['name' => 'Perubahan mood ekstrem', 'disorder' => 'Bipolar'],
+            ['name' => 'Episode manik', 'disorder' => 'Bipolar'],
+            ['name' => 'Episode depresi', 'disorder' => 'Bipolar'],
+            ['name' => 'Perubahan pola tidur drastis', 'disorder' => 'Bipolar'],
+        ];
+
+        foreach ($symptoms as $symptom) {
+            Symptom::create(['name' => $symptom['name']]);
+        }
+
+        // Questions
+        $questions = [
+            // Psikosomatik
+            ['symptom_id' => 1, 'question_text' => 'Apakah Anda sering mengalami sakit kepala tanpa sebab yang jelas?', 'cf_expert' => 0.8],
+            ['symptom_id' => 2, 'question_text' => 'Apakah Anda merasa lelah sepanjang waktu, bahkan setelah tidur cukup?', 'cf_expert' => 0.7],
+            ['symptom_id' => 3, 'question_text' => 'Apakah Anda sering mengalami nyeri otot tanpa melakukan aktivitas fisik berlebihan?', 'cf_expert' => 0.75],
+            ['symptom_id' => 4, 'question_text' => 'Apakah Anda sering mengalami masalah pencernaan seperti mual atau sakit perut tanpa sebab yang jelas?', 'cf_expert' => 0.7],
+
+            // Kecemasan
+            ['symptom_id' => 5, 'question_text' => 'Apakah Anda sering merasa cemas atau khawatir berlebihan tentang berbagai hal dalam hidup Anda?', 'cf_expert' => 0.9],
+            ['symptom_id' => 6, 'question_text' => 'Apakah Anda pernah mengalami serangan panik yang tiba-tiba?', 'cf_expert' => 0.85],
+            ['symptom_id' => 7, 'question_text' => 'Apakah Anda sering merasa tegang atau sulit untuk rileks?', 'cf_expert' => 0.8],
+            ['symptom_id' => 8, 'question_text' => 'Apakah Anda mengalami kesulitan berkonsentrasi karena pikiran cemas?', 'cf_expert' => 0.75],
+
+            // PTSD
+            ['symptom_id' => 9, 'question_text' => 'Apakah Anda mengalami kilas balik atau ingatan yang mengganggu tentang pengalaman traumatis?', 'cf_expert' => 0.95],
+            ['symptom_id' => 10, 'question_text' => 'Apakah Anda sering mengalami mimpi buruk tentang kejadian traumatis?', 'cf_expert' => 0.9],
+            ['symptom_id' => 11, 'question_text' => 'Apakah Anda menghindari situasi atau tempat yang mengingatkan Anda pada pengalaman traumatis?', 'cf_expert' => 0.85],
+            ['symptom_id' => 12, 'question_text' => 'Apakah Anda memiliki reaksi berlebihan terhadap suara keras atau gerakan tiba-tiba?', 'cf_expert' => 0.8],
+
+            // Depresi
+            ['symptom_id' => 13, 'question_text' => 'Apakah Anda merasa sedih atau tertekan hampir setiap hari selama lebih dari dua minggu?', 'cf_expert' => 0.9],
+            ['symptom_id' => 14, 'question_text' => 'Apakah Anda kehilangan minat atau kesenangan dalam aktivitas yang biasanya Anda nikmati?', 'cf_expert' => 0.85],
+            ['symptom_id' => 15, 'question_text' => 'Apakah Anda mengalami perubahan signifikan dalam pola tidur (sulit tidur atau tidur berlebihan)?', 'cf_expert' => 0.8],
+            ['symptom_id' => 16, 'question_text' => 'Apakah Anda memiliki pikiran tentang kematian atau bunuh diri?', 'cf_expert' => 0.95],
+
+            // Psikosis
+            ['symptom_id' => 17, 'question_text' => 'Apakah Anda pernah melihat, mendengar, atau merasakan sesuatu yang orang lain tidak alami?', 'cf_expert' => 0.95],
+            ['symptom_id' => 18, 'question_text' => 'Apakah Anda memiliki keyakinan kuat yang tidak masuk akal dan tidak dapat diubah oleh bukti?', 'cf_expert' => 0.9],
+            ['symptom_id' => 19, 'question_text' => 'Apakah Anda merasa pikiran Anda kacau atau sulit untuk berpikir jernih?', 'cf_expert' => 0.85],
+            ['symptom_id' => 20, 'question_text' => 'Apakah orang lain mengatakan bahwa perilaku Anda aneh atau tidak biasa?', 'cf_expert' => 0.8],
+
+            // Skizofrenia
+            ['symptom_id' => 21, 'question_text' => 'Apakah Anda sering mengalami halusinasi yang persisten (melihat, mendengar, atau merasakan sesuatu yang tidak ada)?', 'cf_expert' => 0.95],
+            ['symptom_id' => 22, 'question_text' => 'Apakah Anda memiliki keyakinan aneh atau tidak masuk akal yang sangat kuat dan kompleks?', 'cf_expert' => 0.9],
+            ['symptom_id' => 23, 'question_text' => 'Apakah Anda cenderung menarik diri dari interaksi sosial dan lebih suka menyendiri?', 'cf_expert' => 0.85],
+            ['symptom_id' => 24, 'question_text' => 'Apakah Anda mengalami kesulitan dalam melakukan tugas sehari-hari seperti merawat diri atau bekerja?', 'cf_expert' => 0.8],
+
+            // Bipolar
+            ['symptom_id' => 25, 'question_text' => 'Apakah Anda mengalami perubahan suasana hati yang ekstrem, dari sangat gembira ke sangat sedih?', 'cf_expert' => 0.9],
+            ['symptom_id' => 26, 'question_text' => 'Apakah Anda pernah mengalami periode di mana Anda merasa sangat energik, kurang tidur, dan memiliki banyak ide?', 'cf_expert' => 0.85],
+            ['symptom_id' => 27, 'question_text' => 'Apakah Anda pernah mengalami periode depresi berat yang berlangsung beberapa hari atau minggu?', 'cf_expert' => 0.85],
+            ['symptom_id' => 28, 'question_text' => 'Apakah pola tidur Anda berubah secara drastis, kadang sangat sedikit tidur dan kadang tidur berlebihan?', 'cf_expert' => 0.8],
         ];
 
         foreach ($questions as $question) {
             Question::create($question);
         }
 
+        // Rules
         $rules = [
-            // Psikosomatik
-            ['mental_disorder_id' => 1, 'condition' => 'Q1:yes && Q2:yes && Q3:yes', 'cf' => 0.9],
-            ['mental_disorder_id' => 1, 'condition' => 'Q1:yes && Q4:yes', 'cf' => 0.7],
-
-            // Kecemasan
-            ['mental_disorder_id' => 2, 'condition' => 'Q5:yes && Q6:yes && Q7:yes', 'cf' => 0.8],
-            ['mental_disorder_id' => 2, 'condition' => 'Q6:yes && Q8:yes', 'cf' => 0.7],
-
-            // PTSD
-            ['mental_disorder_id' => 3, 'condition' => 'Q9:yes && Q10:yes && Q11:yes', 'cf' => 0.9],
-            ['mental_disorder_id' => 3, 'condition' => 'Q12:yes && Q10:yes', 'cf' => 0.7],
-
-            // Depresi
-            ['mental_disorder_id' => 4, 'condition' => 'Q13:yes && Q14:yes && Q15:yes', 'cf' => 0.9],
-            ['mental_disorder_id' => 4, 'condition' => 'Q13:yes && Q16:yes', 'cf' => 0.8],
-
-            // Psikosis
-            ['mental_disorder_id' => 5, 'condition' => 'Q17:yes && Q18:yes && Q19:yes', 'cf' => 0.9],
-            ['mental_disorder_id' => 5, 'condition' => 'Q20:yes && Q18:yes', 'cf' => 0.7],
-
-            // Skizofrenia
-            ['mental_disorder_id' => 6, 'condition' => 'Q21:yes && Q22:yes && Q23:yes', 'cf' => 0.8],
-            ['mental_disorder_id' => 6, 'condition' => 'Q24:yes && Q23:yes', 'cf' => 0.7],
-
-            // Bipolar
-            ['mental_disorder_id' => 7, 'condition' => 'Q25:yes && Q26:yes && Q27:yes', 'cf' => 0.9],
-            ['mental_disorder_id' => 7, 'condition' => 'Q28:yes && Q26:yes', 'cf' => 0.7],
+            ['mental_disorder_id' => 1, 'symptoms' => [1, 2, 3, 4], 'cf' => 0.7], // Psikosomatik
+            ['mental_disorder_id' => 2, 'symptoms' => [5, 6, 7, 8], 'cf' => 0.8], // Kecemasan
+            ['mental_disorder_id' => 3, 'symptoms' => [9, 10, 11, 12], 'cf' => 0.9], // PTSD
+            ['mental_disorder_id' => 4, 'symptoms' => [13, 14, 15, 16], 'cf' => 0.85], // Depresi
+            ['mental_disorder_id' => 5, 'symptoms' => [17, 18, 19, 20], 'cf' => 0.9], // Psikosis
+            ['mental_disorder_id' => 6, 'symptoms' => [21, 22, 23, 24], 'cf' => 0.95], // Skizofrenia
+            ['mental_disorder_id' => 7, 'symptoms' => [25, 26, 27, 28], 'cf' => 0.8], // Bipolar
         ];
 
         foreach ($rules as $rule) {

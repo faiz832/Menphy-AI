@@ -9,10 +9,10 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mental_disorder_id', 'question_text'];
+    protected $fillable = ['symptom_id', 'question_text', 'cf_expert'];
 
-    public function mentalDisorder()
+    public function symptom()
     {
-        return $this->belongsTo(MentalDisorder::class);
+        return $this->belongsTo(Symptom::class);
     }
 }

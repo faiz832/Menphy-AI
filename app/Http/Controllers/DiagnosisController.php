@@ -20,69 +20,118 @@ class DiagnosisController extends Controller
 
     public function process(Request $request)
     {
-        $answers = $request->input('answers'); // Format: ['Q1' => 'yes', 'Q2' => 'no', ...]
+        $answers = $request->input('answers');
 
         // Check if all answers are 'no'
         $allNo = count(array_filter($answers, fn($answer) => $answer === 'no')) === count($answers);
 
         if ($allNo) {
-            // Create a diagnosis with "Tidak ada" result
             $diagnosis = Diagnosis::create([
                 'user_id' => Auth::user()->id,
                 'mental_disorder_id' => null,
-                'cf' => 100,
+                'cf' => 100, // Set CF to 0 for no mental disorder
             ]);
 
-            // Generate a generic recommendation for "Tidak ada" diagnosis
             $this->generateRecommendation($diagnosis, true);
-
             return redirect()->route('diagnosis.result', $diagnosis->id);
         }
 
         $mentalDisorders = MentalDisorder::with('rules')->get();
-
         $results = [];
+
         foreach ($mentalDisorders as $disorder) {
-            $cfTotal = 0;
-            foreach ($disorder->rules as $rule) {
-                $conditions = explode(' && ', $rule->condition);
-                $ruleSatisfied = true;
-                foreach ($conditions as $condition) {
-                    [$questionCode, $expectedAnswer] = explode(':', $condition);
-                    if (!isset($answers[$questionCode]) || $answers[$questionCode] !== $expectedAnswer) {
-                        $ruleSatisfied = false;
-                        break;
-                    }
-                }
-                if ($ruleSatisfied) {
-                    // Menggunakan rumus akumulasi CF
-                    $cfTotal = $cfTotal + $rule->cf * (1 - $cfTotal);
-                }
-            }
+            $cfCombine = $this->calculateCFCombine($disorder, $answers);
             $results[] = [
                 'mental_disorder' => $disorder->name,
-                'cf' => round($cfTotal * 100, 2) // Convert to percentage
+                'cf' => $cfCombine,
             ];
         }
 
         usort($results, fn($a, $b) => $b['cf'] <=> $a['cf']);
 
-        // Simpan hasil ke database
-        $diagnosis = Diagnosis::create([
-            'user_id' => Auth::user()->id,
-            'mental_disorder_id' => MentalDisorder::where('name', $results[0]['mental_disorder'])->first()->id,
-            'cf' => $results[0]['cf'],
-        ]);
+        // Only consider disorders with positive CF
+        $highestCF = $results[0]['cf'];
+        if ($highestCF <= 0) {
+            $diagnosis = Diagnosis::create([
+                'user_id' => Auth::user()->id,
+                'mental_disorder_id' => null,
+                'cf' => 0,
+            ]);
+        } else {
+            $diagnosis = Diagnosis::create([
+                'user_id' => Auth::user()->id,
+                'mental_disorder_id' => MentalDisorder::where('name', $results[0]['mental_disorder'])->first()->id,
+                'cf' => $highestCF,
+            ]);
+        }
 
-        // Generate rekomendasi
-        $this->generateRecommendation($diagnosis);
-
+        $this->generateRecommendation($diagnosis, $highestCF <= 0);
         return redirect()->route('diagnosis.result', $diagnosis->id);
+    }
+
+    private function calculateCFCombine($disorder, $answers)
+    {
+        $cfCombine = 0;
+        $hasPositiveRule = false;
+
+        foreach ($disorder->rules as $rule) {
+            $cfRule = $this->calculateCFRule($rule, $answers);
+            if ($cfRule > 0) {
+                $hasPositiveRule = true;
+                $cfCombine = $cfCombine + $cfRule * (1 - $cfCombine);
+            }
+        }
+
+        // If no positive rules found, return 0 instead of negative value
+        if (!$hasPositiveRule) {
+            return 0;
+        }
+
+        // Ensure CF is between 0 and 100
+        return max(0, min(100, $cfCombine * 100));
+    }
+
+    private function calculateCFRule($rule, $answers)
+    {
+        $cfValues = [];
+        $totalAnswered = 0;
+        $requiredSymptoms = count($rule->symptoms);
+
+        foreach ($rule->symptoms as $symptomId) {
+            $question = Question::where('symptom_id', $symptomId)->first();
+            if (isset($answers[$question->id])) {
+                $totalAnswered++;
+                $cfUser = $answers[$question->id] === 'yes' ? 1 : -1;
+                $cfValues[] = $question->cf_expert * $cfUser;
+            }
+        }
+
+        // If not all symptoms are answered, return 0
+        if ($totalAnswered < $requiredSymptoms) {
+            return 0;
+        }
+
+        if (empty($cfValues)) {
+            return 0;
+        }
+
+        // Calculate combined CF for the rule
+        $cfCombine = $cfValues[0];
+        for ($i = 1; $i < count($cfValues); $i++) {
+            if ($cfValues[$i] >= 0) {
+                $cfCombine = $cfCombine + $cfValues[$i] * (1 - $cfCombine);
+            } else {
+                $cfCombine = $cfCombine + $cfValues[$i] * (1 + $cfCombine);
+            }
+        }
+
+        // Ensure the result is between -1 and 1
+        return max(-1, min(1, $cfCombine));
     }
 
     public function showResult($id)
     {
-        $diagnosis = Diagnosis::with(['mentalDisorder'])->findOrFail($id);
+        $diagnosis = Diagnosis::with(['mentalDisorder', 'recommendation'])->findOrFail($id);
         return view('diagnosis.result', compact('diagnosis'));
     }
 

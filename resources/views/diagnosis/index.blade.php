@@ -23,15 +23,15 @@
         <form action="{{ route('diagnosis.process') }}" method="POST" class="max-w-3xl mx-auto">
             @csrf
             @foreach ($questions as $question)
-                <div class="mb-4 w-full flex flex-col items-center">
-                    <label>{{ $question->question_text }}</label>
-                    <div class="w-full flex justify-center gap-8">
-                        <label>
-                            <input type="radio" name="answers[Q{{ $question->id }}]" value="yes" required> Ya
-                        </label>
-                        <label>
-                            <input type="radio" name="answers[Q{{ $question->id }}]" value="no" required> Tidak
-                        </label>
+                <div class="mb-4">
+                    <p class="text-lg mb-2">{{ $question->question_text }}</p>
+                    <div class="flex items-center">
+                        <input type="radio" id="yes_{{ $question->id }}" name="answers[{{ $question->id }}]"
+                            value="yes" required>
+                        <label for="yes_{{ $question->id }}" class="ml-2 mr-4">Ya</label>
+                        <input type="radio" id="no_{{ $question->id }}" name="answers[{{ $question->id }}]"
+                            value="no" required>
+                        <label for="no_{{ $question->id }}" class="ml-2">Tidak</label>
                     </div>
                 </div>
             @endforeach

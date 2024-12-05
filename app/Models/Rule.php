@@ -9,7 +9,11 @@ class Rule extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mental_disorder_id', 'condition', 'cf'];
+    protected $fillable = ['mental_disorder_id', 'symptoms', 'cf'];
+
+    protected $casts = [
+        'symptoms' => 'array',
+    ];
 
     public function mentalDisorder()
     {

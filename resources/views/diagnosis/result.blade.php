@@ -30,17 +30,27 @@
             </h2>
 
             <p class="mb-4">
-                <strong>Tingkat Kepastian:</strong> {{ number_format($diagnosis->cf) }}%
+                <strong>Tingkat Kepastian:</strong> {{ number_format($diagnosis->cf, 2) }}%
+            </p>
+
+            <p class="mb-4">
+                @if ($diagnosis->mentalDisorder)
+                    {{ $diagnosis->mentalDisorder->description }}
+                @endif
             </p>
 
             <h3 class="text-xl font-semibold mb-2">Rekomendasi:</h3>
             <p class="mb-4">{{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}</p>
 
-            <a href="{{ route('dashboard') }}"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Kembali ke Dashboard
-            </a>
+            <p class="text-sm text-gray-600"><span class="font-semibold">Catatan: </span>Hasil ini hanya gambaran awal
+                dan tidak
+                menggantikan konsultasi dengan
+                psikolog atau psikiater.</p>
         </div>
+        <a href="{{ route('dashboard') }}"
+            class="mt-8 flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Kembali ke Dashboard
+        </a>
     </div>
 </body>
 
