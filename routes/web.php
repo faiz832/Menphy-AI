@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DiagnoseController;
+use App\Http\Controllers\DiagnosisController;
 
 Route::get('/', function () {
     return view('home');
@@ -13,9 +13,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/diagnose', [DiagnoseController::class, 'index'])->name('diagnose');
-    Route::post('/diagnose', [DiagnoseController::class, 'submit'])->name('diagnose.submit');
-    Route::get('/diagnosis/{id}/result', [DiagnoseController::class, 'showResult'])->name('diagnosis.result');
+    Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('diagnosis.index');
+    Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('diagnosis.process');
+    Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('diagnosis.result');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

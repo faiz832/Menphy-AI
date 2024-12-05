@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diagnoses', function (Blueprint $table) {
+        Schema::create('diagnosis_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('mental_disorder_id')->constrained()->onDelete('cascade');
-            $table->decimal('cf', 5, 2)->default(0);
-            $table->date('diagnosis_date');
+            $table->json('answers'); // Contoh: {Q1:yes, Q2:no, Q3:yes}
+            $table->json('scores'); // Contoh: {PTSD: 0.8, Anxiety: 0.6}
+            $table->unsignedBigInteger('final_diagnosis_id')->nullable(); // Diagnosis tertinggi
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diagnoses');
+        Schema::dropIfExists('diagnosis_result');
     }
 };

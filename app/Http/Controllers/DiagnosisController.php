@@ -10,63 +10,63 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class DiagnoseController extends Controller
+class DiagnosisController extends Controller
 {
     public function index()
     {
         $questions = Question::all();
-        return view('front.diagnose', compact('questions'));
+        return view('diagnosis.index', compact('questions'));
     }
 
-    public function submit(Request $request)
+    public function process(Request $request)
     {
-        $answers = $request->input('answers');
-        $positiveAnswers = array_filter($answers, function ($answer) {
-            return $answer === 'yes';
-        });
+        $answers = $request->input('answers'); // Format: ['Q1' => 'yes', 'Q2' => 'no', ...]
+        $mentalDisorders = MentalDisorder::with('rules')->get();
 
-        $mentalDisorder = $this->determineMentalDisorder(count($positiveAnswers));
-
-        if (!$mentalDisorder) {
-            return back()->with('error', 'Tidak dapat menentukan gangguan mental. Silakan coba lagi.');
+        $results = [];
+        foreach ($mentalDisorders as $disorder) {
+            $cfTotal = 0;
+            foreach ($disorder->rules as $rule) {
+                $conditions = explode(' && ', $rule->condition);
+                $ruleSatisfied = true;
+                foreach ($conditions as $condition) {
+                    [$questionCode, $expectedAnswer] = explode(':', $condition);
+                    if (!isset($answers[$questionCode]) || $answers[$questionCode] !== $expectedAnswer) {
+                        $ruleSatisfied = false;
+                        break;
+                    }
+                }
+                if ($ruleSatisfied) {
+                    // Menggunakan rumus akumulasi CF
+                    $cfTotal = $cfTotal + $rule->cf * (1 - $cfTotal);
+                }
+            }
+            $results[] = [
+                'mental_disorder' => $disorder->name,
+                'cf' => round($cfTotal * 100, 2) // Convert to percentage
+            ];
         }
 
+        usort($results, fn($a, $b) => $b['cf'] <=> $a['cf']);
+
+        // Simpan hasil ke database
         $diagnosis = Diagnosis::create([
-            'user_id' => Auth::id(),
-            'mental_disorder_id' => $mentalDisorder->id,
+            'user_id' => Auth::user()->id,
+            'mental_disorder_id' => MentalDisorder::where('name', $results[0]['mental_disorder'])->first()->id,
+            'cf' => $results[0]['cf'],
             'diagnosis_date' => now(),
         ]);
 
-        $recommendation = $this->generateRecommendation($diagnosis);
+        // Generate rekomendasi
+        $this->generateRecommendation($diagnosis);
 
-        return redirect()->route('diagnosis.result', ['id' => $diagnosis->id]);
+        return redirect()->route('diagnosis.result', $diagnosis->id);
     }
 
     public function showResult($id)
     {
-        $diagnosis = Diagnosis::with(['mentalDisorder', 'recommendation'])->findOrFail($id);
-        return view('front.diagnosis-result', compact('diagnosis'));
-    }
-
-    private function determineMentalDisorder($positiveAnswersCount)
-    {
-        if ($positiveAnswersCount > 7) {
-            $disorder = MentalDisorder::where('name', 'Depresi Berat')->first();
-        } elseif ($positiveAnswersCount > 4) {
-            $disorder = MentalDisorder::where('name', 'Depresi Sedang')->first();
-        } else {
-            $disorder = MentalDisorder::where('name', 'Depresi Ringan')->first();
-        }
-
-        if (!$disorder) {
-            $disorder = MentalDisorder::first(); // Fallback to the first available disorder
-        }
-
-        if (!$disorder) {
-            throw new \Exception("Tidak ada gangguan mental yang tersedia dalam sistem.");
-        }
-
-        return $disorder;
+        $diagnosis = Diagnosis::with(['mentalDisorder'])->findOrFail($id);
+        return view('diagnosis.result', compact('diagnosis'));
     }
 
     private function generateRecommendation($diagnosis)

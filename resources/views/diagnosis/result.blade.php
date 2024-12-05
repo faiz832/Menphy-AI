@@ -18,22 +18,23 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8">Hasil Diagnosis Anda</h1>
+    <div class="max-w-3xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Hasil Diagnosis</h1>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-2xl font-bold mb-4">Kondisi yang Didiagnosis:</h2>
-            <p class="text-xl mb-6">{{ $diagnosis->mentalDisorder->name }}</p>
+            <h2 class="text-2xl font-bold mb-4">Didiagnosis:</h2>
+            <div class="flex gap-12">
+                <p class="text-xl mb-6">{{ $diagnosis->mentalDisorder->name }}</p>
+                <p class="text-xl mb-6">{{ $diagnosis->cf }}%</p>
+            </div>
 
             <h2 class="text-2xl font-bold mb-4">Rekomendasi:</h2>
             <p class="text-xl mb-6">
-                {{ $diagnosis->recommendation->recommendation_text ?? 'Tidak ada rekomendasi tersedia.' }}</p>
-
-            <div class="text-center mt-8">
-                <a href="{{ route('home') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Kembali ke Beranda
-                </a>
-            </div>
+                {{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}</p>
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ route('home') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Return to Home
+            </a>
         </div>
     </div>
 </body>

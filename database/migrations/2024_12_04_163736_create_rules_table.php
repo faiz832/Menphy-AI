@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diagnoses', function (Blueprint $table) {
+        Schema::create('rules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('mental_disorder_id')->constrained()->onDelete('cascade');
-            $table->decimal('cf', 5, 2)->default(0);
-            $table->date('diagnosis_date');
+            $table->text('condition'); // Contoh: 'Q1:yes && Q2:no'
+            $table->float('cf'); // Nilai Certainty Factor (0.0 - 1.0)
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diagnoses');
+        Schema::dropIfExists('rules');
     }
 };

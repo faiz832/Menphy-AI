@@ -16,6 +16,11 @@ class MentalDisorder extends Model
         return $this->hasMany(Question::class);
     }
 
+    public function rules()
+    {
+        return $this->hasMany(Rule::class);
+    }
+
     public function diagnoses()
     {
         return $this->hasMany(Diagnosis::class);
