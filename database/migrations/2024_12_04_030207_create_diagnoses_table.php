@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('diagnoses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('mental_disorder_id')->constrained()->onDelete('cascade');
+            $table->foreignId('mental_disorder_id')->nullable()->constrained()->onDelete('cascade');
             $table->decimal('cf', 5, 2)->default(0);
             $table->timestamps();
         });

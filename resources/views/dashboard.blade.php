@@ -89,10 +89,14 @@
                                         {{ $diagnosis->created_at->format('Y-m-d') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                        {{ $diagnosis->mentalDisorder->name }}
+                                        @if ($diagnosis->mentalDisorder)
+                                            {{ $diagnosis->mentalDisorder->name }}
+                                        @else
+                                            Tidak Ada Gangguan Mental yang Terdeteksi
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ number_format($diagnosis->cf, 2) }}%
+                                        {{ number_format($diagnosis->cf) }}%
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500">
                                         <div class="truncate max-w-xs"

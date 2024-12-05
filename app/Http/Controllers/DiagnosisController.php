@@ -21,6 +21,24 @@ class DiagnosisController extends Controller
     public function process(Request $request)
     {
         $answers = $request->input('answers'); // Format: ['Q1' => 'yes', 'Q2' => 'no', ...]
+
+        // Check if all answers are 'no'
+        $allNo = count(array_filter($answers, fn($answer) => $answer === 'no')) === count($answers);
+
+        if ($allNo) {
+            // Create a diagnosis with "Tidak ada" result
+            $diagnosis = Diagnosis::create([
+                'user_id' => Auth::user()->id,
+                'mental_disorder_id' => null,
+                'cf' => 100,
+            ]);
+
+            // Generate a generic recommendation for "Tidak ada" diagnosis
+            $this->generateRecommendation($diagnosis, true);
+
+            return redirect()->route('diagnosis.result', $diagnosis->id);
+        }
+
         $mentalDisorders = MentalDisorder::with('rules')->get();
 
         $results = [];
@@ -68,15 +86,24 @@ class DiagnosisController extends Controller
         return view('diagnosis.result', compact('diagnosis'));
     }
 
-    private function generateRecommendation($diagnosis)
+    private function generateRecommendation($diagnosis, $isNoDisorder = false)
     {
         try {
-            $prompt = "You are a professional psychologist or psychiatrist. I have a mental health problem, namely, {$diagnosis->mentalDisorder->name}. Please give me personalized recommendations for healing therapies to improve my mental health.
-            Note: Use paragraph formatting without bullet points or other formatting. 
-            Please keep the recommendations short and concise. 
-            Do not provide any additional information except for the recommended therapies.
-            Formatted results must use Indonesian language and if possible, use language that is easily understood by ordinary people.
-            use everyday language and use the pronouns 'aku' and 'kamu', because you are dealing with teenagers.";
+            if ($isNoDisorder) {
+                $prompt = "You are a professional psychologist or psychiatrist. The user has answered 'no' to all mental health screening questions. Please provide a brief, encouraging message about maintaining good mental health. 
+                Note: Use paragraph formatting without bullet points or other formatting.
+                Please keep the recommendations short and concise.
+                Do not provide any additional information except for the recommended therapy.
+                Formatted results must use Indonesian language and if possible, use language that is easily understood by ordinary people.
+                Use everyday language and the pronouns 'aku' and 'kamu', as you are addressing teenagers. ";
+            } else {
+                $prompt = "You are a professional psychologist or psychiatrist. I have a mental health problem, namely, {$diagnosis->mentalDisorder->name}. Please give me personalized recommendations for healing therapies to improve my mental health.
+                Note: Use paragraph formatting without bullet points or other formatting. 
+                Please keep the recommendations short and concise. 
+                Do not provide any additional information except for the recommended therapies.
+                Formatted results must use Indonesian language and if possible, use language that is easily understood by ordinary people.
+                use everyday language and use the pronouns 'aku' and 'kamu', because you are dealing with teenagers.";
+            }
 
             $requestBody = [
                 'contents' => [
