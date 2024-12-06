@@ -24,7 +24,7 @@
         <!-- Navbar -->
         <x-navbar />
 
-        <!-- Page Content -->
+        <!-- Content -->
         <main>
             {{ $slot }}
         </main>
