@@ -50,24 +50,24 @@
                                     x-transition:leave="transition ease-in duration-75"
                                     x-transition:leave-start="transform opacity-100 scale-100"
                                     x-transition:leave-end="transform opacity-0 scale-95"
-                                    class="absolute top-9 right-0 mt-2 w-48 rounded-full bg-white p-1 text-sm shadow-lg ring-1 ring-gray-900/10"
+                                    class="absolute top-9 right-0 mt-2 w-48 rounded-md bg-white p-1 text-sm shadow-lg ring-1 ring-gray-900/10"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
                                     style="display: none;">
                                     <div role="none">
                                         <a href="{{ route('dashboard') }}"
-                                            class="block px-4 py-2 text-sm rounded-full text-gray-700 hover:bg-gray-100"
+                                            class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Dashboard</a>
                                         <a href="{{ route('profile.edit') }}"
-                                            class="block px-4 py-2 text-sm rounded-full text-gray-700 hover:bg-gray-100"
+                                            class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Profile</a>
                                         <a href=""
-                                            class="block px-4 py-2 text-sm rounded-full text-gray-700 hover:bg-gray-100"
+                                            class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Settings</a>
                                         <form method="POST" action="{{ route('logout') }}" role="none"
                                             style="margin-bottom: 0">
                                             @csrf
                                             <button type="submit"
-                                                class="block w-full text-left px-4 py-2 text-sm rounded-full text-gray-700 hover:bg-gray-100"
+                                                class="block w-full text-left px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                                 role="menuitem"
                                                 onclick="event.preventDefault(); this.closest('form').submit();">
                                                 Log Out
@@ -93,7 +93,7 @@
             </div>
 
             <!-- Three Dots -->
-            {{-- <x-navbar-menu-mobile /> --}}
+            <x-navbar-menu-mobile />
         </div>
     </div>
 
