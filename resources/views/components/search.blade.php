@@ -2,7 +2,7 @@
     <div class="flex relative flex-1 max-w-xl">
         <input x-ref="searchInput" x-model="query" @input.debounce.300ms="performSearch" @click.outside="closeSearch"
             class="rounded-full border border-slate-300 w-full lg:w-[500px] text-sm px-4 py-2" type="search"
-            placeholder="Search related articles..." autocomplete="off">
+            placeholder="Search articles..." autocomplete="off">
     </div>
 
     <!-- Search Results Dropdown -->
