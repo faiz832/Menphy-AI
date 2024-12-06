@@ -20,21 +20,21 @@
 <body class="bg-white">
     <x-navbar />
 
-    <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="min-h-[calc(100vh-64px)] max-w-4xl mx-auto px-4 pt-36">
         <form id="diagnosis-form" action="{{ route('diagnosis.process') }}" method="POST">
             @csrf
             <div class="relative overflow-hidden">
                 <div class="flex transition-transform duration-500 ease-in-out" id="questions-container">
                     @foreach ($questions as $index => $question)
                         <div class="w-full flex-shrink-0 px-4" data-question="{{ $index + 1 }}">
-                            <div class="bg-white rounded-2xl shadow-lg p-8">
-                                <h2 class="text-purple-600 text-3xl font-bold text-center mb-2">Question
+                            <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
+                                <h2 class="text-blue-600 text-3xl font-bold text-center mb-2">Question
                                     {{ $index + 1 }}</h2>
-                                <div class="w-16 h-1 bg-purple-200 mx-auto mb-8"></div>
+                                <div class="w-16 h-1 bg-blue-200 mx-auto mb-8"></div>
 
                                 <p class="text-gray-700 text-xl text-center mb-12">{{ $question->question_text }}</p>
 
-                                <div class="grid grid-cols-5 gap-4">
+                                <div class="max-w-md mx-auto grid grid-cols-2 gap-4">
                                     <label class="col-span-1 cursor-pointer group">
                                         <input type="radio" name="answers[{{ $question->id }}]" value="no"
                                             class="hidden" required>
