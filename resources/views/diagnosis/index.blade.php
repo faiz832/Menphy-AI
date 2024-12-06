@@ -68,6 +68,8 @@
         </form>
     </div>
 
+    <x-footer />
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('diagnosis-form');
