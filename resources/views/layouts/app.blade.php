@@ -25,7 +25,7 @@
         <x-navbar />
 
         <div class="flex">
-            <div class="w-full max-w-7xl relative flex items-start mx-auto pt-4 lg:pt-8 px-4 sm:px-6 lg:px-8 gap-8">
+            <div class="w-full max-w-7xl relative flex items-start mx-auto py-4 lg:py-8 px-4 sm:px-6 lg:px-8 gap-8">
                 <!-- Sidebar -->
                 <x-sidebar-dashboard />
 
