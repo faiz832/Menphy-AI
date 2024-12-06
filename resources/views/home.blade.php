@@ -8,8 +8,11 @@
     <title>Menphy AI</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -22,7 +25,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="min-h-[calc(100vh-100px)] mt-2 flex justify-center items-center border-2 rounded-3xl bg-gray-100">
             <div class="">
-                <h1 class="text-4xl font-bold text-center mb-8">Welcome to Menphy AI</h1>
+                <h1 class="font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
+                    Welcome to Menphy AI</h1>
                 <p class="text-xl text-center mb-8">Your personal mental health therapy assistant</p>
                 <div class="text-center">
                     <a href="{{ route('diagnosis.index') }}"
