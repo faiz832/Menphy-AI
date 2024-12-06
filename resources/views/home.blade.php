@@ -46,8 +46,8 @@
                 </p>
                 <div class="">
                     <a href="{{ route('diagnosis.index') }}"
-                        class="w-max flex font-semibold text-center text-sm rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
-                        Start Self-Diagnosis
+                        class="w-max flex font-semibold text-center text-sm lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
+                        Start Diagnosis
                     </a>
                 </div>
             </div>
