@@ -1,7 +1,7 @@
 <title>Dashboard - Menphy AI</title>
 
 <x-app-layout>
-    <div class="min-h-screen max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="min-h-screen max-w-7xl mx-auto pt-4 px-4 sm:px-6 lg:px-8">
         <div class="p-6 bg-white rounded-md border border-gray-200">
             @role('admin')
                 <div class="mb-6">

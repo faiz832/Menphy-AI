@@ -92,13 +92,16 @@
                 @endif
             </div>
 
+            <!-- Search Icon -->
+            <x-navbar-search />
+
             <!-- Three Dots -->
             <x-navbar-menu-mobile />
         </div>
     </div>
 
     <!-- Mobile menu button -->
-    {{-- <div class="mx-auto p-4 sm:px-6 items-center lg:hidden {{ Route::is('home') ? 'hidden' : 'flex' }}">
+    <div class="mx-auto p-4 sm:px-6 items-center lg:hidden {{ Route::is('home') ? 'hidden' : 'flex' }}">
 
         <!-- Dashboard Sidebar Menu -->
         <div
@@ -108,7 +111,7 @@
 
         <!-- Breadcrumb -->
         <x-breadcrumb />
-    </div> --}}
+    </div>
 </nav>
 
 <script>

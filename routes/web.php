@@ -4,10 +4,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::post('/search', [SearchController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('diagnosis.index');
