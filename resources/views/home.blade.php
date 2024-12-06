@@ -18,19 +18,32 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+
+    <style>
+        .hero-img {
+            background-image: url('{{ asset('assets/images/hero-img.jpeg') }}');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
 <body class="bg-white h-[9999px]">
     <x-navbar />
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="min-h-[calc(100vh-100px)] mt-2 flex justify-center items-center border-2 rounded-3xl bg-gray-100">
-            <div class="">
-                <h1 class="font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center">
-                    Welcome to Menphy AI</h1>
-                <p class="text-xl text-center mb-8">Your personal mental health therapy assistant</p>
-                <div class="text-center">
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="hero-img min-h-[calc(100vh-100px)] my-2 flex items-center bg-white rounded-3xl shadow-lg">
+            <div class="px-8 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+                <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">
+                    Take care of your mentality with Menphy AI
+                </h1>
+                <p class="max-w-sm text-white my-6">
+                    Seimbangankan Mental Anda dengan Diagnosis Cepat dan Rekomendasi
+                    Terpersonalisasi
+                </p>
+                <div class="">
                     <a href="{{ route('diagnosis.index') }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        class="w-max flex font-semibold text-center text-sm rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
                         Start Self-Diagnosis
                     </a>
                 </div>
