@@ -2,7 +2,7 @@
 
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="p-6 bg-white rounded-md border border-gray-200">
+        <div class="p-6 bg-white rounded-full border border-gray-200">
             @role('admin')
                 <div class="flex justify-between mb-6">
                     <div class="">
