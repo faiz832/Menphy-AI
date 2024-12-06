@@ -1,6 +1,6 @@
 <nav id="navbar" class="sticky top-0 z-20 w-full flex-none bg-white">
     <!-- Primary Navigation Menu -->
-    <div class="mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
             class="flex items-center h-16 lg:border-0 border-gray-200 {{ Route::is('home') ? 'border-0' : 'border-b' }}">
             <div class="flex gap-4 items-center">
@@ -110,3 +110,14 @@
         <x-breadcrumb />
     </div> --}}
 </nav>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            navbar.classList.add('shadow');
+        } else {
+            navbar.classList.remove('shadow');
+        }
+    });
+</script>
