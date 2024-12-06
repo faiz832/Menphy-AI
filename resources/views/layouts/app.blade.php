@@ -24,10 +24,17 @@
         <!-- Navbar -->
         <x-navbar />
 
-        <!-- Content -->
-        <main>
-            {{ $slot }}
-        </main>
+        <div class="flex">
+            <div class="w-full max-w-7xl relative flex items-start mx-auto pt-4 px-4 sm:px-6 lg:px-8 gap-8">
+                <!-- Sidebar -->
+                <x-sidebar-dashboard />
+
+                <div class="w-full min-h-screen lg:w-5/6 flex flex-col gap-4 pb-8">
+                    <!-- Content -->
+                    {{ $slot }}
+                </div>
+            </div>
+        </div>
 
         <!-- Footer -->
         <x-footer />
