@@ -21,6 +21,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
+        <!-- Navbar -->
         <x-navbar />
 
         <!-- Page Heading -->
@@ -36,6 +37,9 @@
         <main>
             {{ $slot }}
         </main>
+
+        <!-- Footer -->
+        <x-footer />
     </div>
 </body>
 
