@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li>
-                {{-- <a href="{{ route('settings.edit') }}"
+                <a href="{{ route('settings.edit') }}"
                     class="flex items-center {{ Route::is('settings.edit') ? 'text-primary relative' : 'text-slate-900' }}">
                     @if (Route::is('settings.edit'))
                         <div class="absolute -left-6 h-full w-1 bg-primary"></div>
@@ -58,7 +58,7 @@
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <span>Settings</span>
-                </a> --}}
+                </a>
             </li>
             <li>
                 <form method="POST" action="{{ route('logout') }}">
