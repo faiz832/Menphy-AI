@@ -1,14 +1,24 @@
 <x-app-layout>
-    <div class="p-6 bg-white border-b border-gray-200">
+    <div class="rounded-md p-6 border border-gray-200">
+        <header>
+            <h2 class="text-lg font-medium text-gray-900">
+                {{ __('Therapy Assessment') }}
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600">
+                {{ __('Please answer the following questions.') }}
+            </p>
+        </header>
+
         <form method="POST" action="{{ route('assessments.store', $diagnosis) }}">
             @csrf
             @foreach ($questions as $question)
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="question_{{ $question->id }}">
+                <div class="my-6">
+                    <label class="block font-medium text-sm text-gray-700" for="question_{{ $question->id }}">
                         {{ $question->question_text }}
                     </label>
                     <select name="answers[{{ $question->id }}]" id="question_{{ $question->id }}"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
                         required>
                         <option value="">Select an option</option>
                         <option value="1">Not at all</option>
