@@ -25,7 +25,7 @@ class Breadcrumb extends Component
 
         // Split the path into segments and get the last 2
         $allSegments = array_filter(explode('/', $path));
-        $lastTwoSegments = array_slice($allSegments, -2);
+        $lastTwoSegments = array_slice($allSegments, -3);
 
         // Decode URL-encoded segments (like: delete %20)
         $decodedSegments = array_map('urldecode', $lastTwoSegments);
