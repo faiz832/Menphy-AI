@@ -29,7 +29,7 @@
                 <!-- Sidebar -->
                 <x-sidebar-dashboard />
 
-                <div class="w-full min-h-screen lg:w-5/6 flex flex-col gap-4 pb-8">
+                <div class="w-full min-h-screen lg:w-5/6 flex flex-col gap-6 pb-8">
                     <!-- Content -->
                     {{ $slot }}
                 </div>
