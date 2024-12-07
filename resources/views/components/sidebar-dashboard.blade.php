@@ -1,4 +1,4 @@
-<aside class="hidden lg:flex flex-col w-1/6">
+<aside class="hidden lg:flex flex-col w-1/6 rounded-md p-6 border border-gray-200">
     <nav class="flex-1 space-y-4">
         <!-- Home Section -->
         <div>
@@ -11,7 +11,7 @@
                 <a href="{{ route('dashboard') }}"
                     class="{{ Route::is('dashboard') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('dashboard') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('dashboard') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -24,7 +24,7 @@
                     <a href="{{ route('users.index') }}"
                         class="{{ Route::is('users.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                         <div
-                            class="{{ Route::is('users.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                            class="{{ Route::is('users.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                         </div>
                         <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,7 +48,7 @@
                 <a href="{{ route('diagnosis.index') }}"
                     class="{{ Route::is('diagnosis.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('diagnosis.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('diagnosis.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -60,7 +60,7 @@
                 <a href="{{ route('assessments.index') }}"
                     class="{{ Route::is('assessments.*') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('assessments.*') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('assessments.*') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -72,7 +72,7 @@
                 {{-- <a href="{{ route('version.index') }}"
                     class="{{ Route::is('version.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('version.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('version.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
@@ -97,7 +97,7 @@
                 <a href="{{ route('profile.edit') }}"
                     class="{{ Route::is('profile.edit') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('profile.edit') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('profile.edit') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -109,7 +109,7 @@
                 <a href="{{ route('settings.edit') }}"
                     class="{{ Route::is('settings.edit') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
-                        class="{{ Route::is('settings.edit') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                        class="{{ Route::is('settings.edit') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
                     </div>
                     <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
