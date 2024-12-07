@@ -88,7 +88,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="px-4 py-6 whitespace-nowrap text-center text-gray-500">
+                        <td colspan="6" class="px-4 py-6 text-sm whitespace-nowrap text-center text-gray-500">
                             Oops! Kamu belum melakukan scan sebelumnya
                         </td>
                     </tr>
