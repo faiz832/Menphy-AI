@@ -13,8 +13,10 @@ class AssessmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $assessments = $user->assessments()->with('diagnosis.mentalDisorder')->latest()->get();
-        return view('assessments.index', compact('assessments'));
+        $diagnoses = $user->diagnoses()->with(['mentalDisorder', 'assessments' => function ($query) {
+            $query->latest();
+        }])->get();
+        return view('assessments.index', compact('diagnoses'));
     }
 
     public function create(Diagnosis $diagnosis)
@@ -26,8 +28,10 @@ class AssessmentController extends Controller
             ->first();
 
         if ($lastAssessment) {
-            return redirect()->route('assessments.show', $lastAssessment)
-                ->with('warning', 'You have already taken an assessment for this diagnosis today.');
+            return back()->with('toast', [
+                'type' => 'warning',
+                'message' => 'You have already taken an assessment for this diagnosis today.'
+            ]);
         }
 
         $questions = AssessmentQuestion::where('mental_disorder_id', $diagnosis->mental_disorder_id)->get();
@@ -54,6 +58,10 @@ class AssessmentController extends Controller
         ]);
 
         $assessment->save();
+
+        if ($percentageImprovement == 100 || $totalScore == 20) {
+            $diagnosis->update(['is_recovered' => true]);
+        }
 
         return redirect()->route('assessments.show', $assessment);
     }

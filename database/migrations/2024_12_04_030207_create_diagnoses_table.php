@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('mental_disorder_id')->nullable()->constrained()->onDelete('cascade');
             $table->decimal('cf', 5, 2)->default(0);
+            $table->boolean('is_recovered')->default(false);
             $table->timestamps();
         });
     }
