@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="p-6 bg-white border-b border-gray-200">
+    <div class="rounded-md p-6 border border-gray-200 overflow-auto">
         @if ($assessments->isEmpty())
             <p>You haven't taken any assessments yet.</p>
         @else
