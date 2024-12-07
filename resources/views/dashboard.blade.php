@@ -27,22 +27,22 @@
 
     <div class="rounded-md p-6 border border-gray-200 overflow-auto">
         <h1 class="font-semibold mb-4">Riwayat Analisis Kamu</h1>
-        <table class="w-full table-auto rounded-lg overflow-hidden shadow">
-            <thead class="bg-gray-50">
+        <table class="w-full table-auto rounded-lg overflow-hidden">
+            <thead class="border-b border-gray-200">
                 <tr>
-                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-12">
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider w-12">
                         No
                     </th>
-                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Gangguan Mental
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
+                        Gangguan
                     </th>
-                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Rekomendasi
                     </th>
-                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Tanggal
                     </th>
-                    <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Action
                     </th>
                 </tr>
@@ -50,16 +50,16 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @forelse ($diagnoses as $diagnosis)
                     <tr>
-                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm">{{ $loop->iteration }}
+                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}
                         </td>
-                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm">
+                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
                             @if ($diagnosis->mentalDisorder)
                                 {{ $diagnosis->mentalDisorder->name }}
                             @else
                                 Tidak Ada
                             @endif
                         </td>
-                        <td class="px-4 my-4 text-center text-sm text-gray-900 line-clamp-2">
+                        <td class="px-4 my-4 text-center text-sm text-gray-500 line-clamp-2">
                             {{ $diagnosis->recommendation->recommendation_text }}
                         </td>
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
