@@ -56,7 +56,7 @@
                     <tr>
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-500">{{ $loop->iteration }}
                         </td>
-                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
+                        <td class="px-4 py-4 text-center font-medium whitespace-nowrap text-sm text-gray-900">
                             @if ($diagnosis->mentalDisorder)
                                 {{ $diagnosis->mentalDisorder->name }}
                             @else
