@@ -29,7 +29,7 @@ class AssessmentController extends Controller
 
         if ($lastAssessment) {
             return back()->with('toast', [
-                'type' => 'warning',
+                'type' => 'error',
                 'message' => 'You have already taken an assessment for this diagnosis today.'
             ]);
         }

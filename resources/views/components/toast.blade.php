@@ -10,7 +10,10 @@
         ][$type] ?? 'bg-blue-500';
 @endphp
 
-<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)" class="fixed top-4 right-4 z-50">
+<div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)"
+    x-transition:enter="transform transition ease-out duration-300" x-transition:enter-start="translate-x-full"
+    x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in duration-300"
+    x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full" class="fixed top-4 right-4 z-50">
     <div class="{{ $classes }} text-white px-6 py-4 rounded-md shadow-lg">
         <div class="flex items-center">
             <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
