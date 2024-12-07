@@ -8,8 +8,8 @@
     @else
         @foreach ($diagnoses as $diagnosis)
             @if ($diagnosis->mentalDisorder)
-                <div class="rounded-md p-6 border border-gray-200 overflow-auto">
-                    <h2 class="text-lg font-semibold mb-4">
+                <div class="rounded-md p-6 pb-2 border border-gray-200 overflow-auto">
+                    <h2 class="text-lg font-semibold">
                         @if ($diagnosis->mentalDisorder)
                             {{ $diagnosis->mentalDisorder->name }}
                         @endif
@@ -21,7 +21,7 @@
                         @endif
                     </h2>
                     @if ($diagnosis->assessments->isEmpty() && $diagnosis->mentalDisorder)
-                        <p class="text-sm text-gray-500">No assessments taken for this diagnosis yet.</p>
+                        <p class="text-sm text-gray-500 py-4">No assessments taken for this diagnosis yet.</p>
                     @else
                         <ul class="divide-y divide-gray-200">
                             @foreach ($diagnosis->assessments as $assessment)
