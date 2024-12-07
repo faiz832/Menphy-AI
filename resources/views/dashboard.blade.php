@@ -26,7 +26,7 @@
     </div>
 
     <div class="rounded-md p-6 border border-gray-200 overflow-auto">
-        <h1 class="font-semibold mb-4">Riwayat Analisis Kamu</h1>
+        <h1 class="text-lg font-medium text-gray-900 mb-4">Riwayat Analisis Kamu</h1>
         <table class="w-full table-auto rounded-lg overflow-hidden">
             <thead class="border-b border-gray-200">
                 <tr>
