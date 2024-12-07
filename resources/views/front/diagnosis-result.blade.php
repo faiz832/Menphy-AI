@@ -30,7 +30,12 @@
             </h2>
 
             <p class="mb-4">
-                <strong>Tingkat Kepastian:</strong> {{ number_format($diagnosis->cf, 2) }}%
+                <strong>Tingkat Kepastian:</strong>
+                @if ($diagnosis->cf == 0.0)
+                    100%
+                @else
+                    {{ $diagnosis->cf }}%
+                @endif
             </p>
 
             <p class="mb-4">

@@ -33,7 +33,7 @@ class DiagnosisController extends Controller
             ]);
 
             $this->generateRecommendation($diagnosis, true);
-            return redirect()->route('front.diagnosis-result', $diagnosis->id);
+            return redirect()->route('front.diagnosis.result', $diagnosis->id);
         }
 
         $mentalDisorders = MentalDisorder::with('rules')->get();
@@ -66,7 +66,7 @@ class DiagnosisController extends Controller
         }
 
         $this->generateRecommendation($diagnosis, $highestCF <= 0);
-        return redirect()->route('front.diagnosis-result', $diagnosis->id);
+        return redirect()->route('front.diagnosis.result', $diagnosis->id);
     }
 
     private function calculateCFCombine($disorder, $answers)
