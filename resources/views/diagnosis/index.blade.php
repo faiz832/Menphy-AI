@@ -68,10 +68,13 @@
                                     Nothing
                                 </span>
                             @else
-                                <a href="{{ route('assessments.create', $diagnosis->id) }}"
-                                    class="px-2.5 py-1.5 text-xs text-white rounded-md bg-gray-900 hover:bg-gray-700">
-                                    Take
-                                </a>
+                                <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
+                                    <button type="button"
+                                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700"
+                                        x-on:click="$dispatch('open-modal', 'warning-diagnosis-' + diagnosisId)">
+                                        Take
+                                    </button>
+                                </div>
                             @endif
                         </td>
                     </tr>
@@ -85,4 +88,36 @@
             </tbody>
         </table>
     </div>
+
+    @foreach ($diagnoses as $item)
+        <!-- Warning diagnosis Modals -->
+        <x-modal :name="'warning-diagnosis-' . $item->id">
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('Take Assessment') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Are you sure you are doing what the AI recommends?') }}
+                </p>
+
+                <div class="mt-4 p-4 rounded-md bg-gray-100">
+                    <p class="text-sm text-gray-600">
+                        {{ $item->recommendation->recommendation_text }}
+                    </p>
+                </div>
+
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('Cancel') }}
+                    </x-secondary-button>
+
+                    <a href="{{ route('assessments.create', $item->id) }}"
+                        class="ml-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                        Continue
+                    </a>
+                </div>
+            </div>
+        </x-modal>
+    @endforeach
 </x-app-layout>

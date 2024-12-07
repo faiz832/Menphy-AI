@@ -36,7 +36,7 @@
                         {{ __('Cancel') }}
                     </a>
                     <x-primary-button class="ml-4">
-                        {{ __('Submit Assessment') }}
+                        {{ __('Submit') }}
                     </x-primary-button>
                 </div>
             </form>
