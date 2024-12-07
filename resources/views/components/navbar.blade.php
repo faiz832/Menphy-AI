@@ -1,4 +1,4 @@
-<nav id="navbar" class="sticky top-0 z-20 w-full flex-none bg-white">
+<nav id="navbar" class="sticky top-0 z-20 w-full flex-none bg-white {{ Route::is('home') ? 'border-0' : 'border-b' }}">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
@@ -105,7 +105,7 @@
 
         <!-- Dashboard Sidebar Menu -->
         <div
-            class="{{ Route::is('dashboard') || Route::is('admin.users.index') || Route::is('profile.edit') || Route::is('settings.edit') || Route::is('version.index') || Route::is('category.index') || Route::is('component.*') ? 'flex' : 'hidden' }}">
+            class="{{ Route::is('dashboard') || Route::is('users.index') || Route::is('profile.edit') || Route::is('settings.edit') ? 'flex' : 'hidden' }}">
             <x-sidebar-dashboard-mobile />
         </div>
 

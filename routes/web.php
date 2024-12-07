@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserManagementController;
 
 Route::get('/', function () {
     return view('home');
@@ -18,11 +19,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('diagnosis.result');
 
     // dashboard route
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.edit');
+    Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/account/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/account/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/account/settings', [ProfileController::class, 'settings'])->name('settings.edit');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('/home/users', UserManagementController::class);
 });
 
 require __DIR__ . '/auth.php';

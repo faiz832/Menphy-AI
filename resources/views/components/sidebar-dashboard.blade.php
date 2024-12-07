@@ -21,19 +21,18 @@
                     Dashboard
                 </a>
                 @role('admin')
-                    {{-- <a href="{{ route('admin.users.index') }}"
-                        class="{{ Route::is('admin.users.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
+                    <a href="{{ route('users.index') }}"
+                        class="{{ Route::is('users.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                         <div
-                            class="{{ Route::is('admin.users.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
+                            class="{{ Route::is('users.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-purple-600 rounded-t-lg rounded-b-lg">
                         </div>
-                        <svg class="mr-3 h-5 w-5 text-gray-700" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>
                         </svg>
                         User
-                    </a> --}}
+                    </a>
                 @endrole
             </div>
         </div>
