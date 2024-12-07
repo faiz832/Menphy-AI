@@ -37,6 +37,9 @@
                         Gangguan
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
+                        Kepastian
+                    </th>
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Rekomendasi
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
@@ -57,6 +60,13 @@
                                 {{ $diagnosis->mentalDisorder->name }}
                             @else
                                 Tidak Ada
+                            @endif
+                        </td>
+                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
+                            @if ($diagnosis->cf == 0.0)
+                                100%
+                            @else
+                                {{ $diagnosis->cf }}%
                             @endif
                         </td>
                         <td class="px-4 my-4 text-center text-sm text-gray-500 line-clamp-2">
