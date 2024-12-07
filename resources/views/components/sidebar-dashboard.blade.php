@@ -37,11 +37,11 @@
             </div>
         </div>
 
-        <!-- Diagnosis Section -->
+        <!-- Data Section -->
         <div>
             <div class="mb-2 pt-4 border-t border-gray-200">
                 <h2 class="px-2 text-xs font-semibold text-gray-500">
-                    Diagnosis
+                    Data
                 </h2>
             </div>
             <div class="space-y-1">

@@ -105,7 +105,7 @@
 
         <!-- Dashboard Sidebar Menu -->
         <div
-            class="{{ Route::is('dashboard') || Route::is('users.index') || Route::is('profile.edit') || Route::is('settings.edit') ? 'flex' : 'hidden' }}">
+            class="{{ Route::is('dashboard') || Route::is('users.index') || Route::is('profile.edit') || Route::is('settings.edit') || Route::is('diagnosis.*') || Route::is('assessments.*') ? 'flex' : 'hidden' }}">
             <x-sidebar-dashboard-mobile />
         </div>
 
