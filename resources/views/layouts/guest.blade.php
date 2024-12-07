@@ -23,7 +23,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div>
             <a href="{{ route('home') }}">
-                <img src="{{ asset('assets/images/menphy-logo.png') }}" alt="Menphy AI Logo" class="h-20">
+                <img src="{{ asset('assets/images/menpy-logo.png') }}" alt="Menpy AI Logo" class="h-20">
             </a>
         </div>
 

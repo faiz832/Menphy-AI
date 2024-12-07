@@ -1,4 +1,4 @@
-<title>User - Menphy AI</title>
+<title>User - Menpy AI</title>
 
 <x-app-layout>
     <div>

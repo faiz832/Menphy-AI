@@ -1,4 +1,4 @@
-<title>Sign Up - Menphy AI</title>
+<title>Sign Up - Menpy AI</title>
 
 <x-guest-layout>
     <h1 class="text-xl tracking-tight font-semibold text-center text-gray-900 mb-6">

@@ -1,11 +1,11 @@
-@section('title', 'Login - Menphy AI')
+@section('title', 'Login - Menpy AI')
 
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <h1 class="text-xl tracking-tight font-semibold text-center text-gray-900 mb-6">
-        Sign in to Menphy AI
+        Sign in to Menpy AI
     </h1>
     <div class="border rounded-lg bg-white p-6">
         <form method="POST" action="{{ route('login') }}">

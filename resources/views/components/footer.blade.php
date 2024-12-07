@@ -20,8 +20,8 @@
                 <!-- Logo and Description -->
                 <div class="text-white">
                     <a href="{{ url('/') }}" class="text-3xl font-bold mr-4 flex items-center gap-2">
-                        <img src="{{ asset('assets/images/menphy-logo-dark.png') }}" alt="" class="w-10 h-10">
-                        Menphy AI
+                        <img src="{{ asset('assets/images/menpy-logo-dark.png') }}" alt="" class="w-10 h-10">
+                        Menpy AI
                     </a>
                     <p class="mt-8 text-sm max-w-xl">
                         Jl. Kyai Moch. Syafei Gg 1 No.2450,
@@ -67,7 +67,7 @@
             <!-- Bottom Section -->
             <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-between mt-8 text-white text-xs">
-                <span class="text-center">© 2024 <a href="{{ url('/') }}" class="hover:underline">Menphy
+                <span class="text-center">© 2024 <a href="{{ url('/') }}" class="hover:underline">Menpy
                         AI™</a>. All Rights Reserved.</span>
                 <div class="flex items-center">
                     <a href="{{ url('/terms') }}" target="_blank" class="text-center hover:underline">Terms</a>

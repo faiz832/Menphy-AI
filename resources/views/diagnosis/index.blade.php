@@ -1,4 +1,4 @@
-<title>Diagnosis Management - Menphy AI</title>
+<title>Diagnosis Management - Menpy AI</title>
 
 <x-app-layout>
     <div class="rounded-md p-6 border border-gray-200 overflow-auto">

@@ -1,4 +1,4 @@
-<title>Dashboard - Menphy AI</title>
+<title>Dashboard - Menpy AI</title>
 
 <x-app-layout>
     <div class="overflow-hidden rounded-md p-6 border border-gray-200">

@@ -7,8 +7,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center gap-2">
-                        <img src="{{ asset('assets/images/menphy-logo.png') }}" alt="Menphy AI Logo" class="h-6">
-                        <h1 class="text-xl font-bold">Menphy AI</h1>
+                        <img src="{{ asset('assets/images/menpy-logo.png') }}" alt="Menpy AI Logo" class="h-6">
+                        <h1 class="text-xl font-bold">Menpy AI</h1>
                     </a>
                 </div>
 

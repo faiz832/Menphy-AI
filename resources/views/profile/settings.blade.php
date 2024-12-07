@@ -1,4 +1,4 @@
-<title>Settings - Menphy AI</title>
+<title>Settings - Menpy AI</title>
 
 <x-app-layout>
     <div class="rounded-md p-6 border border-gray-200">

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Menphy AI</title>
+    <title>Menpy AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
         <div class="hero-img min-h-[calc(100vh-100px)] my-2 flex items-center bg-white rounded-3xl shadow-lg">
             <div class="px-8 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
                 <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">
-                    Take care of your mentality with Menphy AI
+                    Take care of your mentality with Menpy AI
                 </h1>
                 <p class="max-w-sm text-white my-6">
                     Seimbangankan Mental Anda dengan Diagnosis Cepat dan Rekomendasi
@@ -64,7 +64,7 @@
                         <img src="{{ asset('assets/images/feature-1.png') }}" alt="" class="w-full">
                     </div>
                     <h3 class="text-xl font-bold mb-2">Fast Diagnosis</h3>
-                    <p class="text-gray-600">Menphy AI memudahkan Anda dalam melakukan diagnosis mental secara cepat dan
+                    <p class="text-gray-600">Menpy AI memudahkan Anda dalam melakukan diagnosis mental secara cepat dan
                         akurat.</p>
                 </div>
                 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -72,7 +72,7 @@
                         <img src="{{ asset('assets/images/feature-2.png') }}" alt="" class="w-full">
                     </div>
                     <h3 class="text-xl font-bold mb-2">Personalized Recommendations</h3>
-                    <p class="text-gray-600">Menphy AI memberikan rekomendasi terpersonalisasi sesuai dengan tingkat
+                    <p class="text-gray-600">Menpy AI memberikan rekomendasi terpersonalisasi sesuai dengan tingkat
                         kepastian
                         Anda.</p>
                 </div>
@@ -81,7 +81,7 @@
                         <img src="{{ asset('assets/images/feature-3.png') }}" alt="" class="w-full">
                     </div>
                     <h3 class="text-xl font-bold mb-2">Interactive Self-Diagnosis</h3>
-                    <p class="text-gray-600">Menphy AI menyediakan fitur interaktif untuk memudahkan Anda dalam
+                    <p class="text-gray-600">Menpy AI menyediakan fitur interaktif untuk memudahkan Anda dalam
                         melakukan
                         diagnosis mental secara langsung.</p>
                 </div>
