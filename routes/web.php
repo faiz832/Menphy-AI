@@ -25,10 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/data/diagnosis', DiagnosisManagementController::class);
 
     // assessment
-    Route::get('/assessments', [AssessmentController::class, 'index'])->name('assessments.index');
-    Route::get('/assessments/create/{diagnosis}', [AssessmentController::class, 'create'])->name('assessments.create');
-    Route::post('/assessments/{diagnosis}', [AssessmentController::class, 'store'])->name('assessments.store');
-    Route::get('/assessments/{assessment}', [AssessmentController::class, 'show'])->name('assessments.show');
+    Route::get('/data/therapy', [AssessmentController::class, 'index'])->name('assessments.index');
+    Route::get('/data/therapy/create/{diagnosis}', [AssessmentController::class, 'create'])->name('assessments.create');
+    Route::post('/data/therapy/{diagnosis}', [AssessmentController::class, 'store'])->name('assessments.store');
+    Route::get('/data/therapy/{assessment}', [AssessmentController::class, 'show'])->name('assessments.show');
 
     // dashboard route
     Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');

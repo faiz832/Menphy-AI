@@ -9,26 +9,19 @@ class Breadcrumb extends Component
 {
     public array $segments;
 
-    private array $urlMapping = [
-        'docs' => 'Documentation',
-        // 'install' => 'Installation',
-        // 'config' => 'Configuration',
-        // 'api' => 'API Reference',
-        // 'faq' => 'FAQ',
-        // 'getting-started' => 'Getting Started',
-    ];
+    private array $urlMapping = [];
 
     public function __construct()
     {
         // Get the current URL path segments
         $path = request()->path();
 
-        // Split the path into segments and get the last 2
+        // Split the path into segments and get the first 3
         $allSegments = array_filter(explode('/', $path));
-        $lastTwoSegments = array_slice($allSegments, -3);
+        $firstThreeSegments = array_slice($allSegments, 0, 3);
 
         // Decode URL-encoded segments (like: delete %20)
-        $decodedSegments = array_map('urldecode', $lastTwoSegments);
+        $decodedSegments = array_map('urldecode', $firstThreeSegments);
 
         // Map the segments to their friendly names
         $this->segments = array_map(function ($segment) {
