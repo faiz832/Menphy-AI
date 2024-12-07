@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\DiagnosisManagementController;
 
 Route::get('/', function () {
     return view('home');
@@ -15,9 +16,13 @@ Route::get('/', function () {
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
+    // front diagnosis
     Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('front.diagnosis.index');
     Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('front.diagnosis.process');
     Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('front.diagnosis.result');
+
+    // diagnosis mangement
+    Route::resource('/data/diagnosis', DiagnosisManagementController::class);
 
     // assessment
     Route::get('/assessments', [AssessmentController::class, 'index'])->name('assessments.index');
@@ -27,9 +32,13 @@ Route::middleware('auth')->group(function () {
 
     // dashboard route
     Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // profile
     Route::get('/account/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/account/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/account/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // settings
     Route::get('/account/settings', [ProfileController::class, 'settings'])->name('settings.edit');
 });
 
