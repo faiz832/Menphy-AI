@@ -68,7 +68,7 @@
                                 </span>
                             @else
                                 <a href="{{ route('assessments.create', $diagnosis->id) }}"
-                                    class="flex justify-center px-2.5 py-1.5 text-xs text-white rounded-md bg-gray-900 hover:bg-gray-700">
+                                    class="px-2.5 py-1.5 text-xs text-white rounded-md bg-gray-900 hover:bg-gray-700">
                                     Take
                                 </a>
                             @endif
