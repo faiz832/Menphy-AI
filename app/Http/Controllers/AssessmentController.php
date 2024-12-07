@@ -34,12 +34,32 @@ class AssessmentController extends Controller
             ]);
         }
 
+        // If the diagnosis has no mental disorder (Tidak Ada), we don't need to show assessment questions
+        if (!$diagnosis->mental_disorder_id) {
+            return redirect()->route('diagnosis.index');
+        }
+
         $questions = AssessmentQuestion::where('mental_disorder_id', $diagnosis->mental_disorder_id)->get();
         return view('assessments.create', compact('diagnosis', 'questions'));
     }
 
     public function store(Request $request, Diagnosis $diagnosis)
     {
+        // If the diagnosis has no mental disorder (Tidak Ada), we create a 100% improvement assessment
+        if (!$diagnosis->mental_disorder_id) {
+            $assessment = new Assessment([
+                'diagnosis_id' => $diagnosis->id,
+                'user_id' => Auth::id(),
+                'score' => 20, // Maximum score
+                'percentage_improvement' => 100, // 100% improvement
+            ]);
+
+            $assessment->save();
+            $diagnosis->update(['is_recovered' => true]);
+
+            return redirect()->route('assessments.show', $assessment);
+        }
+
         $request->validate([
             'answers' => 'required|array',
             'answers.*' => 'required|integer|min:1|max:5',
