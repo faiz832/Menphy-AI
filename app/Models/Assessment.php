@@ -9,7 +9,17 @@ class Assessment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'assessment_date', 'recovery_percentage'];
+    protected $fillable = [
+        'diagnosis_id',
+        'user_id',
+        'score',
+        'percentage_improvement',
+    ];
+
+    public function diagnosis()
+    {
+        return $this->belongsTo(Diagnosis::class);
+    }
 
     public function user()
     {

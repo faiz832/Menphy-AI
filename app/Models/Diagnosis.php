@@ -25,4 +25,9 @@ class Diagnosis extends Model
     {
         return $this->hasOne(Recommendation::class);
     }
+
+    public function assessments()
+    {
+        return $this->hasMany(Assessment::class);
+    }
 }

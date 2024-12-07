@@ -7,6 +7,7 @@ use App\Models\MentalDisorder;
 use App\Models\Question;
 use App\Models\Rule;
 use App\Models\Symptom;
+use App\Models\AssessmentQuestion;
 
 class MentalHealthSeeder extends Seeder
 {
@@ -138,6 +139,54 @@ class MentalHealthSeeder extends Seeder
 
         foreach ($rules as $rule) {
             Rule::create($rule);
+        }
+
+        $assessmentQuestions = [
+            // Psikosomatik
+            ['mental_disorder_id' => 1, 'question_text' => 'Apakah intensitas sakit kepala Anda berkurang dibandingkan sebelumnya?'],
+            ['mental_disorder_id' => 1, 'question_text' => 'Apakah Anda merasa lebih berenergi sepanjang hari?'],
+            ['mental_disorder_id' => 1, 'question_text' => 'Apakah nyeri otot yang Anda alami berkurang intensitasnya?'],
+            ['mental_disorder_id' => 1, 'question_text' => 'Apakah masalah pencernaan Anda membaik?'],
+
+            // Kecemasan
+            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda merasa lebih tenang dalam menghadapi situasi sehari-hari?'],
+            ['mental_disorder_id' => 2, 'question_text' => 'Apakah frekuensi serangan panik Anda berkurang?'],
+            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda merasa lebih rileks secara fisik?'],
+            ['mental_disorder_id' => 2, 'question_text' => 'Apakah Anda dapat berkonsentrasi lebih baik sekarang?'],
+
+            // PTSD
+            ['mental_disorder_id' => 3, 'question_text' => 'Apakah frekuensi kilas balik traumatis Anda berkurang?'],
+            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda mengalami penurunan dalam frekuensi atau intensitas mimpi buruk?'],
+            ['mental_disorder_id' => 3, 'question_text' => 'Apakah Anda merasa lebih nyaman menghadapi situasi yang sebelumnya mengingatkan Anda pada trauma?'],
+            ['mental_disorder_id' => 3, 'question_text' => 'Apakah reaksi Anda terhadap suara keras atau gerakan tiba-tiba menjadi lebih terkendali?'],
+
+            // Depresi
+            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda merasa suasana hati Anda membaik secara keseluruhan?'],
+            ['mental_disorder_id' => 4, 'question_text' => 'Apakah Anda mulai menemukan kembali kesenangan dalam aktivitas yang dulu Anda nikmati?'],
+            ['mental_disorder_id' => 4, 'question_text' => 'Apakah pola tidur Anda menjadi lebih teratur?'],
+            ['mental_disorder_id' => 4, 'question_text' => 'Apakah pikiran tentang kematian atau bunuh diri berkurang?'],
+
+            // Psikosis
+            ['mental_disorder_id' => 5, 'question_text' => 'Apakah frekuensi atau intensitas halusinasi Anda berkurang?'],
+            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda merasa keyakinan yang tidak masuk akal mulai berkurang?'],
+            ['mental_disorder_id' => 5, 'question_text' => 'Apakah Anda merasa pikiran Anda menjadi lebih terorganisir?'],
+            ['mental_disorder_id' => 5, 'question_text' => 'Apakah orang di sekitar Anda mengatakan bahwa perilaku Anda menjadi lebih normal?'],
+
+            // Skizofrenia
+            ['mental_disorder_id' => 6, 'question_text' => 'Apakah halusinasi yang Anda alami menjadi kurang intens atau kurang sering?'],
+            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa keyakinan aneh Anda mulai berkurang?'],
+            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa lebih nyaman berinteraksi dengan orang lain?'],
+            ['mental_disorder_id' => 6, 'question_text' => 'Apakah Anda merasa lebih mampu menjalankan tugas sehari-hari?'],
+
+            // Bipolar
+            ['mental_disorder_id' => 7, 'question_text' => 'Apakah perubahan suasana hati Anda menjadi kurang ekstrem?'],
+            ['mental_disorder_id' => 7, 'question_text' => 'Apakah Anda mengalami penurunan dalam frekuensi atau intensitas episode manik?'],
+            ['mental_disorder_id' => 7, 'question_text' => 'Apakah periode depresi yang Anda alami menjadi kurang intens atau lebih singkat?'],
+            ['mental_disorder_id' => 7, 'question_text' => 'Apakah pola tidur Anda menjadi lebih stabil?'],
+        ];
+
+        foreach ($assessmentQuestions as $question) {
+            AssessmentQuestion::firstOrCreate($question);
         }
     }
 }

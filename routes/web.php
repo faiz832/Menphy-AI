@@ -6,6 +6,7 @@ use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\AssessmentController;
 
 Route::get('/', function () {
     return view('home');
@@ -17,6 +18,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('front.diagnosis.index');
     Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('front.diagnosis.process');
     Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('front.diagnosis.result');
+
+    // assessment
+    Route::get('/assessments', [AssessmentController::class, 'index'])->name('assessments.index');
+    Route::get('/assessments/create/{diagnosis}', [AssessmentController::class, 'create'])->name('assessments.create');
+    Route::post('/assessments/{diagnosis}', [AssessmentController::class, 'store'])->name('assessments.store');
+    Route::get('/assessments/{assessment}', [AssessmentController::class, 'show'])->name('assessments.show');
 
     // dashboard route
     Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');
