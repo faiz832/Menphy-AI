@@ -45,7 +45,7 @@
                     Terpersonalisasi
                 </p>
                 <div class="">
-                    <a href="{{ route('diagnosis.index') }}"
+                    <a href="{{ route('front.diagnosis.index') }}"
                         class="w-max flex font-semibold text-center text-sm lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
                         Start Diagnosis
                     </a>

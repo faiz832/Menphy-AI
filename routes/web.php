@@ -14,9 +14,9 @@ Route::get('/', function () {
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('diagnosis.index');
-    Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('diagnosis.process');
-    Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('diagnosis.result');
+    Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('front.diagnosis.index');
+    Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('front.diagnosis.process');
+    Route::get('/diagnosis/result/{id}', [DiagnosisController::class, 'showResult'])->name('front.diagnosis.result');
 
     // dashboard route
     Route::get('/home/dashboard', [DashboardController::class, 'index'])->name('dashboard');

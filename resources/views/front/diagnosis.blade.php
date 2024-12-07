@@ -21,7 +21,7 @@
     <x-navbar />
 
     <div class="min-h-[calc(100vh-64px)] max-w-4xl mx-auto px-4 pt-36">
-        <form id="diagnosis-form" action="{{ route('diagnosis.process') }}" method="POST">
+        <form id="diagnosis-form" action="{{ route('front.diagnosis.process') }}" method="POST">
             @csrf
             <div class="relative overflow-hidden">
                 <div class="flex transition-transform duration-500 ease-in-out" id="questions-container">

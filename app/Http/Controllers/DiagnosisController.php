@@ -15,7 +15,7 @@ class DiagnosisController extends Controller
     public function index()
     {
         $questions = Question::all();
-        return view('diagnosis.index', compact('questions'));
+        return view('front.diagnosis', compact('questions'));
     }
 
     public function process(Request $request)
@@ -33,7 +33,7 @@ class DiagnosisController extends Controller
             ]);
 
             $this->generateRecommendation($diagnosis, true);
-            return redirect()->route('diagnosis.result', $diagnosis->id);
+            return redirect()->route('front.diagnosis-result', $diagnosis->id);
         }
 
         $mentalDisorders = MentalDisorder::with('rules')->get();
@@ -66,7 +66,7 @@ class DiagnosisController extends Controller
         }
 
         $this->generateRecommendation($diagnosis, $highestCF <= 0);
-        return redirect()->route('diagnosis.result', $diagnosis->id);
+        return redirect()->route('front.diagnosis-result', $diagnosis->id);
     }
 
     private function calculateCFCombine($disorder, $answers)
@@ -137,7 +137,7 @@ class DiagnosisController extends Controller
             return view('errors.forbidden')->with('message', '403 | You do not have permission to access this page.');
         }
 
-        return view('diagnosis.result', compact('diagnosis'));
+        return view('front.diagnosis-result', compact('diagnosis'));
     }
 
     private function generateRecommendation($diagnosis, $isNoDisorder = false)
