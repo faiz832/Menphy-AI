@@ -77,10 +77,13 @@
                             {{ $diagnosis->created_at->format('d M Y') }}
                         </td>
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
-                            <a href="{{ url('/diagnosis/result/' . $diagnosis->id) }}"
-                                class="px-2.5 py-1.5 text-xs text-white rounded-md bg-gray-900 hover:bg-gray-700">
-                                view
-                            </a>
+                            <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
+                                <button type="button"
+                                    class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700"
+                                    x-on:click="$dispatch('open-modal', 'view-diagnosis-' + diagnosisId)">
+                                    View
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 @empty
@@ -93,4 +96,65 @@
             </tbody>
         </table>
     </div>
+
+    @foreach ($diagnoses as $item)
+        <!-- View diagnosis Modals -->
+        <x-modal :name="'view-diagnosis-' . $item->id">
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('Diagnosis') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Here is your diagnosis') }}
+                </p>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Disorder</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->mentalDisorder)
+                            {{ $item->mentalDisorder->name }}
+                        @else
+                            Tidak Ada
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Description</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->mentalDisorder)
+                            {{ $item->mentalDisorder->description }}
+                        @else
+                            Tidak Ada
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Certainainty</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->cf == 0.0)
+                            100%
+                        @else
+                            {{ $item->cf }}%
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Recommendation</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        {{ $item->recommendation->recommendation_text }}
+                    </p>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('Cancel') }}
+                    </x-secondary-button>
+                </div>
+            </div>
+        </x-modal>
+    @endforeach
 </x-app-layout>
