@@ -34,10 +34,11 @@
     <x-navbar />
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="my-24 max-w-3xl mx-auto flex flex-col items-center">
-            <h1 class="text-7xl text-center font-semibold">{{ $article->title }}</h1>
-            <p class="text-gray-600 mt-8">Author: <strong>{{ $article->user->name }}</strong></p>
-            <p class="text-gray-600 mt-4">Published: {{ $article->created_at->format('M d, Y') }}</p>
+        <div class="my-12 md:my-24 max-w-3xl mx-auto flex flex-col items-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl text-center font-semibold">{{ $article->title }}</h1>
+            <p class="text-sm md:text-base text-gray-600 mt-8">Author: <strong>{{ $article->user->name }}</strong></p>
+            <p class="text-sm md:text-base text-gray-600 mt-1">Published: {{ $article->created_at->format('M d, Y') }}
+            </p>
         </div>
 
         @if ($article->image)
@@ -46,11 +47,11 @@
             </div>
         @endif
 
-        <div class="mt-24 max-w-3xl mx-auto text-lg">
+        <div class="mt-12 md:mt-24 max-w-3xl mx-auto text-lg">
             {!! nl2br(e($article->content)) !!}
         </div>
 
-        <div class="my-24 flex justify-center">
+        <div class="my-12 md:my-24 flex justify-center">
             <a href="{{ route('home') }}"
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-full font-semibold text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition">
                 Back to Home
