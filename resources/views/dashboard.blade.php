@@ -79,7 +79,7 @@
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
                             <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
                                 <button type="button"
-                                    class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700"
+                                    class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700"
                                     x-on:click="$dispatch('open-modal', 'view-diagnosis-' + diagnosisId)">
                                     View
                                 </button>
