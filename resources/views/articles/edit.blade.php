@@ -1,42 +1,62 @@
 <title>Edit Article - Menpy AI</title>
 
 <x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('articles.update', $article) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-4">
-                            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
-                            <input type="text" name="title" id="title" value="{{ $article->title }}"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required>
-                        </div>
-                        <div class="mb-4">
-                            <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Content:</label>
-                            <textarea name="content" id="content" rows="10"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required>{{ $article->content }}</textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image:</label>
-                            @if ($article->image)
-                                <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
-                                    class="mb-2 max-w-xs">
-                            @endif
-                            <input type="file" name="image" id="image"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <button type="submit"
-                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update
-                                Article</button>
-                        </div>
-                    </form>
+    <div class="rounded-md p-6 border border-gray-200 overflow-auto">
+        <div class="max-w-xl">
+            <header>
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('Edit Article') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Manage existing and new articles') }}
+                </p>
+            </header>
+
+            <form action="{{ route('articles.update', $article) }}" method="POST" enctype="multipart/form-data"
+                class="space-y-6">
+                @csrf
+                @method('PUT')
+                <div class="mb-4">
+                    <label for="title" class="block font-medium text-sm text-gray-700">Title</label>
+                    <x-text-input type="text" name="title" id="title" value="{{ $article->title }}"
+                        class="mt-1 w-full" required />
                 </div>
-            </div>
+                <div class="mb-4">
+                    <label for="content" class="block font-medium text-sm text-gray-700">Content</label>
+                    <textarea name="content" id="content" rows="10"
+                        class="mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>{{ $article->content }}</textarea>
+                </div>
+                <div class="flex flex-col">
+                    <label for="image" class="block font-medium text-sm text-gray-700">Image</label>
+                    <div class="mt-1 flex items-center gap-6">
+                        <div class="shrink-0">
+                            <img id="article-image" class="h-40 w-64 object-cover rounded-md"
+                                src="{{ asset($article->image) }}" alt="Article Image Here" />
+                        </div>
+                        <label class="block">
+                            <span class="sr-only">Choose article photo</span>
+                            <input type="file" name="image" id="image" accept="image/*"
+                                class="block w-full text-sm text-slate-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-gray-200 file:text-gray-800
+                                hover:file:bg-gray-300 file:cursor-pointer file:transition file:duration-300 file:ease-in-out" />
+                        </label>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="{{ route('articles.index') }}"
+                        class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 transition">
+                        Back
+                    </a>
+                    <button type="submit"
+                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest transition bg-yellow-500 hover:bg-yellow-600">
+                        Update
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </x-app-layout>
