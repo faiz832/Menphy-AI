@@ -1,4 +1,4 @@
-<div x-data="searchComponent()">
+<div x-data="searchArticle()">
     <!-- Mobile Search Button -->
     <button type="button" @click="openSearch" class="flex sm:hidden ml-auto p-2 focus:outline-none">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -77,7 +77,7 @@
                         <a :href="'/articles/' + result.id" class="block px-4 py-3 hover:bg-gray-50"
                             @click="closeSearch">
                             <p x-text="result.title" class="font-medium text-gray-900"></p>
-                            <p x-text="'Created at: ' + result.created_at" class="text-sm text-gray-500"></p>
+                            <p x-text="'Published at: ' + result.created_at" class="text-sm text-gray-500"></p>
                         </a>
                     </li>
                 </template>
@@ -87,7 +87,7 @@
 </div>
 
 <script>
-    function searchComponent() {
+    function searchArticle() {
         return {
             isOpen: false,
             results: [],
