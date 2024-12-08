@@ -14,6 +14,13 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
 Route::post('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
