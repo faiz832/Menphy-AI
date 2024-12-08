@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diagnosis;
+use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
     public function search(Request $request)
     {
-        $query = $request->input('query');
+        $query = Article::query();
 
-        $results = Diagnosis::where('component', 'like', "%{$query}%")
-            ->with(['category.version'])
-            ->get()
-            ->groupBy(function ($component) {
-                return $component->category->version->version;
-            })
-            ->map(function ($versionGroup) {
-                return $versionGroup->groupBy(function ($component) {
-                    return $component->category->category;
-                });
-            });
+        // Filter based on search keyword, if present
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'like', "%{$search}%");
+        }
 
-        return response()->json($results);
+        // Fetch articles data
+        $articles = $query->get()->map(function ($article) {
+            return [
+                'id' => $article->id,
+                'title' => $article->title,
+                'created_at' => $article->created_at->format('M d, Y'),
+            ];
+        });
+
+        // Send data as JSON response
+        return response()->json($articles);
     }
 }

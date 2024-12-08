@@ -1,7 +1,7 @@
-<div class="relative" x-data="searchComponent()">
+<div class="relative" x-data="searchArticle()">
     <div class="flex relative flex-1 max-w-xl">
         <input x-ref="searchInput" x-model="query" @input.debounce.300ms="performSearch" @click.outside="closeSearch"
-            class="rounded-full border border-slate-300 w-full lg:w-[500px] text-sm px-4 py-2" type="search"
+            class="rounded-full border border-slate-300 w-full lg:w-[500px] px-4 py-2" type="search"
             placeholder="Search articles..." autocomplete="off">
     </div>
 
@@ -25,17 +25,15 @@
             </div>
 
             <!-- Results list -->
-            {{-- <template x-if="!isSearching && results.length > 0"> --}}
             <template x-for="result in results" :key="result.id">
-                <a :href="'/course/' + result.id + '/details/'"
+                <a :href="'/articles/' + result.id"
                     class="flex w-full items-center px-4 py-2 hover:bg-blue-100 rounded transition-colors">
                     <div>
-                        <div class="text-sm font-medium" x-text="result.name"></div>
-                        <div class="text-xs text-gray-500" x-text="'in ' + result.category.name"></div>
+                        <div class="text-sm font-medium" x-text="result.title"></div>
+                        <div class="text-xs text-gray-500" x-text="'Created at: ' + result.created_at"></div>
                     </div>
                 </a>
             </template>
-            {{-- </template> --}}
 
             <!-- No results message -->
             <div x-show="!isSearching && query.length >= 1 && results.length === 0"
@@ -47,7 +45,7 @@
 </div>
 
 <script>
-    function searchComponent() {
+    function searchArticle() {
         return {
             query: '',
             results: [],

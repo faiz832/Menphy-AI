@@ -21,7 +21,7 @@ Route::get('/privacy', function () {
     return view('privacy');
 })->name('privacy');
 
-Route::post('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::middleware('auth')->group(function () {
