@@ -30,7 +30,7 @@
                 </div>
                 <div class="flex gap-4 justify-start lg:justify-end items-end">
                     <!-- Social Media Icons -->
-                    <a href="https://www.facebook.com/"
+                    <a href="https://www.facebook.com/" target="_blank"
                         class="group relative h-fit text-primaryDark hover:text-primaryDark transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] p-2 rounded-full bg-white">
                         <span
                             class="tooltip absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full bg-white text-primaryDark text-xs py-1 px-2 rounded-md shadow-md opacity-0 group-hover:opacity-100 group-hover:-top-4 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none">Facebook</span>
@@ -40,7 +40,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/"
+                    <a href="https://www.instagram.com/" target="_blank"
                         class="group relative h-fit text-primaryDark hover:text-primaryDark transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] p-2 rounded-full bg-white">
                         <span
                             class="tooltip absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full bg-white text-primaryDark text-xs py-1 px-2 rounded-md shadow-md opacity-0 group-hover:opacity-100 group-hover:-top-4 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none">Instagram</span>
@@ -50,7 +50,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="https://www.twitter.com/"
+                    <a href="https://www.twitter.com/" target="_blank"
                         class="group relative h-fit text-primaryDark hover:text-primaryDark transition-all duration-200 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] p-2 rounded-full bg-white">
                         <span
                             class="tooltip absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full bg-white text-primaryDark text-xs py-1 px-2 rounded-md shadow-md opacity-0 group-hover:opacity-100 group-hover:-top-4 transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)] pointer-events-none">Twitter</span>
@@ -67,7 +67,7 @@
             <!-- Bottom Section -->
             <div
                 class="flex flex-col md:flex-row items-center justify-center md:justify-between mt-8 text-white text-xs">
-                <span class="text-center">© 2024 <a href="{{ url('/') }}" class="hover:underline">Menpy
+                <span class="text-center">© 2024 <a href="{{ route('home') }}" class="hover:underline">Menpy
                         AI™</a>. All Rights Reserved.</span>
                 <div class="flex items-center">
                     <a href="{{ url('/terms') }}" target="_blank" class="text-center hover:underline">Terms</a>
