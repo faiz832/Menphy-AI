@@ -15,7 +15,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/search', [SearchController::class, 'search'])->name('search');
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::middleware('auth')->group(function () {
@@ -50,11 +49,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/home/users', UserManagementController::class);
 
     // article management
-    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
-    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
-    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-    Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
-    Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    Route::get('/data/articles', [ArticleController::class, 'index'])->name('articles.index');
+    Route::get('/data/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/data/articles', [ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/data/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+    Route::put('/data/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
+    Route::delete('/data/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 });
 
 require __DIR__ . '/auth.php';

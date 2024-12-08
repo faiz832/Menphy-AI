@@ -45,6 +45,21 @@
                 </h2>
             </div>
             <div class="space-y-1">
+                @role('admin')
+                    <a href="{{ route('articles.index') }}"
+                        class="{{ Route::is('articles.*') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
+                        <div
+                            class="{{ Route::is('articles.*') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
+                        </div>
+                        <svg class="mr-3 h-5 w-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                        </svg>
+                        Articles
+                    </a>
+                @endrole
                 <a href="{{ route('diagnosis.index') }}"
                     class="{{ Route::is('diagnosis.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
                     <div
@@ -69,20 +84,6 @@
                     </svg>
                     Therapy
                 </a>
-                {{-- <a href="{{ route('version.index') }}"
-                    class="{{ Route::is('version.index') ? 'font-semibold' : '' }} relative flex items-center px-2 py-2 text-sm rounded-md text-gray-900 hover:bg-gray-100">
-                    <div
-                        class="{{ Route::is('version.index') ? 'block' : 'hidden' }} absolute inset-y-0 -left-2 w-1 h-6 my-auto bg-gray-900 rounded-t-lg rounded-b-lg">
-                    </div>
-                    <svg class="mr-3 h-5 w-5 text-gray-700" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
-                    </svg>
-                    Version
-                </a> --}}
             </div>
         </div>
 
