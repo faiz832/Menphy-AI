@@ -30,7 +30,7 @@
                     class="flex w-full items-center px-4 py-2 hover:bg-blue-100 rounded transition-colors">
                     <div>
                         <div class="text-sm font-medium" x-text="result.title"></div>
-                        <div class="text-xs text-gray-500" x-text="'Created at: ' + result.created_at"></div>
+                        <div class="text-xs text-gray-500" x-text="'Published at: ' + result.created_at"></div>
                     </div>
                 </a>
             </template>

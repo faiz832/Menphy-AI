@@ -1,5 +1,6 @@
 <div x-data="searchComponent()">
-    <button type="button" @click="isOpen = true" class="flex sm:hidden ml-auto p-2 focus:outline-none">
+    <!-- Mobile Search Button -->
+    <button type="button" @click="openSearch" class="flex sm:hidden ml-auto p-2 focus:outline-none">
         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
@@ -7,12 +8,13 @@
         </svg>
     </button>
 
+    <!-- Mobile Search Modal -->
     <div x-show="isOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-init="$watch('isOpen', value => {
             if (value) {
                 document.body.classList.add('overflow-hidden');
-                $nextTick(() => $refs.searchInput.focus());
+                $nextTick(() => $refs.mobileSearchInput.focus());
             } else {
                 document.body.classList.remove('overflow-hidden');
             }
@@ -22,7 +24,7 @@
         <div x-show="isOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-            class="absolute inset-0 bg-gray-500/70 transition-opacity" @click="isOpen = false" aria-hidden="true">
+            class="absolute inset-0 bg-gray-500/70 transition-opacity" @click="closeSearch" aria-hidden="true">
         </div>
 
         <div x-show="isOpen" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-95"
@@ -38,9 +40,9 @@
                 </svg>
                 <input type="text"
                     class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                    placeholder="Search..." x-ref="searchInput" @input.debounce.300ms="search"
-                    @keydown.escape.window="isOpen = false">
-                <button @click="isOpen = false" class="absolute top-2 right-3 p-1 text-gray-400 hover:text-gray-500">
+                    placeholder="Search..." x-ref="mobileSearchInput" x-model="query"
+                    @input.debounce.300ms="performSearch">
+                <button @click="closeSearch" class="absolute top-2 right-3 p-1 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Close</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -62,40 +64,24 @@
             </div>
 
             <!-- No results message -->
-            <div x-show="!isSearching && query.length >= 2 && Object.keys(searchResults).length === 0"
+            <div x-show="!isSearching && query.length >= 1 && results.length === 0"
                 class="h-40 flex items-center justify-center text-gray-500">
                 No results found
             </div>
 
-            <ul x-show="!isSearching && Object.keys(searchResults).length > 0"
-                class="max-h-72 scroll-py-2 overflow-y-auto pb-6 text-sm text-gray-800">
-                <template x-for="(versionGroup, version) in searchResults" :key="version">
-                    <li class="mx-6">
-                        <h3 class="sticky top-0 z-10 pt-6 pb-2 text-base font-semibold bg-white"
-                            x-text="'Version ' + version"></h3>
-                        <template x-for="(categoryGroup, category) in versionGroup" :key="category">
-                            <div class="mb-4">
-                                <h4 class="font-medium" x-text="category"></h4>
-                                <ul class="space-y-2">
-                                    <template x-for="component in categoryGroup" :key="component.id">
-                                        <li>
-                                            <a :href="'/docs/' + version + '/' + category + '/' + component.component"
-                                                class="block px-4 py-3 bg-gray-50 hover:text-white hover:bg-purple-500 rounded-md transition"
-                                                x-text="component.component"></a>
-                                        </li>
-                                    </template>
-                                </ul>
-                            </div>
-                        </template>
+            <!-- Results list -->
+            <ul x-show="!isSearching && results.length > 0"
+                class="max-h-72 scroll-py-2 overflow-y-auto text-sm text-gray-800">
+                <template x-for="result in results" :key="result.id">
+                    <li>
+                        <a :href="'/articles/' + result.id" class="block px-4 py-3 hover:bg-gray-50"
+                            @click="closeSearch">
+                            <p x-text="result.title" class="font-medium text-gray-900"></p>
+                            <p x-text="'Created at: ' + result.created_at" class="text-sm text-gray-500"></p>
+                        </a>
                     </li>
                 </template>
             </ul>
-
-            <div class="flex flex-wrap items-center bg-gray-50 py-2.5 px-4 text-xs text-gray-700">
-                Press <kbd
-                    class="mx-1 p-1 flex items-center justify-center rounded-md border bg-white font-semibold">Esc</kbd>
-                to close
-            </div>
         </div>
     </div>
 </div>
@@ -104,41 +90,40 @@
     function searchComponent() {
         return {
             isOpen: false,
-            searchResults: {},
+            results: [],
             isSearching: false,
             query: '',
-            search: function() {
-                this.query = this.$refs.searchInput.value;
-                if (this.query.length < 2) {
-                    this.searchResults = {};
+            performSearch() {
+                if (this.query.length < 1) {
+                    this.results = [];
                     return;
                 }
 
                 this.isSearching = true;
-                fetch('{{ route('search') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({
-                            query: this.query
-                        })
-                    })
+
+                fetch(`/search?search=${this.query}`)
                     .then(response => response.json())
                     .then(data => {
-                        this.searchResults = data;
-                        this.isSearching = false;
+                        this.results = data;
                     })
-                    .catch(() => {
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                        this.results = [];
+                    })
+                    .finally(() => {
                         this.isSearching = false;
                     });
             },
-            openSearch: function() {
+            openSearch() {
                 this.isOpen = true;
                 this.$nextTick(() => {
-                    this.$refs.searchInput.focus();
+                    this.$refs.mobileSearchInput.focus();
                 });
+            },
+            closeSearch() {
+                this.isOpen = false;
+                this.query = '';
+                this.results = [];
             }
         }
     }
