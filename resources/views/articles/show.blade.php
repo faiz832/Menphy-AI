@@ -43,7 +43,18 @@
 
         @if ($article->image)
             <div class="rounded-3xl overflow-hidden aspect-video">
-                <img src="{{ asset($article->image) }}" alt="{{ $article->title }}" class="max-w-full h-auto">
+                @php
+                    $imageUrl = asset('assets/images/article-1.jpg'); // Default image URL
+
+                    if ($article->image) {
+                        if (Str::startsWith($article->image, 'assets/')) {
+                            $imageUrl = asset($article->image);
+                        } elseif (Str::startsWith($article->image, 'articles/')) {
+                            $imageUrl = Storage::url($article->image);
+                        }
+                    }
+                @endphp
+                <img src="{{ $imageUrl }}" alt="{{ $article->title }}" class="max-w-full h-auto">
             </div>
         @endif
 

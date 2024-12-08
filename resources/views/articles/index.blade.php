@@ -46,7 +46,7 @@
     @foreach ($articles as $item)
         <!-- Warning article Modals -->
         <x-modal :name="'warning-article-' . $item->id">
-            <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline">
+            <form action="{{ route('articles.destroy', $item->id) }}" method="POST" class="inline">
                 @csrf
                 @method('DELETE')
                 <div class="p-6">

@@ -9,30 +9,49 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    {{ __('Manage existing and new articles') }}
+                    {{ __('Update existing article') }}
                 </p>
             </header>
+
+            <x-message />
 
             <form action="{{ route('articles.update', $article) }}" method="POST" enctype="multipart/form-data"
                 class="space-y-6">
                 @csrf
                 @method('PUT')
-                <div class="mb-4">
-                    <label for="title" class="block font-medium text-sm text-gray-700">Title</label>
-                    <x-text-input type="text" name="title" id="title" value="{{ $article->title }}"
-                        class="mt-1 w-full" required />
+
+                <div>
+                    <x-input-label for="title" :value="__('Title')" />
+                    <x-text-input id="title" name="title" type="text" class="mt-1 block w-full"
+                        :value="old('title', $article->title)" required autofocus autocomplete="title" />
+                    <x-input-error class="mt-2" :messages="$errors->get('title')" />
                 </div>
-                <div class="mb-4">
-                    <label for="content" class="block font-medium text-sm text-gray-700">Content</label>
-                    <textarea name="content" id="content" rows="10"
-                        class="mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>{{ $article->content }}</textarea>
+
+                <div>
+                    <x-input-label for="content" :value="__('Content')" />
+                    <textarea id="content" name="content"
+                        class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                        rows="6" required>{{ old('content', $article->content) }}</textarea>
+                    <x-input-error class="mt-2" :messages="$errors->get('content')" />
                 </div>
-                <div class="flex flex-col">
-                    <label for="image" class="block font-medium text-sm text-gray-700">Image</label>
+
+                <div>
+                    <x-input-label for="image" :value="__('Image')" />
                     <div class="mt-1 flex items-center gap-6">
                         <div class="shrink-0">
-                            <img id="article-image" class="h-40 w-64 object-cover rounded-md"
-                                src="{{ asset($article->image) }}" alt="Article Image Here" />
+                            @php
+                                $imageUrl = asset('assets/images/article-1.jpg'); // Default image URL
+
+                                if ($article->image) {
+                                    if (Str::startsWith($article->image, 'assets/')) {
+                                        $imageUrl = asset($article->image);
+                                    } elseif (Str::startsWith($article->image, 'articles/')) {
+                                        $imageUrl = Storage::url($article->image);
+                                    }
+                                }
+                            @endphp
+                            <img id="preview-image" class="h-40 w-64 object-cover rounded-md" src="{{ $imageUrl }}"
+                                alt="Article preview" />
                         </div>
                         <label class="block">
                             <span class="sr-only">Choose article photo</span>
@@ -45,18 +64,26 @@
                                 hover:file:bg-gray-300 file:cursor-pointer file:transition file:duration-300 file:ease-in-out" />
                         </label>
                     </div>
+                    <x-input-error class="mt-2" :messages="$errors->get('image')" />
                 </div>
+
                 <div class="flex items-center gap-4">
                     <a href="{{ route('articles.index') }}"
                         class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:bg-gray-50 transition">
                         Back
                     </a>
-                    <button type="submit"
-                        class="inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest transition bg-yellow-500 hover:bg-yellow-600">
-                        Update
-                    </button>
+                    <x-primary-button>{{ __('Update') }}</x-primary-button>
                 </div>
             </form>
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.getElementById('image').onchange = function(evt) {
+        const [file] = this.files;
+        if (file) {
+            document.getElementById('preview-image').src = URL.createObjectURL(file);
+        }
+    }
+</script>
