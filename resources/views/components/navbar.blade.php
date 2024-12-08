@@ -1,8 +1,9 @@
-<nav id="navbar" class="sticky top-0 z-20 w-full flex-none bg-white {{ Route::is('home') ? 'border-0' : 'border-b' }}">
+<nav id="navbar"
+    class="sticky top-0 z-20 w-full flex-none bg-white {{ Route::is('home') || Route::is('articles.show') ? 'border-0' : 'border-b' }}">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-            class="flex items-center h-16 lg:border-0 border-gray-200 {{ Route::is('home') ? 'border-0' : 'border-b' }}">
+            class="flex items-center h-16 lg:border-0 border-gray-200 {{ Route::is('home') || Route::is('articles.show') ? 'border-0' : 'border-b' }}">
             <div class="flex gap-4 items-center">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -101,7 +102,8 @@
     </div>
 
     <!-- Mobile menu button -->
-    <div class="mx-auto p-4 sm:px-6 items-center lg:hidden {{ Route::is('home') ? 'hidden' : 'flex' }}">
+    <div
+        class="mx-auto p-4 sm:px-6 items-center lg:hidden {{ Route::is('home') || Route::is('articles.show') ? 'hidden' : 'flex' }}">
 
         <!-- Dashboard Sidebar Menu -->
         <div
