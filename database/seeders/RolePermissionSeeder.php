@@ -40,7 +40,7 @@ class RolePermissionSeeder extends Seeder
 
         $articles = [
             [
-                'title' => 'Memahami Kesehatan Mental',
+                'title' => 'Kesehatan Mental',
                 'content' => 'Kesehatan mental adalah aspek penting dalam kehidupan yang seringkali terabaikan. Secara sederhana, kesehatan mental mengacu pada kondisi emosional, psikologis, dan sosial seseorang yang memengaruhi cara berpikir, merasa, dan bertindak. Hal ini juga memengaruhi bagaimana seseorang menangani stres, berinteraksi dengan orang lain, dan membuat keputusan. Sama halnya dengan kesehatan fisik, kesehatan mental membutuhkan perhatian dan perawatan yang tepat agar seseorang dapat menjalani hidup secara optimal.
 
 Dalam kehidupan sehari-hari, berbagai faktor dapat memengaruhi kesehatan mental, seperti tekanan pekerjaan, masalah keluarga, atau pengalaman traumatis. Tanda-tanda kesehatan mental yang terganggu bisa berupa perasaan cemas berlebihan, kesedihan berkepanjangan, sulit tidur, hingga kesulitan menjalankan aktivitas sehari-hari. Sayangnya, banyak orang enggan mencari bantuan karena stigma yang masih melekat pada masalah kesehatan mental, sehingga kondisi ini sering dibiarkan hingga menjadi lebih serius.

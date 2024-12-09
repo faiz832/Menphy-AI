@@ -9,10 +9,9 @@ use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\DiagnosisManagementController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/terms', function () {
     return view('terms');

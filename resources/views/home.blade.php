@@ -19,15 +19,6 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
-
-    <style>
-        .hero-img {
-            background-image: url('{{ asset('assets/images/hero-img.jpeg') }}');
-            background-size: cover;
-            background-position: top;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
 
 <body class="bg-white">
@@ -36,56 +27,67 @@
 
     <!-- Hero Section -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="hero-img min-h-[calc(100vh-100px)] my-2 flex items-center bg-white rounded-3xl shadow-lg">
-            <div class="px-8 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">
-                    Take care of your mentality with Menpy AI
-                </h1>
-                <p class="max-w-sm text-white my-6">
-                    Seimbangankan Mental Anda dengan Diagnosis Cepat dan Rekomendasi
-                    Terpersonalisasi
-                </p>
-                <div class="">
-                    <a href="{{ route('front.diagnosis.index') }}"
-                        class="w-max flex font-semibold text-center text-sm lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
-                        Start Diagnosis
-                    </a>
+        <div class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg overflow-hidden">
+            <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img" loading="lazy"
+                class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center">
+                <div class="px-8 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+                    <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">
+                        Take care of your mentality with Menpy AI
+                    </h1>
+                    <p class="max-w-sm text-white my-6">
+                        Seimbangankan Mental Anda dengan Diagnosis Cepat dan Rekomendasi
+                        Terpersonalisasi
+                    </p>
+                    <div class="">
+                        <a href="{{ route('front.diagnosis.index') }}"
+                            class="w-max flex font-semibold text-center text-sm lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
+                            Start Diagnosis
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Features Section -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="py-40">
-            <h2 class="text-3xl font-bold text-center mb-8">Features</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class="mb-4">
-                        <img src="{{ asset('assets/images/feature-1.png') }}" alt="" class="w-full">
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Fast Diagnosis</h3>
-                    <p class="text-gray-600">Menpy AI memudahkan Anda dalam melakukan diagnosis mental secara cepat dan
-                        akurat.</p>
-                </div>
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class="mb-4">
-                        <img src="{{ asset('assets/images/feature-2.png') }}" alt="" class="w-full">
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Personalized Recommendations</h3>
-                    <p class="text-gray-600">Menpy AI memberikan rekomendasi terpersonalisasi sesuai dengan tingkat
-                        kepastian
-                        Anda.</p>
-                </div>
-                <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class="mb-4">
-                        <img src="{{ asset('assets/images/feature-3.png') }}" alt="" class="w-full">
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Interactive Self-Diagnosis</h3>
-                    <p class="text-gray-600">Menpy AI menyediakan fitur interaktif untuk memudahkan Anda dalam
-                        melakukan
-                        diagnosis mental secara langsung.</p>
-                </div>
+    <!-- Articles Section -->
+    <div id="articles" class="py-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="my-12 flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Related articles</h1>
+                <a href="#articles" class="text-xs px-3 py-2 rounded-full border hover:bg-gray-100 transition">Browse
+                    all
+                    articles</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach ($articles as $article)
+                    <a href="{{ route('articles.show', $article->id) }}">
+                        <div class="relative w-full md:h-80 lg:h-[500px] overflow-hidden rounded-2xl group">
+                            @php
+                                $imageUrl = asset('assets/images/article-1.jpg'); // Default image URL
+
+                                if ($article->image) {
+                                    if (Str::startsWith($article->image, 'assets/')) {
+                                        $imageUrl = asset($article->image);
+                                    } elseif (Str::startsWith($article->image, 'articles/')) {
+                                        $imageUrl = Storage::url($article->image);
+                                    }
+                                }
+
+                            @endphp
+                            <img src="{{ $imageUrl }}" alt="Article Image"
+                                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out"
+                                loading="lazy">
+                            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black bg-opacity-25">
+                            </div>
+                            <div class="absolute bottom-0 left-0 m-4">
+                                <h3 class="text-lg font-semibold text-white">{{ $article->title }}</h3>
+                                <p class="mt-2 text-sm text-gray-300 line-clamp-3">{{ $article->content }}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
