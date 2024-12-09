@@ -33,8 +33,8 @@
             <div
                 class="hidden xl:flex flex-col gap-6 absolute bottom-12 right-12 w-96 h-max bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4">
                 <div class="flex justify-between items-center">
-                    <p class="text-xl font-semibold tracking-tighter">Diagnosis Everyday</p>
-                    <p class="text-sm font-semibold tracking-tighter mr-2">More 5k users</p>
+                    <p class="text-xl font-bold tracking-tighter">Diagnosis Everyday</p>
+                    <p class="text-sm font-bold tracking-tighter mr-2">More 5k users</p>
                 </div>
                 <div class="flex justify-between items-center">
                     <p class="text-xs w-1/2 font-medium">
@@ -50,7 +50,7 @@
             </div>
             <div class="absolute top-0 left-0 w-full h-full flex items-center">
                 <div class="px-4 md:px-8 w-3/4 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                    <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-white font-bold tracking-tighter">
                         Take care of your mentality with Menpy AI
                     </h1>
                     <p class="max-w-sm text-white my-6">
@@ -61,8 +61,46 @@
                         <a href="{{ route('front.diagnosis.index') }}"
                             class="w-max flex font-semibold text-center text-sm tracking-tighter lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
                             Start Diagnosis
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 5l7 7-7 7M5 5l7 7-7 7">
+                                </path>
+                            </svg>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-12 md:py-24 xl:py-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter text-center">
+                Diagnosis Your Mental Health
+            </h1>
+            <p class="my-6 md:max-w-xl lg:max-w-2xl text-sm lg:text-base mx-auto text-center">
+                Yuk, pelajari langkah-langkah gampang buat pakai Menpy AI bareng video tutorial ini, biar kamu makin
+                paham dan bisa langsung jago gunain fiturnya!
+            </p>
+
+            <div
+                class="mt-10 md:mt-20 mx-auto aspect-[0.75] w-full overflow-hidden px-20 pt-12 bg-black rounded-3xl
+                            md:aspect-[1.9] md:px-20 md:pt-20 
+                            lg:aspect-[1.9] lg:px-24 lg:pt-24
+                            min-[1536px]:w-[min(80vw,1920px)] drop-shadow-2xl">
+                <div class="relative h-full w-full overflow-hidden">
+                    <video class="hidden md:flex h-full w-full select-none rounded-t-2xl object-cover object-left-top"
+                        autoplay muted loop playsinline disablepictureinpicture disableremoteplayback
+                        poster="{{ asset('assets/images/poster-desktop.png') }}">
+                        <source type="video/mp4" src="{{ asset('assets/videos/demo-desktop.mp4') }}">
+                    </video>
+                    <video class="flex md:hidden h-full w-full select-none rounded-t-2xl object-cover object-left-top"
+                        autoplay muted loop playsinline disablepictureinpicture disableremoteplayback
+                        poster="{{ asset('assets/images/poster-mobile.jpg') }}">
+                        <source type="video/mp4" src="{{ asset('assets/videos/demo-mobile.mp4') }}">
+                    </video>
                 </div>
             </div>
         </div>
