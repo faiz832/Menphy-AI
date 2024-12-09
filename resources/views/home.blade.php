@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <!-- Features Section -->
+    <!-- Video Section -->
     <div class="py-12 md:py-24 xl:py-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter text-center">
@@ -110,14 +110,89 @@
         </div>
     </div>
 
+    <!-- Features Section -->
+    <div class="">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-6 justify-between md:items-center">
+                <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter">Special Features
+                </h1>
+                <p class="md:text-sm text-base md:w-1/2 text-justify font-semibold">
+                    Kenalan sama fitur spesial Menpy AI yang nggak cuma canggih, tapi juga dibuat khusus
+                    buat bantuin kamu jadi versi terbaik dari diri sendiri!
+                </p>
+            </div>
+            @php
+                $features = [
+                    [
+                        'title' => 'Diagnosis Mandiri Cepat dan Tepat',
+                        'description' =>
+                            'Dapatkan hasil diagnosis awal yang akurat hanya dengan menjawab beberapa pertanyaan sederhana. Teknologi pintar Menpy AI akan membantu memberikan hasil yang cepat dan tepat.',
+                        'image' => 'assets/images/feature-1.jpg',
+                        'size' => 'lg:col-span-2 lg:row-span-2',
+                    ],
+                    [
+                        'title' => 'Rekomendasi AI',
+                        'description' =>
+                            'AI kami memberikan rekomendasi terapi yang personal dan sesuai kebutuhan kamu. Semua dibuat simpel supaya kamu bisa langsung mengambil langkah nyata.',
+                        'image' => 'assets/images/feature-2.jpg',
+                        'size' => 'lg:col-span-1 lg:row-span-2',
+                    ],
+                    [
+                        'title' => 'Terapi Mandiri',
+                        'description' =>
+                            'Pantau dan evaluasi perkembangan kesehatan mentalmu secara berkala dengan fitur assessment yang mudah digunakan.',
+                        'image' => 'assets/images/feature-3.jpg',
+                        'size' => 'lg:col-span-1 lg:row-span-2',
+                    ],
+                    [
+                        'title' => 'Artikel Kesehatan Mental',
+                        'description' =>
+                            'Perbanyak wawasan dengan artikel informatif yang membahas kesehatan mental secara mendalam namun tetap relatable untuk semua kalangan.',
+                        'image' => 'assets/images/feature-4.jpg',
+                        'size' => 'lg:col-span-2 lg:row-span-2',
+                    ],
+                ];
+            @endphp
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach ($features as $feature)
+                    <div class="relative overflow-hidden rounded-xl group h-80 {{ $feature['size'] }}">
+                        <div class="absolute inset-0 bg-cover bg-center"
+                            style="background-image: url('{{ $feature['image'] }}')">
+                            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black bg-opacity-25"></div>
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                                <h2 class="text-3xl font-bold text-white mb-2">{{ $feature['title'] }}</h2>
+                                @if ($feature['description'])
+                                    <p class="text-white text-opacity-90 text-sm max-w-md">
+                                        {{ $feature['description'] }}
+                                    </p>
+                                @endif
+                            </div>
+                            {{-- <button
+                                class="absolute top-4 right-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button> --}}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
     <!-- Articles Section -->
     <div id="articles" class="py-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-12 flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Related articles</h1>
-                <a href="#articles" class="text-xs px-3 py-2 rounded-full border hover:bg-gray-100 transition">Browse
-                    all
-                    articles</a>
+                <a href="#articles"
+                    class="text-xs px-3 py-2 font-semibold rounded-full border hover:bg-gray-100 transition">
+                    Browse all articles
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
