@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Spatie\Permission\Exceptions\UnauthorizedException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -23,5 +24,11 @@ return Application::configure(basePath: dirname(__DIR__))
             return response()->view('errors.unauthorized', [
                 'message' => $e->getMessage()
             ], 403);
+        });
+
+        $exceptions->render(function (NotFoundHttpException $e) {
+            return response()->view('errors.not-found', [
+                'message' => $e->getMessage()
+            ], 404);
         });
     })->create();
