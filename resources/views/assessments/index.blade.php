@@ -1,6 +1,10 @@
 <title>Therapy - Menpy AI</title>
 
 <x-app-layout>
+    @if (session('toast'))
+        <x-toast :type="session('toast.type')" :message="session('toast.message')" />
+    @endif
+
     @if ($diagnoses->isEmpty())
         <div class="rounded-md p-6 border border-gray-200 overflow-auto">
             <p>You haven't taken any assessments yet.</p>
