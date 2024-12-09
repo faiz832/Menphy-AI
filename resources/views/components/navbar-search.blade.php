@@ -71,7 +71,7 @@
 
             <!-- Results list -->
             <ul x-show="!isSearching && results.length > 0"
-                class="max-h-72 scroll-py-2 overflow-y-auto text-sm text-gray-800">
+                class="mb-2 max-h-72 scroll-py-2 overflow-y-auto text-sm text-gray-800">
                 <template x-for="result in results" :key="result.id">
                     <li>
                         <a :href="'/articles/' + result.id" class="block px-4 py-3 hover:bg-gray-50"

@@ -19,7 +19,12 @@
                 </div>
             </div>
 
-            <div class="flex h-max ml-auto">
+            <!-- Search Icon -->
+            <div class="ml-auto">
+                <x-navbar-search />
+            </div>
+
+            <div class="flex h-max">
                 <!-- Navigation Links -->
                 <!-- Login button -->
                 @if (Route::has('login'))
@@ -51,19 +56,38 @@
                                     x-transition:leave="transition ease-in duration-75"
                                     x-transition:leave-start="transform opacity-100 scale-100"
                                     x-transition:leave-end="transform opacity-0 scale-95"
-                                    class="absolute top-9 right-0 mt-2 w-48 rounded-md bg-white p-1 text-sm shadow-lg ring-1 ring-gray-900/10"
+                                    class="absolute top-9 right-0 mt-2 w-48 rounded-md bg-white p-2 text-sm shadow-lg ring-1 ring-gray-900/10"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1"
                                     style="display: none;">
                                     <div role="none">
                                         <a href="{{ route('dashboard') }}"
                                             class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Dashboard</a>
+                                        @role('admin')
+                                            <a href="{{ route('users.index') }}"
+                                                class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
+                                                role="menuitem">User</a>
+                                        @endrole
+                                        <div class="my-2 border-b border-gray-200"></div>
+                                        @role('admin')
+                                            <a href="{{ route('articles.index') }}"
+                                                class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
+                                                role="menuitem">Article</a>
+                                        @endrole
+                                        <a href="{{ route('diagnosis.index') }}"
+                                            class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
+                                            role="menuitem">Diagnosis</a>
+                                        <a href="{{ route('assessments.index') }}"
+                                            class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
+                                            role="menuitem">Therapy</a>
+                                        <div class="my-2 border-b border-gray-200"></div>
                                         <a href="{{ route('profile.edit') }}"
                                             class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Profile</a>
-                                        <a href=""
+                                        <a href="{{ route('settings.edit') }}"
                                             class="block px-4 py-2 text-sm rounded-md text-gray-700 hover:bg-gray-100"
                                             role="menuitem">Settings</a>
+                                        <div class="my-2 border-b border-gray-200"></div>
                                         <form method="POST" action="{{ route('logout') }}" role="none"
                                             style="margin-bottom: 0">
                                             @csrf
@@ -79,6 +103,10 @@
                             </div>
                         @else
                             <a href="{{ route('login') }}"
+                                class="ml-2 flex sm:hidden font-semibold text-center text-sm rounded-full px-3 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
+                                Sign In
+                            </a>
+                            <a href="{{ route('login') }}"
                                 class="hidden sm:flex font-semibold text-center text-sm rounded-full px-3 py-2 bg-white hover:bg-gray-200 transition">
                                 Sign In
                             </a>
@@ -92,9 +120,6 @@
                     </nav>
                 @endif
             </div>
-
-            <!-- Search Icon -->
-            <x-navbar-search />
 
             <!-- Three Dots -->
             <x-navbar-menu-mobile />
