@@ -51,6 +51,17 @@
                         </ul>
                     @endif
                 </div>
+            @else
+                <div class="rounded-md p-6 pb-2 border border-gray-200 overflow-auto">
+                    <h2 class="text-lg font-semibold">
+                        No Diagnosis
+                        <span
+                            class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                            Nothing
+                        </span>
+                    </h2>
+                    <p class="text-sm text-gray-500 py-4">No need to take any assessments.</p>
+                </div>
             @endif
         @endforeach
     @endif
