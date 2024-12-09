@@ -1,8 +1,8 @@
 <div class="relative" x-data="searchArticle()">
     <div class="flex relative flex-1 max-w-xl">
         <input x-ref="searchInput" x-model="query" @input.debounce.300ms="performSearch" @click.outside="closeSearch"
-            class="rounded-full border border-slate-300 w-full lg:w-[500px] px-4 py-2" type="search"
-            placeholder="Search articles..." autocomplete="off">
+            class="rounded-full border border-slate-300 w-full lg:w-[450px] px-4 py-2 focus:ring-gray-500 focus:border-gray-500"
+            type="search" placeholder="Search articles..." autocomplete="off">
     </div>
 
     <!-- Search Results Dropdown -->
@@ -27,7 +27,7 @@
             <!-- Results list -->
             <template x-for="result in results" :key="result.id">
                 <a :href="'/articles/' + result.id"
-                    class="flex w-full items-center px-4 py-2 hover:bg-blue-100 rounded transition-colors">
+                    class="flex w-full items-center px-4 py-2 hover:bg-gray-100 rounded transition-colors">
                     <div>
                         <div class="text-sm font-medium" x-text="result.title"></div>
                         <div class="text-xs text-gray-500" x-text="'Published at: ' + result.created_at"></div>
