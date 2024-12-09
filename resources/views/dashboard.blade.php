@@ -9,7 +9,7 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    {{ __('You are logged in as an admin.') }}
+                    You are great today, {{ Auth::user()->name }}
                 </p>
             </div>
         @else
@@ -19,7 +19,7 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    {{ __('You are logged in as a user.') }}
+                    You are great today, {{ Auth::user()->name }}
                 </p>
             </div>
         @endrole
