@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-    <title>403 | Menpy AI</title>
+    <title>Menpy AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,9 +30,14 @@
 
         <div class="w-full max-w-xl mt-6">
             <div class="text-center rounded-md p-6 border border-gray-200 overflow-auto">
-                {{ $message }}
+                403 | Forbidden: {{ $message }}
             </div>
         </div>
+
+        <a href="{{ route('home') }}"
+            class="mt-6 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-full font-semibold text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition">
+            Back to Home
+        </a>
     </div>
 </body>
 

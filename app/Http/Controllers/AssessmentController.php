@@ -89,7 +89,7 @@ class AssessmentController extends Controller
     public function show(Assessment $assessment)
     {
         if ($assessment->user_id !== Auth::user()->id) {
-            return view('errors.forbidden')->with('message', '403 | You do not have permission to access this page.');
+            return view('errors.forbidden')->with('message', 'You do not have permission to access this page.');
         }
 
         return view('assessments.show', compact('assessment'));

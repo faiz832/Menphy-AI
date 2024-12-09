@@ -134,7 +134,7 @@ class DiagnosisController extends Controller
         $diagnosis = Diagnosis::with(['mentalDisorder', 'recommendation'])->findOrFail($id);
 
         if ($diagnosis->user_id !== Auth::user()->id) {
-            return view('errors.forbidden')->with('message', '403 | You do not have permission to access this page.');
+            return view('errors.forbidden')->with('message', 'You do not have permission to access this page.');
         }
 
         return view('front.diagnosis-result', compact('diagnosis'));
