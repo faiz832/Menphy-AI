@@ -28,8 +28,7 @@
 
         <div class="py-12 bg-white">
             <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
-                <h1
-                    class="text-6xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-sky-500 to-blue-600 py-2 mb-2">
+                <h1 class="text-6xl text-center font-bold py-2 mb-2">
                     Terms of Service</h1>
                 <p class="text-center text-gray-500 mb-12">Last updated: {{ date('F d, Y') }}</p>
                 <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
