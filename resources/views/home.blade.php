@@ -27,11 +27,12 @@
 
     <!-- Hero Section -->
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div
+            class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
             <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img" loading="lazy"
-                class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl">
+                class="absolute top-0 right-0 w-full lg:w-1/2 h-full object-cover lg:object-right rounded-3xl">
             <div
-                class="hidden xl:flex flex-col gap-6 absolute bottom-12 right-12 w-96 h-max bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4">
+                class="hidden lg:flex flex-col gap-6 absolute bottom-12 right-12 w-96 h-max bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4">
                 <div class="flex justify-between items-center">
                     <p class="text-xl font-bold tracking-tighter">Diagnosis Everyday</p>
                     <p class="text-sm font-bold tracking-tighter mr-2">More 5k users</p>
@@ -49,24 +50,27 @@
                 </div>
             </div>
             <div class="absolute top-0 left-0 w-full h-full flex items-center">
-                <div class="px-4 md:px-8 w-3/4 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-white font-bold tracking-tighter">
+                <div class="px-4 md:px-8 w-3/4 md:max-w-lg lg:max-w-xl xl:max-w-2xl text-white lg:text-black">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter">
                         Take care of your mentality with Menpy AI
                     </h1>
-                    <p class="max-w-sm text-white my-6">
+                    <p class="max-w-sm my-6">
                         Seimbangankan Mental Anda dengan Diagnosis Cepat dan Rekomendasi
                         Terpersonalisasi
                     </p>
                     <div class="">
                         <a href="{{ route('front.diagnosis.index') }}"
-                            class="w-max flex font-semibold text-center text-sm tracking-tighter lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
+                            class="w-max flex items-center gap-4 font-semibold text-center text-base tracking-tighter lg:text-lg rounded-full ps-4 pe-2 py-2 text-white bg-gray-900 hover:bg-gray-700 transition group">
                             Start Diagnosis
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 5l7 7-7 7M5 5l7 7-7 7">
-                                </path>
-                            </svg>
+                            <div class="bg-white rounded-full p-1 lg:p-2 text-black">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 rotate-180 group-hover:translate-x-1 transition-all" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M11 19l-7-7 7-7M4 12h16">
+                                    </path>
+                                </svg>
+                            </div>
                         </a>
                     </div>
                 </div>
