@@ -27,6 +27,9 @@
                         Date
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
+                        Action
+                    </th>
+                    <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Therapy
                     </th>
                 </tr>
@@ -57,6 +60,15 @@
                             {{ $diagnosis->created_at->format('d M Y') }}
                         </td>
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
+                            <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
+                                <button type="button"
+                                    class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700"
+                                    x-on:click="$dispatch('open-modal', 'view-diagnosis-' + diagnosisId)">
+                                    View
+                                </button>
+                            </div>
+                        </td>
+                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
                             @if ($diagnosis->is_recovered)
                                 <span
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -80,7 +92,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="px-4 py-6 text-sm whitespace-nowrap text-center text-gray-500">
+                        <td colspan="7" class="px-4 py-6 text-sm whitespace-nowrap text-center text-gray-500">
                             Oops! Kamu belum melakukan diagnosis sebelumnya
                         </td>
                     </tr>
@@ -90,6 +102,65 @@
     </div>
 
     @foreach ($diagnoses as $item)
+        <!-- View diagnosis Modals -->
+        <x-modal :name="'view-diagnosis-' . $item->id">
+            <div class="p-6">
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('Diagnosis') }}
+                </h2>
+
+                <p class="mt-1 text-sm text-gray-600">
+                    {{ __('Here is your diagnosis') }}
+                </p>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Disorder</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->mentalDisorder)
+                            {{ $item->mentalDisorder->name }}
+                        @else
+                            Tidak Ada
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Description</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->mentalDisorder)
+                            {{ $item->mentalDisorder->description }}
+                        @else
+                            Tidak Ada
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Certainainty</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        @if ($item->cf == 0.0)
+                            100%
+                        @else
+                            {{ $item->cf }}%
+                        @endif
+                    </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="font-medium text-gray-900">Recommendation</h2>
+                    <p class="mt-1 text-sm text-gray-600">
+                        {{ $item->recommendation->recommendation_text }}
+                    </p>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('Cancel') }}
+                    </x-secondary-button>
+                </div>
+            </div>
+        </x-modal>
+
         <!-- Warning diagnosis Modals -->
         <x-modal :name="'warning-diagnosis-' . $item->id">
             <div class="p-6">
