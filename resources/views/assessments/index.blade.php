@@ -1,4 +1,4 @@
-<title>Assessments - Menpy AI</title>
+<title>Therapy - Menpy AI</title>
 
 <x-app-layout>
     @if ($diagnoses->isEmpty())
