@@ -30,9 +30,27 @@
         <div class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg overflow-hidden">
             <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img" loading="lazy"
                 class="absolute top-0 left-0 w-full h-full object-cover rounded-3xl">
+            <div
+                class="hidden xl:flex flex-col gap-6 absolute bottom-12 right-12 w-96 h-max bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4">
+                <div class="flex justify-between items-center">
+                    <p class="text-xl font-semibold tracking-tighter">Diagnosis Everyday</p>
+                    <p class="text-sm font-semibold tracking-tighter mr-2">More 5k users</p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <p class="text-xs w-1/2 font-medium">
+                        Jadilah bagian dari Menpy AI untuk kesehatan mentalmu!
+                    </p>
+                    <div class="flex bg-white rounded-full p-1 overflow-hidden">
+                        <img src="{{ asset('assets/images/Avatar1.png') }}" class="w-9" alt="">
+                        <img src="{{ asset('assets/images/Avatar2.png') }}" class="-ml-4 w-9" alt="">
+                        <img src="{{ asset('assets/images/Avatar3.png') }}" class="-ml-4 w-9" alt="">
+                        <img src="{{ asset('assets/images/Avatar4.png') }}" class="-ml-4 w-9" alt="">
+                    </div>
+                </div>
+            </div>
             <div class="absolute top-0 left-0 w-full h-full flex items-center">
-                <div class="px-8 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                    <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tight">
+                <div class="px-4 md:px-8 w-3/4 md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+                    <h1 class="text-white font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter">
                         Take care of your mentality with Menpy AI
                     </h1>
                     <p class="max-w-sm text-white my-6">
@@ -41,7 +59,7 @@
                     </p>
                     <div class="">
                         <a href="{{ route('front.diagnosis.index') }}"
-                            class="w-max flex font-semibold text-center text-sm lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
+                            class="w-max flex font-semibold text-center text-sm tracking-tighter lg:text-lg rounded-full px-4 py-2 text-white bg-gray-900 hover:bg-gray-700 transition">
                             Start Diagnosis
                         </a>
                     </div>
@@ -54,7 +72,7 @@
     <div id="articles" class="py-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-12 flex justify-between items-center">
-                <h1 class="text-2xl md:text-3xl font-bold tracking-tight">Related articles</h1>
+                <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Related articles</h1>
                 <a href="#articles" class="text-xs px-3 py-2 rounded-full border hover:bg-gray-100 transition">Browse
                     all
                     articles</a>
