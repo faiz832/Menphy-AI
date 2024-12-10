@@ -90,7 +90,7 @@
             </p>
 
             <div
-                class="mt-10 md:mt-20 mx-auto aspect-[0.75] w-full overflow-hidden px-20 pt-12 bg-black rounded-3xl
+                class="mt-10 md:mt-20 mx-auto aspect-[0.75] w-full overflow-hidden px-20 pt-12 bg-gradient-to-r from-cyan-400 via-sky-500 to-purple-500 rounded-3xl
                             md:aspect-[1.9] md:px-20 md:pt-20 
                             lg:aspect-[1.9] lg:px-24 lg:pt-24
                             min-[1536px]:w-[min(80vw,1920px)] drop-shadow-2xl">
@@ -159,8 +159,8 @@
                     <div class="relative overflow-hidden rounded-xl group h-80 {{ $feature['size'] }}">
                         <div class="absolute inset-0 bg-cover bg-center"
                             style="background-image: url('{{ $feature['image'] }}')">
-                            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-black bg-opacity-25"></div>
+                            <div class="absolute inset-0 bg-blue-600 bg-opacity-50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-purple-600 bg-opacity-25"></div>
                             <div class="absolute inset-0 p-6 flex flex-col justify-end">
                                 <h2 class="text-3xl font-bold text-white mb-2">{{ $feature['title'] }}</h2>
                                 @if ($feature['description'])
