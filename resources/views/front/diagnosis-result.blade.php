@@ -18,46 +18,58 @@
     @endif
 </head>
 
-<body class="bg-gray-100">
-    <div class="max-w-3xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-center mb-8">Hasil Diagnosis</h1>
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 class="text-2xl font-semibold mb-4">
-                @if ($diagnosis->mentalDisorder)
-                    {{ $diagnosis->mentalDisorder->name }}
-                @else
-                    Tidak Ada Gangguan Mental yang Terdeteksi
-                @endif
-            </h2>
+<body class="bg-white">
+    <!-- Navbar -->
+    <x-navbar />
 
-            <p class="mb-4">
-                <strong>Tingkat Kepastian:</strong>
-                @if ($diagnosis->cf == 0.0)
-                    100%
-                @else
-                    {{ $diagnosis->cf }}%
-                @endif
-            </p>
+    <div class="pt-0 md:pt-12 bg-white">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-center">Diagnosis Result</h1>
+            <div class="mt-16 max-w-3xl mx-auto shadow-md p-8 rounded-3xl bg-white border">
+                <h2 class="text-2xl font-semibold mb-4">
+                    @if ($diagnosis->mentalDisorder)
+                        {{ $diagnosis->mentalDisorder->name }}
+                    @else
+                        Tidak Ada Gangguan Mental yang Terdeteksi
+                    @endif
+                </h2>
 
-            <p class="mb-4">
-                @if ($diagnosis->mentalDisorder)
-                    {{ $diagnosis->mentalDisorder->description }}
-                @endif
-            </p>
+                <p class="mb-4">
+                    <strong>Tingkat Kepastian:</strong>
+                    @if ($diagnosis->cf == 0.0)
+                        100%
+                    @else
+                        {{ $diagnosis->cf }}%
+                    @endif
+                </p>
 
-            <h3 class="text-xl font-semibold mb-2">Rekomendasi:</h3>
-            <p class="mb-4">{{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}</p>
+                <p class="mb-4">
+                    @if ($diagnosis->mentalDisorder)
+                        {{ $diagnosis->mentalDisorder->description }}
+                    @endif
+                </p>
 
-            <p class="text-sm text-gray-600"><span class="font-semibold">Catatan: </span>Hasil ini hanya gambaran awal
-                dan tidak
-                menggantikan konsultasi dengan
-                psikolog atau psikiater.</p>
+                <h3 class="text-xl font-semibold mb-2">Rekomendasi:</h3>
+                <p class="mb-4">{{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}
+                </p>
+
+                <p class="text-sm text-gray-600"><span class="font-semibold">Catatan: </span>Hasil ini hanya gambaran
+                    awal
+                    dan tidak
+                    menggantikan konsultasi dengan
+                    psikolog atau psikiater.</p>
+            </div>
+            <div class="my-12 md:my-24 flex justify-center">
+                <a href="{{ route('dashboard') }}"
+                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-full font-semibold text-white hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 transition">
+                    Go to Dasboard
+                </a>
+            </div>
         </div>
-        <a href="{{ route('dashboard') }}"
-            class="mt-8 flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Kembali ke Dashboard
-        </a>
     </div>
+
+    <!-- Footer -->
+    <x-footer />
 </body>
 
 </html>
