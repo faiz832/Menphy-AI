@@ -104,7 +104,7 @@
                         </x-secondary-button>
 
                         <x-danger-button class="ml-3">
-                            {{ __('Delete User') }}
+                            {{ __('Delete') }}
                         </x-danger-button>
                     </div>
                 </form>
