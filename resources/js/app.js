@@ -6,9 +6,13 @@ import NProgress from "nprogress";
 
 import "nprogress/nprogress.css";
 
+// Alpine
 window.Alpine = Alpine;
 
 Alpine.start();
+
+// NProgress
+window.NProgress = NProgress;
 
 // Konfigurasi awal NProgress
 NProgress.configure({

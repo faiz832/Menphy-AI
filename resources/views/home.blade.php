@@ -19,16 +19,56 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+
+    <!-- Lottie CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 
-<body class="bg-white">
+<body class="bg-white antialiased">
+    <!-- Preloader -->
+    <div id="loading-screen" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+        <div class="loader-container flex flex-col items-center">
+            <!-- Loader Lottie JSON -->
+            <div id="lottie-loader" class="w-52 h-52 filter drop-shadow-3xl"></div>
+            <!-- Loading text with animated dots -->
+            <h1 class="loading-text font-semibold -mt-12">Please wait
+                <span class="dots">.</span>
+            </h1>
+        </div>
+    </div>
+
+    <!-- Main content (add your page content here) -->
+    {{-- <div id="hero" class="hidden">
+        <h1 class="hero-title">Welcome to Our Website</h1>
+        <div class="hero-partners">Our Partners</div>
+    </div> --}}
+    {{-- <section id="hero" class="max-w-[1280px] mx-auto p-4 py-6 lg:py-8 h-screen -mt-[70px]">
+        <div class="hero-title hidden h-full flex-col justify-center items-center gap-12">
+            <h1
+                class="max-w-4xl text-6xl md:text-7xl xl:text-8xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 py-2">
+                Start Your Health Journey!</h1>
+            <p class="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-lg lg:max-w-3xl text-center">Mau coba gaya
+                hidup sehat yang
+                gak ribet?
+                Yuk,
+                biar Healthly AI bantu kamu hitung nutrisi makanan dengan mudah!</p>
+            <div class="">
+                <a href=""
+                    class="flex justify-center items-center h-12 px-6 rounded-md text-white font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 transition-all duration-500 ease-in-out btn">Mulai
+                    Sekarang</a>
+            </div>
+        </div>
+    </section> --}}
+
     <!-- Navbar -->
     <x-navbar />
 
     <!-- Hero Section -->
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-100px)]">
         <div
-            class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
+            class="hero-title hidden relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
             <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img"
                 class="absolute top-0 right-0 w-full lg:w-1/2 h-full object-cover lg:object-right rounded-3xl">
             <div
@@ -345,6 +385,62 @@
 
     <!-- Footer -->
     <x-footer />
+
+    <script>
+        // Inisialisasi Lottie Animation
+        lottie.loadAnimation({
+            container: document.getElementById('lottie-loader'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '{{ asset('assets/icons/loader.json') }}'
+        });
+
+        // Animasi titik-titik yang muncul setelah "wait"
+        function animateDots() {
+            let dotsElement = document.querySelector(".dots");
+            let dotsCount = 1;
+
+            setInterval(() => {
+                dotsElement.textContent = ".".repeat(dotsCount);
+                dotsCount = dotsCount < 3 ? dotsCount + 1 : 1;
+            }, 500);
+        }
+
+        // Panggil animasi titik-titik
+        animateDots();
+
+        // Ketika halaman selesai dimuat
+        window.addEventListener("load", () => {
+            // Simulasi loading time (hapus baris ini pada produksi)
+            setTimeout(() => {
+                // Animasi dengan GSAP untuk mengangkat layar preloader
+                gsap.to("#loading-screen", {
+                    y: "-100%",
+                    duration: 1,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        document.getElementById("loading-screen").style.display = "none";
+
+                        // Tampilkan elemen hero-title dan hero-partners dengan animasi fade-up
+                        document.querySelectorAll(
+                            "#hero, #hero .hero-title").forEach((el,
+                            index) => {
+                            el.classList.remove("hidden");
+
+                            gsap.from(el, {
+                                opacity: 0,
+                                y: 50,
+                                duration: 0.6,
+                                delay: index * 0.2,
+                                ease: "power2.out"
+                            });
+                        });
+                    }
+                });
+            }); // Simulasi 3 detik loading time
+        });
+    </script>
 </body>
 
 </html>
