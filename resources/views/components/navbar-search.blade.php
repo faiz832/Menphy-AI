@@ -40,7 +40,7 @@
                 </svg>
                 <input type="text"
                     class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-                    placeholder="Search..." x-ref="mobileSearchInput" x-model="query"
+                    placeholder="Search articles..." x-ref="mobileSearchInput" x-model="query"
                     @input.debounce.300ms="performSearch">
                 <button @click="closeSearch" class="absolute top-2 right-3 p-1 text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Close</span>
