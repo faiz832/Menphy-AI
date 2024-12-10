@@ -6,8 +6,25 @@
     ::-webkit-scrollbar {
         display: none;
     }
-}
 
-#nprogress .bar {
-    background: #20ceed !important;
+    input:-webkit-autofill {
+        background-color: transparent !important;
+        -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+        box-shadow: 0 0 0px 1000px transparent inset !important;
+        transition: background-color 5000s ease-in-out 0s,
+            color 5000s ease-in-out 0s;
+        border-width: 1px !important;
+    }
+
+    input:-webkit-autofill:focus {
+        --tw-ring-opacity: 1;
+        --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity, 1));
+        --tw-border-opacity: 1;
+        border-color: rgb(99 102 241 / var(--tw-border-opacity, 1));
+        box-shadow: 0 0 0 1px rgba(99 102 241 / var(--tw-border-opacity, 1)) !important;
+    }
+
+    #nprogress .bar {
+        background: #20ceed !important;
+    }
 }
