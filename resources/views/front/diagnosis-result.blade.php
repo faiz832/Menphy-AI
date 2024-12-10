@@ -22,10 +22,10 @@
     <!-- Navbar -->
     <x-navbar />
 
-    <div class="pt-0 md:pt-12 bg-white">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="pt-8 md:pt-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-6xl font-bold text-center">Diagnosis Result</h1>
-            <div class="mt-16 max-w-3xl mx-auto shadow-md p-8 rounded-3xl bg-white border">
+            <div class="mt-12 md:mt-16 max-w-3xl mx-auto shadow-md p-8 rounded-3xl bg-white border">
                 <h2 class="text-2xl font-semibold mb-4">
                     @if ($diagnosis->mentalDisorder)
                         {{ $diagnosis->mentalDisorder->name }}
@@ -50,10 +50,12 @@
                 </p>
 
                 <h3 class="text-xl font-semibold mb-2">Rekomendasi:</h3>
-                <p class="mb-4">{{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}
+                <p class="mb-4">
+                    {{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}
                 </p>
 
-                <p class="text-sm text-gray-600"><span class="font-semibold">Catatan: </span>Hasil ini hanya gambaran
+                <p class="text-sm text-gray-600"><span class="font-semibold">Catatan: </span>Hasil ini hanya
+                    gambaran
                     awal
                     dan tidak
                     menggantikan konsultasi dengan
