@@ -124,59 +124,52 @@
             @php
                 $features = [
                     [
-                        'title' => 'Diagnosis Mandiri Cepat dan Tepat',
+                        'title' => 'Diagnosis Mandiri',
                         'description' =>
-                            'Dapatkan hasil diagnosis awal yang akurat hanya dengan menjawab beberapa pertanyaan sederhana. Teknologi pintar Menpy AI akan membantu memberikan hasil yang cepat dan tepat.',
+                            'Dapatkan hasil diagnosis awal yang akurat hanya dengan menjawab beberapa pertanyaan sederhana.',
                         'image' => 'assets/images/feature-1.jpg',
-                        'size' => 'lg:col-span-2 lg:row-span-2',
+                        'size' => 'lg:col-span-3 lg:row-span-2',
                     ],
                     [
                         'title' => 'Rekomendasi AI',
                         'description' =>
-                            'AI kami memberikan rekomendasi terapi yang personal dan sesuai kebutuhan kamu. Semua dibuat simpel supaya kamu bisa langsung mengambil langkah nyata.',
+                            'AI kami memberikan rekomendasi terapi yang personal dan sesuai kebutuhan kamu.',
                         'image' => 'assets/images/feature-2.jpg',
-                        'size' => 'lg:col-span-1 lg:row-span-2',
+                        'size' => 'lg:col-span-2 lg:row-span-2',
                     ],
                     [
                         'title' => 'Terapi Mandiri',
                         'description' =>
-                            'Pantau dan evaluasi perkembangan kesehatan mentalmu secara berkala dengan fitur assessment yang mudah digunakan.',
+                            'Pantau dan evaluasi perkembangan kesehatan mentalmu secara berkala dengan fitur.',
                         'image' => 'assets/images/feature-3.jpg',
-                        'size' => 'lg:col-span-1 lg:row-span-2',
+                        'size' => 'lg:col-span-2 lg:row-span-2',
                     ],
                     [
-                        'title' => 'Artikel Kesehatan Mental',
+                        'title' => 'Artikel Kesehatan',
                         'description' =>
-                            'Perbanyak wawasan dengan artikel informatif yang membahas kesehatan mental secara mendalam namun tetap relatable untuk semua kalangan.',
+                            'Perbanyak wawasan dengan artikel informatif yang membahas kesehatan mental secara mendalam.',
                         'image' => 'assets/images/feature-4.jpg',
-                        'size' => 'lg:col-span-2 lg:row-span-2',
+                        'size' => 'lg:col-span-3 lg:row-span-2',
                     ],
                 ];
             @endphp
 
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 @foreach ($features as $feature)
                     <div class="relative overflow-hidden rounded-xl group h-80 {{ $feature['size'] }}">
                         <div class="absolute inset-0 bg-cover bg-center"
                             style="background-image: url('{{ $feature['image'] }}')">
-                            <div class="absolute inset-0 bg-blue-600 bg-opacity-50"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-purple-600 bg-opacity-25"></div>
-                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
-                                <h2 class="text-3xl font-bold text-white mb-2">{{ $feature['title'] }}</h2>
+                            {{-- <div class="absolute inset-0 bg-black bg-opacity-50"></div> --}}
+                            <div class="absolute inset-0 bg-gradient-to-r from-sky-600 bg-opacity-25"></div>
+                            <div class="absolute inset-0 flex flex-col justify-end p-4">
+                                <h2 class="text-5xl font-bold text-white tracking-tighter mb-4">{{ $feature['title'] }}
+                                </h2>
                                 @if ($feature['description'])
-                                    <p class="text-white text-opacity-90 text-sm max-w-md">
+                                    <p class="w-2/3 text-white text-opacity-90 text-sm">
                                         {{ $feature['description'] }}
                                     </p>
                                 @endif
                             </div>
-                            {{-- <button
-                                class="absolute top-4 right-4 bg-white bg-opacity-80 hover:bg-opacity-100 p-2 rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </button> --}}
                         </div>
                     </div>
                 @endforeach
