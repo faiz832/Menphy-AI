@@ -29,7 +29,7 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
             class="relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
-            <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img" loading="lazy"
+            <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img"
                 class="absolute top-0 right-0 w-full lg:w-1/2 h-full object-cover lg:object-right rounded-3xl">
             <div
                 class="hidden lg:flex flex-col gap-6 absolute bottom-12 right-12 w-96 h-max bg-white bg-opacity-50 backdrop-blur-lg rounded-xl p-4">
@@ -329,8 +329,7 @@
 
                             @endphp
                             <img src="{{ $imageUrl }}" alt="Article Image"
-                                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out"
-                                loading="lazy">
+                                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out">
                             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black bg-opacity-25">
                             </div>
                             <div class="absolute bottom-0 left-0 m-4">

@@ -7,3 +7,7 @@
         display: none;
     }
 }
+
+#nprogress .bar {
+    background: #20ceed !important;
+}

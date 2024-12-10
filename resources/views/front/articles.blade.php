@@ -43,8 +43,7 @@
 
                             @endphp
                             <img src="{{ $imageUrl }}" alt="Article Image"
-                                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out"
-                                loading="lazy">
+                                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out">
                             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black bg-opacity-25">
                             </div>
                             <div class="absolute bottom-0 left-0 m-4">
