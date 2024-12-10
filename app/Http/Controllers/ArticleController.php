@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::latest()->paginate(10);
+        $articles = Article::all()->sortByDesc('created_at');
         return view('articles.index', compact('articles'));
+    }
+
+    public function articles()
+    {
+        $articles = Article::all()->sortByDesc('created_at');
+        return view('front.articles', compact('articles'));
     }
 
     public function show(Article $article)

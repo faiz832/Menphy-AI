@@ -22,6 +22,7 @@ Route::get('/privacy', function () {
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles', [ArticleController::class, 'articles'])->name('articles.articles');
 
 Route::middleware('auth')->group(function () {
     // front diagnosis

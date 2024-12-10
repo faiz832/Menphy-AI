@@ -306,7 +306,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-12 flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Related articles</h1>
-                <a href="#articles"
+                <a href="{{ route('articles.articles') }}"
                     class="text-xs px-3 py-2 font-semibold rounded-full border hover:bg-gray-100 transition">
                     Browse all articles
                 </a>
