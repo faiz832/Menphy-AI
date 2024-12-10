@@ -312,10 +312,10 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach ($articles as $article)
                     <a href="{{ route('articles.show', $article->id) }}">
-                        <div class="relative w-full md:h-80 lg:h-[500px] overflow-hidden rounded-2xl group">
+                        <div class="relative w-full h-80 lg:h-[350px] xl:h-[450px] overflow-hidden rounded-2xl group">
                             @php
                                 $imageUrl = asset('assets/images/article-1.jpg'); // Default image URL
 
