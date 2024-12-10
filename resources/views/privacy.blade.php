@@ -26,7 +26,7 @@
         <!-- Navbar -->
         <x-navbar />
 
-        <div class="py-12 bg-white">
+        <div class="pt-0 pb-6 md:py-12 bg-white">
             <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
                 <h1 class="text-6xl text-center font-bold py-2 mb-2">
                     Privacy Policy</h1>
