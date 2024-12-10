@@ -180,7 +180,7 @@
     <!-- Testimonials Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl tracking-tighter font-bold text-center">
-            What users love about us.
+            What users love about us
         </h1>
         <div class="relative flex flex-col flex-wrap mt-12 lg:mt-24 gap-8">
             <div class="absolute -bottom-12 w-full h-80 bg-gradient-to-t from-white"></div>
