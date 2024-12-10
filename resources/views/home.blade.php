@@ -39,29 +39,6 @@
         </div>
     </div>
 
-    <!-- Main content (add your page content here) -->
-    {{-- <div id="hero" class="hidden">
-        <h1 class="hero-title">Welcome to Our Website</h1>
-        <div class="hero-partners">Our Partners</div>
-    </div> --}}
-    {{-- <section id="hero" class="max-w-[1280px] mx-auto p-4 py-6 lg:py-8 h-screen -mt-[70px]">
-        <div class="hero-title hidden h-full flex-col justify-center items-center gap-12">
-            <h1
-                class="max-w-4xl text-6xl md:text-7xl xl:text-8xl text-center font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 py-2">
-                Start Your Health Journey!</h1>
-            <p class="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-lg lg:max-w-3xl text-center">Mau coba gaya
-                hidup sehat yang
-                gak ribet?
-                Yuk,
-                biar Healthly AI bantu kamu hitung nutrisi makanan dengan mudah!</p>
-            <div class="">
-                <a href=""
-                    class="flex justify-center items-center h-12 px-6 rounded-md text-white font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 transition-all duration-500 ease-in-out btn">Mulai
-                    Sekarang</a>
-            </div>
-        </div>
-    </section> --}}
-
     <!-- Navbar -->
     <x-navbar />
 
