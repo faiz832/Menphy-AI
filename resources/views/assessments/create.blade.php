@@ -24,11 +24,11 @@
                             class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
                             required>
                             <option value="" hidden>Select an option</option>
-                            <option value="1">Not at all</option>
-                            <option value="2">A little bit</option>
-                            <option value="3">Moderately</option>
-                            <option value="4">Quite a bit</option>
-                            <option value="5">Extremely</option>
+                            <option value="1">Tidak sama sekali</option>
+                            <option value="2">Sedikit</option>
+                            <option value="3">Cukup</option>
+                            <option value="4">Lumayan</option>
+                            <option value="5">Sangat</option>
                         </select>
                     </div>
                 @endforeach
