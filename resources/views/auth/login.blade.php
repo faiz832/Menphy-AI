@@ -12,7 +12,7 @@
             @csrf
 
             @if (session('error'))
-                <div class="flex mb-4">
+                <div class="flex justify-center mb-4">
                     <span class="text-center text-xs text-red-600 space-y-1">{{ session('error') }}</span>
                 </div>
             @endif

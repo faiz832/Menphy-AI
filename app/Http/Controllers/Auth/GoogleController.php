@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
 
 class GoogleController extends Controller
 {
@@ -32,6 +33,8 @@ class GoogleController extends Controller
                     'password' => bcrypt('password'), // bisa diisi dengan default password
                 ]);
             }
+
+            $user->assignRole(Role::find(2));
 
             // Login pengguna
             Auth::login($user);
