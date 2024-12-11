@@ -21,7 +21,7 @@
 </head>
 
 <body class="bg-white font-sans antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-12 sm:pt-0">
         <div>
             <a href="{{ route('home') }}">
                 <img src="{{ asset('assets/images/menpy-logo.png') }}" alt="Menpy AI Logo" class="h-20">
