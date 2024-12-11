@@ -25,7 +25,7 @@
     <div class="pt-8 md:pt-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl md:text-6xl font-bold text-center">Diagnosis Result</h1>
-            <div class="mt-12 md:mt-16 max-w-3xl mx-auto shadow-md p-8 rounded-3xl bg-white border">
+            <div class="mt-12 md:mt-16 max-w-3xl mx-auto shadow-2xl p-8 rounded-2xl bg-white border">
                 <h2 class="text-2xl font-semibold mb-4">
                     @if ($diagnosis->mentalDisorder)
                         {{ $diagnosis->mentalDisorder->name }}
