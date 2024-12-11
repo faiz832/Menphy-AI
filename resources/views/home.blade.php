@@ -59,10 +59,13 @@
                         Jadilah bagian dari Menpy AI untuk kesehatan mentalmu!
                     </p>
                     <div class="flex bg-white rounded-full p-1 overflow-hidden">
-                        <img src="{{ asset('assets/images/Avatar1.png') }}" class="w-9" alt="">
-                        <img src="{{ asset('assets/images/Avatar2.png') }}" class="-ml-4 w-9" alt="">
-                        <img src="{{ asset('assets/images/Avatar3.png') }}" class="-ml-4 w-9" alt="">
-                        <img src="{{ asset('assets/images/Avatar4.png') }}" class="-ml-4 w-9" alt="">
+                        <img src="{{ asset('assets/images/avatar4.jpg') }}" class="rounded-full w-9" alt="">
+                        <img src="{{ asset('assets/images/avatar5.jpg') }}" class="rounded-full -ml-3 w-9"
+                            alt="">
+                        <img src="{{ asset('assets/images/avatar6.jpg') }}" class="rounded-full -ml-3 w-9"
+                            alt="">
+                        <img src="{{ asset('assets/images/avatar10.jpg') }}" class="rounded-full -ml-3 w-9"
+                            alt="">
                     </div>
                 </div>
             </div>
