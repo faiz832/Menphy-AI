@@ -80,46 +80,46 @@ class MentalHealthSeeder extends Seeder
         // Questions
         $questions = [
             // Psikosomatik
-            ['symptom_id' => 1, 'question_text' => 'Apakah Anda sering mengalami sakit kepala tanpa sebab yang jelas?', 'cf_expert' => 0.8],
-            ['symptom_id' => 2, 'question_text' => 'Apakah Anda merasa lelah sepanjang waktu, bahkan setelah tidur cukup?', 'cf_expert' => 0.7],
-            ['symptom_id' => 3, 'question_text' => 'Apakah Anda sering mengalami nyeri otot tanpa melakukan aktivitas fisik berlebihan?', 'cf_expert' => 0.75],
-            ['symptom_id' => 4, 'question_text' => 'Apakah Anda sering mengalami masalah pencernaan seperti mual atau sakit perut tanpa sebab yang jelas?', 'cf_expert' => 0.7],
+            ['symptom_id' => 1, 'question_text' => 'Apakah Anda sering mengalami sakit kepala tanpa sebab yang jelas?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
+            ['symptom_id' => 2, 'question_text' => 'Apakah Anda merasa lelah sepanjang waktu, bahkan setelah tidur cukup?', 'cf_expert' => 0.7, 'cf_never' => 0, 'cf_rarely' => 0.175, 'cf_sometimes' => 0.35, 'cf_often' => 0.525, 'cf_very_often' => 0.7],
+            ['symptom_id' => 3, 'question_text' => 'Apakah Anda sering mengalami nyeri otot tanpa melakukan aktivitas fisik berlebihan?', 'cf_expert' => 0.75, 'cf_never' => 0, 'cf_rarely' => 0.1875, 'cf_sometimes' => 0.375, 'cf_often' => 0.5625, 'cf_very_often' => 0.75],
+            ['symptom_id' => 4, 'question_text' => 'Apakah Anda sering mengalami masalah pencernaan seperti mual atau sakit perut tanpa sebab yang jelas?', 'cf_expert' => 0.7, 'cf_never' => 0, 'cf_rarely' => 0.175, 'cf_sometimes' => 0.35, 'cf_often' => 0.525, 'cf_very_often' => 0.7],
 
             // Kecemasan
-            ['symptom_id' => 5, 'question_text' => 'Apakah Anda sering merasa cemas atau khawatir berlebihan tentang berbagai hal dalam hidup Anda?', 'cf_expert' => 0.9],
-            ['symptom_id' => 6, 'question_text' => 'Apakah Anda pernah mengalami serangan panik yang tiba-tiba?', 'cf_expert' => 0.85],
-            ['symptom_id' => 7, 'question_text' => 'Apakah Anda sering merasa tegang atau sulit untuk rileks?', 'cf_expert' => 0.8],
-            ['symptom_id' => 8, 'question_text' => 'Apakah Anda mengalami kesulitan berkonsentrasi karena pikiran cemas?', 'cf_expert' => 0.75],
+            ['symptom_id' => 5, 'question_text' => 'Apakah Anda sering merasa cemas atau khawatir berlebihan tentang berbagai hal dalam hidup Anda?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 6, 'question_text' => 'Apakah Anda pernah mengalami serangan panik yang tiba-tiba?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 7, 'question_text' => 'Apakah Anda sering merasa tegang atau sulit untuk rileks?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
+            ['symptom_id' => 8, 'question_text' => 'Apakah Anda mengalami kesulitan berkonsentrasi karena pikiran cemas?', 'cf_expert' => 0.75, 'cf_never' => 0, 'cf_rarely' => 0.1875, 'cf_sometimes' => 0.375, 'cf_often' => 0.5625, 'cf_very_often' => 0.75],
 
             // PTSD
-            ['symptom_id' => 9, 'question_text' => 'Apakah Anda mengalami kilas balik atau ingatan yang mengganggu tentang pengalaman traumatis?', 'cf_expert' => 0.95],
-            ['symptom_id' => 10, 'question_text' => 'Apakah Anda sering mengalami mimpi buruk tentang kejadian traumatis?', 'cf_expert' => 0.9],
-            ['symptom_id' => 11, 'question_text' => 'Apakah Anda menghindari situasi atau tempat yang mengingatkan Anda pada pengalaman traumatis?', 'cf_expert' => 0.85],
-            ['symptom_id' => 12, 'question_text' => 'Apakah Anda memiliki reaksi berlebihan terhadap suara keras atau gerakan tiba-tiba?', 'cf_expert' => 0.8],
+            ['symptom_id' => 9, 'question_text' => 'Apakah Anda mengalami kilas balik atau ingatan yang mengganggu tentang pengalaman traumatis?', 'cf_expert' => 0.95, 'cf_never' => 0, 'cf_rarely' => 0.2375, 'cf_sometimes' => 0.475, 'cf_often' => 0.7125, 'cf_very_often' => 0.95],
+            ['symptom_id' => 10, 'question_text' => 'Apakah Anda sering mengalami mimpi buruk tentang kejadian traumatis?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 11, 'question_text' => 'Apakah Anda menghindari situasi atau tempat yang mengingatkan Anda pada pengalaman traumatis?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 12, 'question_text' => 'Apakah Anda memiliki reaksi berlebihan terhadap suara keras atau gerakan tiba-tiba?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
 
             // Depresi
-            ['symptom_id' => 13, 'question_text' => 'Apakah Anda merasa sedih atau tertekan hampir setiap hari selama lebih dari dua minggu?', 'cf_expert' => 0.9],
-            ['symptom_id' => 14, 'question_text' => 'Apakah Anda kehilangan minat atau kesenangan dalam aktivitas yang biasanya Anda nikmati?', 'cf_expert' => 0.85],
-            ['symptom_id' => 15, 'question_text' => 'Apakah Anda mengalami perubahan signifikan dalam pola tidur (sulit tidur atau tidur berlebihan)?', 'cf_expert' => 0.8],
-            ['symptom_id' => 16, 'question_text' => 'Apakah Anda memiliki pikiran tentang kematian atau bunuh diri?', 'cf_expert' => 0.95],
+            ['symptom_id' => 13, 'question_text' => 'Apakah Anda merasa sedih atau tertekan hampir setiap hari selama lebih dari dua minggu?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 14, 'question_text' => 'Apakah Anda kehilangan minat atau kesenangan dalam aktivitas yang biasanya Anda nikmati?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 15, 'question_text' => 'Apakah Anda mengalami perubahan signifikan dalam pola tidur (sulit tidur atau tidur berlebihan)?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
+            ['symptom_id' => 16, 'question_text' => 'Apakah Anda memiliki pikiran tentang kematian atau bunuh diri?', 'cf_expert' => 0.95, 'cf_never' => 0, 'cf_rarely' => 0.2375, 'cf_sometimes' => 0.475, 'cf_often' => 0.7125, 'cf_very_often' => 0.95],
 
             // Psikosis
-            ['symptom_id' => 17, 'question_text' => 'Apakah Anda pernah melihat, mendengar, atau merasakan sesuatu yang orang lain tidak alami?', 'cf_expert' => 0.95],
-            ['symptom_id' => 18, 'question_text' => 'Apakah Anda memiliki keyakinan kuat yang tidak masuk akal dan tidak dapat diubah oleh bukti?', 'cf_expert' => 0.9],
-            ['symptom_id' => 19, 'question_text' => 'Apakah Anda merasa pikiran Anda kacau atau sulit untuk berpikir jernih?', 'cf_expert' => 0.85],
-            ['symptom_id' => 20, 'question_text' => 'Apakah orang lain mengatakan bahwa perilaku Anda aneh atau tidak biasa?', 'cf_expert' => 0.8],
+            ['symptom_id' => 17, 'question_text' => 'Apakah Anda pernah melihat, mendengar, atau merasakan sesuatu yang orang lain tidak alami?', 'cf_expert' => 0.95, 'cf_never' => 0, 'cf_rarely' => 0.2375, 'cf_sometimes' => 0.475, 'cf_often' => 0.7125, 'cf_very_often' => 0.95],
+            ['symptom_id' => 18, 'question_text' => 'Apakah Anda memiliki keyakinan kuat yang tidak masuk akal dan tidak dapat diubah oleh bukti?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 19, 'question_text' => 'Apakah Anda merasa pikiran Anda kacau atau sulit untuk berpikir jernih?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 20, 'question_text' => 'Apakah orang lain mengatakan bahwa perilaku Anda aneh atau tidak biasa?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
 
             // Skizofrenia
-            ['symptom_id' => 21, 'question_text' => 'Apakah Anda sering mengalami halusinasi yang persisten (melihat, mendengar, atau merasakan sesuatu yang tidak ada)?', 'cf_expert' => 0.95],
-            ['symptom_id' => 22, 'question_text' => 'Apakah Anda memiliki keyakinan aneh atau tidak masuk akal yang sangat kuat dan kompleks?', 'cf_expert' => 0.9],
-            ['symptom_id' => 23, 'question_text' => 'Apakah Anda cenderung menarik diri dari interaksi sosial dan lebih suka menyendiri?', 'cf_expert' => 0.85],
-            ['symptom_id' => 24, 'question_text' => 'Apakah Anda mengalami kesulitan dalam melakukan tugas sehari-hari seperti merawat diri atau bekerja?', 'cf_expert' => 0.8],
+            ['symptom_id' => 21, 'question_text' => 'Apakah Anda sering mengalami halusinasi yang persisten (melihat, mendengar, atau merasakan sesuatu yang tidak ada)?', 'cf_expert' => 0.95, 'cf_never' => 0, 'cf_rarely' => 0.2375, 'cf_sometimes' => 0.475, 'cf_often' => 0.7125, 'cf_very_often' => 0.95],
+            ['symptom_id' => 22, 'question_text' => 'Apakah Anda memiliki keyakinan aneh atau tidak masuk akal yang sangat kuat dan kompleks?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 23, 'question_text' => 'Apakah Anda cenderung menarik diri dari interaksi sosial dan lebih suka menyendiri?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 24, 'question_text' => 'Apakah Anda mengalami kesulitan dalam melakukan tugas sehari-hari seperti merawat diri atau bekerja?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
 
             // Bipolar
-            ['symptom_id' => 25, 'question_text' => 'Apakah Anda mengalami perubahan suasana hati yang ekstrem, dari sangat gembira ke sangat sedih?', 'cf_expert' => 0.9],
-            ['symptom_id' => 26, 'question_text' => 'Apakah Anda pernah mengalami periode di mana Anda merasa sangat energik, kurang tidur, dan memiliki banyak ide?', 'cf_expert' => 0.85],
-            ['symptom_id' => 27, 'question_text' => 'Apakah Anda pernah mengalami periode depresi berat yang berlangsung beberapa hari atau minggu?', 'cf_expert' => 0.85],
-            ['symptom_id' => 28, 'question_text' => 'Apakah pola tidur Anda berubah secara drastis, kadang sangat sedikit tidur dan kadang tidur berlebihan?', 'cf_expert' => 0.8],
+            ['symptom_id' => 25, 'question_text' => 'Apakah Anda mengalami perubahan suasana hati yang ekstrem, dari sangat gembira ke sangat sedih?', 'cf_expert' => 0.9, 'cf_never' => 0, 'cf_rarely' => 0.225, 'cf_sometimes' => 0.45, 'cf_often' => 0.675, 'cf_very_often' => 0.9],
+            ['symptom_id' => 26, 'question_text' => 'Apakah Anda pernah mengalami periode di mana Anda merasa sangat energik, kurang tidur, dan memiliki banyak ide?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 27, 'question_text' => 'Apakah Anda pernah mengalami periode depresi berat yang berlangsung beberapa hari atau minggu?', 'cf_expert' => 0.85, 'cf_never' => 0, 'cf_rarely' => 0.2125, 'cf_sometimes' => 0.425, 'cf_often' => 0.6375, 'cf_very_often' => 0.85],
+            ['symptom_id' => 28, 'question_text' => 'Apakah pola tidur Anda berubah secara drastis, kadang sangat sedikit tidur dan kadang tidur berlebihan?', 'cf_expert' => 0.8, 'cf_never' => 0, 'cf_rarely' => 0.2, 'cf_sometimes' => 0.4, 'cf_often' => 0.6, 'cf_very_often' => 0.8],
         ];
 
         foreach ($questions as $question) {

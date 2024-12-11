@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('mental_disorder_id')->constrained()->onDelete('cascade');
             $table->text('question_text');
+            $table->float('cf_never')->default(0);
+            $table->float('cf_rarely')->default(0.25);
+            $table->float('cf_sometimes')->default(0.5);
+            $table->float('cf_often')->default(0.75);
+            $table->float('cf_very_often')->default(1);
             $table->timestamps();
         });
     }

@@ -9,7 +9,16 @@ class Question extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['symptom_id', 'question_text', 'cf_expert'];
+    protected $fillable = [
+        'symptom_id', 
+        'question_text',
+        'cf_expert',
+        'cf_never',
+        'cf_rarely',
+        'cf_sometimes',
+        'cf_often',
+        'cf_very_often'
+    ];
 
     public function symptom()
     {

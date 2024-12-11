@@ -21,37 +21,71 @@
 <body class="bg-white">
     <x-navbar />
 
-    <div class="min-h-[calc(100vh-64px)] max-w-4xl mx-auto px-4 pt-12 md:pt-24 lg:pt-28">
+    <div class="min-h-[calc(100vh-64px)] max-w-7xl mx-auto px-4 pb-24 md:pt-12 lg:pt-24">
         <form id="diagnosis-form" action="{{ route('front.diagnosis.process') }}" method="POST">
             @csrf
             <div class="relative overflow-hidden">
                 <div class="flex transition-transform duration-500 ease-in-out" id="questions-container">
                     @foreach ($questions as $index => $question)
                         <div class="w-full flex-shrink-0 px-4" data-question="{{ $index + 1 }}">
-                            <div class="my-4 bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
-                                <h2 class="mb-8 text-gray-900 text-3xl font-bold text-center">
-                                    Question {{ $index + 1 }}
-                                </h2>
+                            <div
+                                class="lg:h-96 pt-12 px-12 my-4 bg-gradient-to-r from-cyan-400 via-sky-500 to-purple-500 shadow-lg rounded-3xl">
+                                <div class="relative h-full w-full overflow-hidden">
+                                    <div
+                                        class="h-full w-full flex flex-col items-center justify-center select-none p-8 rounded-t-2xl object-cover object-left-top bg-white">
+                                        <h2 class="mb-8 text-gray-900 text-3xl font-bold text-center">
+                                            Question {{ $index + 1 }}
+                                        </h2>
 
-                                <p class="text-gray-700 text-xl text-center mb-12">{{ $question->question_text }}</p>
+                                        <p class="text-gray-700 text-xl text-center mb-12">
+                                            {{ $question->question_text }}</p>
 
-                                <div class="max-w-md mx-auto grid grid-cols-2 gap-4">
-                                    <label class="col-span-1 cursor-pointer group">
-                                        <input type="radio" name="answers[{{ $question->id }}]" value="no"
-                                            class="hidden" required>
-                                        <div
-                                            class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
-                                            <span class="text-gray-500 group-hover:text-gray-500">Tidak</span>
+                                        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                                            <label class="col-span-1 cursor-pointer group">
+                                                <input type="radio" name="answers[{{ $question->id }}]" value="never"
+                                                    class="hidden" required>
+                                                <div
+                                                    class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
+                                                    <span class="text-gray-500 group-hover:text-gray-500">Tidak
+                                                        Pernah</span>
+                                                </div>
+                                            </label>
+                                            <label class="col-span-1 cursor-pointer group">
+                                                <input type="radio" name="answers[{{ $question->id }}]" value="rarely"
+                                                    class="hidden" required>
+                                                <div
+                                                    class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
+                                                    <span class="text-gray-500 group-hover:text-gray-500">Jarang</span>
+                                                </div>
+                                            </label>
+                                            <label class="col-span-1 cursor-pointer group">
+                                                <input type="radio" name="answers[{{ $question->id }}]"
+                                                    value="sometimes" class="hidden" required>
+                                                <div
+                                                    class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
+                                                    <span
+                                                        class="text-gray-500 group-hover:text-gray-500">Kadang-kadang</span>
+                                                </div>
+                                            </label>
+                                            <label class="col-span-1 cursor-pointer group">
+                                                <input type="radio" name="answers[{{ $question->id }}]" value="often"
+                                                    class="hidden" required>
+                                                <div
+                                                    class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
+                                                    <span class="text-gray-500 group-hover:text-gray-500">Sering</span>
+                                                </div>
+                                            </label>
+                                            <label class="col-span-1 cursor-pointer group">
+                                                <input type="radio" name="answers[{{ $question->id }}]"
+                                                    value="very_often" class="hidden" required>
+                                                <div
+                                                    class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
+                                                    <span class="text-gray-500 group-hover:text-gray-500">Sangat
+                                                        Sering</span>
+                                                </div>
+                                            </label>
                                         </div>
-                                    </label>
-                                    <label class="col-span-1 cursor-pointer group">
-                                        <input type="radio" name="answers[{{ $question->id }}]" value="yes"
-                                            class="hidden" required>
-                                        <div
-                                            class="bg-white border-2 border-gray-200 rounded-xl p-4 text-center transition-all duration-200 group-hover:border-gray-400 group-hover:shadow-md">
-                                            <span class="text-gray-500 group-hover:text-gray-500">Ya</span>
-                                        </div>
-                                    </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +94,10 @@
             </div>
 
             <div class="mt-8">
-                <div class="bg-gray-200 rounded-full h-2 mb-2">
+                <div class="w-3/4 mx-auto bg-gray-200 rounded-full h-2 mb-2">
                     <div class="bg-gray-900 h-2 rounded-full transition-all duration-500" id="progress-bar"
-                        style="width: 0%"></div>
+                        style="width: 0%">
+                    </div>
                 </div>
                 <p class="text-center text-gray-600" id="question-counter">Question 1 of {{ $questions->count() }}</p>
             </div>

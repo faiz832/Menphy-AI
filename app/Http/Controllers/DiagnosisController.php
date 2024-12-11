@@ -22,14 +22,14 @@ class DiagnosisController extends Controller
     {
         $answers = $request->input('answers');
 
-        // Check if all answers are 'no'
-        $allNo = count(array_filter($answers, fn($answer) => $answer === 'no')) === count($answers);
+        // Check if all answers are 'never'
+        $allNever = count(array_filter($answers, fn($answer) => $answer === 'never')) === count($answers);
 
-        if ($allNo) {
+        if ($allNever) {
             $diagnosis = Diagnosis::create([
                 'user_id' => Auth::user()->id,
                 'mental_disorder_id' => null,
-                'cf' => 100, // Set CF to 0 for no mental disorder
+                'cf' => 100, // Set CF to 100 for no mental disorder
             ]);
 
             $this->generateRecommendation($diagnosis, true);
@@ -101,7 +101,7 @@ class DiagnosisController extends Controller
             $question = Question::where('symptom_id', $symptomId)->first();
             if (isset($answers[$question->id])) {
                 $totalAnswered++;
-                $cfUser = $answers[$question->id] === 'yes' ? 1 : -1;
+                $cfUser = $this->getCfUser($question, $answers[$question->id]);
                 $cfValues[] = $question->cf_expert * $cfUser;
             }
         }
@@ -118,15 +118,29 @@ class DiagnosisController extends Controller
         // Calculate combined CF for the rule
         $cfCombine = $cfValues[0];
         for ($i = 1; $i < count($cfValues); $i++) {
-            if ($cfValues[$i] >= 0) {
-                $cfCombine = $cfCombine + $cfValues[$i] * (1 - $cfCombine);
-            } else {
-                $cfCombine = $cfCombine + $cfValues[$i] * (1 + $cfCombine);
-            }
+            $cfCombine = $cfCombine + $cfValues[$i] * (1 - $cfCombine);
         }
 
-        // Ensure the result is between -1 and 1
-        return max(-1, min(1, $cfCombine));
+        // Ensure the result is between 0 and 1
+        return max(0, min(1, $cfCombine));
+    }
+
+    private function getCfUser($question, $answer)
+    {
+        switch ($answer) {
+            case 'never':
+                return $question->cf_never;
+            case 'rarely':
+                return $question->cf_rarely;
+            case 'sometimes':
+                return $question->cf_sometimes;
+            case 'often':
+                return $question->cf_often;
+            case 'very_often':
+                return $question->cf_very_often;
+            default:
+                return 0;
+        }
     }
 
     public function showResult($id)
@@ -144,7 +158,7 @@ class DiagnosisController extends Controller
     {
         try {
             if ($isNoDisorder) {
-                $prompt = "You are a professional psychologist or psychiatrist. The user has answered 'no' to all mental health screening questions. Please provide a brief, encouraging message about maintaining good mental health. 
+                $prompt = "You are a professional psychologist or psychiatrist. The user has answered 'never' to all mental health screening questions. Please provide a brief, encouraging message about maintaining good mental health. 
                 Note: Use paragraph formatting without bullet points or other formatting.
                 Please keep the recommendations short and concise.
                 Do not provide any additional information except for the recommended therapy.
@@ -207,3 +221,4 @@ class DiagnosisController extends Controller
         }
     }
 }
+
