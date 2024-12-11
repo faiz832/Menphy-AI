@@ -176,7 +176,7 @@
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 @foreach ($features as $feature)
-                    <div class="relative overflow-hidden rounded-xl group h-80 {{ $feature['size'] }}">
+                    <div class="relative overflow-hidden rounded-3xl group h-80 {{ $feature['size'] }}">
                         <div class="absolute inset-0 bg-cover bg-center"
                             style="background-image: url('{{ $feature['image'] }}')">
                             {{-- <div class="absolute inset-0 bg-black bg-opacity-50"></div> --}}
