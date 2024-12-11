@@ -208,91 +208,91 @@
                 @php
                     $testimonials = [
                         [
-                            'name' => 'Ayu Kartika',
-                            'username' => '@ayukartk',
+                            'name' => 'John Carter',
+                            'username' => '@johncarter',
                             'image' => 'assets/images/avatar1.jpg',
                             'message' =>
                                 'Artikel-artikelnya sangat informatif dan membantu saya memahami berbagai topik tentang kesehatan mental. Saya jadi lebih aware tentang pentingnya self-care. Terima kasih Menpy AI!',
                         ],
                         [
-                            'name' => 'Maya Pranindya',
-                            'username' => '@mayapran',
+                            'name' => 'Emily Davis',
+                            'username' => '@emilydavis',
                             'image' => 'assets/images/avatar2.jpg',
                             'message' =>
                                 'Fitur terapi mandirinya bikin saya merasa lebih berdaya. Sangat membantu untuk daily mental health check.',
                         ],
                         [
-                            'name' => 'Bayu Setiawan',
-                            'username' => '@bayuset',
+                            'name' => 'Sophia Taylor',
+                            'username' => '@sophiataylor',
                             'image' => 'assets/images/avatar3.jpg',
                             'message' =>
                                 'Fitur diagnosis mandirinya membantu saya memahami kondisi saya tanpa perlu langsung ke profesional.',
                         ],
                         [
-                            'name' => 'Raka Wiratama',
-                            'username' => '@rakawira',
+                            'name' => 'Olivia Brown',
+                            'username' => '@oliviabrown',
                             'image' => 'assets/images/avatar4.jpg',
                             'message' =>
                                 'Menpy AI membantu saya mengatasi masalah overthinking yang sudah lama saya alami. Sekarang saya punya alat untuk mengelola kesehatan mental dengan lebih baik. Terima kasih Menpy AI telah menjadi partner setia dalam journey kesehatan mental saya.',
                         ],
                         [
-                            'name' => 'Arif Nugraha',
-                            'username' => '@arifnugraha',
+                            'name' => 'Chloe Wilson',
+                            'username' => '@chloewilson',
                             'image' => 'assets/images/avatar5.jpg',
                             'message' =>
                                 'Artikel-artikelnya sangat membantu saya belajar tentang cara menjaga kesehatan mental. Saya jadi lebih open-minded dan empati terhadap orang lain yang mungkin sedang berjuang dengan kesehatan mentalnya.',
                         ],
                         [
-                            'name' => 'Fajar Nugroho',
-                            'username' => '@fajarnugra',
+                            'name' => 'Ava Thompson',
+                            'username' => '@avathompson',
                             'image' => 'assets/images/avatar6.jpg',
                             'message' =>
                                 'Menpy AI benar-benar seperti teman yang selalu ada untuk membantu. Terima kasih Menpy AI!',
                         ],
                         [
-                            'name' => 'Putri Anggita',
-                            'username' => '@putrianggt',
+                            'name' => 'Liam Johnson',
+                            'username' => '@liamjohnson',
                             'image' => 'assets/images/avatar7.jpg',
                             'message' =>
                                 'Sejak pakai Menpy AI, saya jadi lebih percaya diri untuk mengelola stres dan emosi. Fitur meditasi hariannya sangat membantu menenangkan pikiran. Interface yang user-friendly membuat penggunaan aplikasi menjadi sangat menyenangkan.',
                         ],
                         [
-                            'name' => 'Alif Ramadhan',
-                            'username' => '@aliframadh',
+                            'name' => 'Ethan Martinez',
+                            'username' => '@ethanmartinez',
                             'image' => 'assets/images/avatar8.jpg',
                             'message' =>
                                 'Berkat Menpy AI, saya bisa mengidentifikasi masalah dan mendapatkan solusi dengan lebih cepat.',
                         ],
                         [
-                            'name' => 'Dian Kusuma',
-                            'username' => '@diankusuma',
+                            'name' => 'James Anderson',
+                            'username' => '@jamesanderson',
                             'image' => 'assets/images/avatar9.jpg',
                             'message' =>
                                 'Pengalaman penggunaannya sangat intuitif dan mudah dimengerti. Bahkan untuk orang awam seperti saya.',
                         ],
-
                         [
-                            'name' => 'Sinta Lestari',
-                            'username' => '@sintalest',
+                            'name' => 'Isabella Moore',
+                            'username' => '@isabellamoore',
                             'image' => 'assets/images/avatar10.jpg',
                             'message' =>
                                 'Rekomendasi terapinya sangat sesuai dan mudah dilakukan sendiri di rumah. Saya merasakan perubahan positif dalam waktu singkat. Aplikasi ini benar-benar mengubah cara saya memandang kesehatan mental.',
                         ],
                         [
-                            'name' => 'Rani Anindita',
-                            'username' => '@ranianind',
+                            'name' => 'Ella Harris',
+                            'username' => '@ellaharris',
                             'image' => 'assets/images/avatar11.jpg',
                             'message' =>
                                 'AI Assistant-nya bikin saya lebih paham tentang pentingnya kesehatan mental. Saya merasakan perubahan positif dalam kehidupan dan saya jadi lebih percaya diri dalam menjalani kehidupan. Terima kasih Menpy AI!',
                         ],
                         [
-                            'name' => 'Budi Santoso',
-                            'username' => '@budisantoso',
+                            'name' => 'Michael Lee',
+                            'username' => '@michaellee',
                             'image' => 'assets/images/avatar12.jpg',
                             'message' =>
                                 'Menpy AI membantu saya jadi lebih mindful setiap harinya. Saya merasakan perubahan positif dalam kehidupan.',
                         ],
                     ];
+
                 @endphp
                 @foreach ($testimonials as $index => $testimonial)
                     <div
