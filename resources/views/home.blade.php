@@ -322,7 +322,7 @@
     </section>
 
     <!-- Articles Section -->
-    <div id="articles" class="pt-20 pb-12">
+    <div id="articles" class="md:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-12 flex justify-between items-center">
                 <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Related articles</h1>
