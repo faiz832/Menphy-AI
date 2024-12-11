@@ -43,9 +43,9 @@
     <x-navbar />
 
     <!-- Hero Section -->
-    <div id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[calc(100vh-100px)]">
+    <div id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[552px] md:min-h-[calc(100vh-100px)]">
         <div
-            class="hero-title hidden relative min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
+            class="hero-title hidden relative h-[552px] md:min-h-[calc(100vh-100px)] my-2 bg-white rounded-3xl shadow-lg lg:shadow-none overflow-hidden">
             <img src="{{ asset('assets/images/hero-img.jpeg') }}" alt="hero-img"
                 class="absolute top-0 right-0 w-full lg:w-1/2 h-full object-cover lg:object-right rounded-3xl">
             <div
