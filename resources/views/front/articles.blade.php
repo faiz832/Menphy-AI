@@ -26,7 +26,11 @@
             <h1 class="text-6xl text-center font-bold py-2 mb-2">
                 Mental Health Articles
             </h1>
-            <div class="mt-24 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <p class="my-6 md:max-w-xl lg:max-w-2xl text-sm lg:text-base mx-auto text-center">
+                Yuk, baca berbagai artikel menarik tentang mental health yang bisa membantu kamu untuk menjaga kesehatan
+                mental!
+            </p>
+            <div class="mt-12 md:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach ($articles as $article)
                     <a href="{{ route('articles.show', $article->id) }}">
                         <div class="relative w-full md:h-80 lg:h-[300px] overflow-hidden rounded-2xl group">
