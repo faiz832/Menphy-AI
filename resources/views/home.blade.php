@@ -110,7 +110,7 @@
             </p>
 
             <div
-                class="mt-10 md:mt-20 mx-auto aspect-[0.75] w-full overflow-hidden px-20 pt-12 bg-gradient-to-r from-cyan-400 via-sky-500 to-purple-500 rounded-3xl
+                class="mt-10 md:mt-20 mx-auto aspect-[0.65] w-full overflow-hidden px-12 pt-12 bg-gradient-to-r from-cyan-400 via-sky-500 to-purple-500 rounded-3xl
                             md:aspect-[1.9] md:px-20 md:pt-20 
                             lg:aspect-[1.9] lg:px-24 lg:pt-24
                             min-[1536px]:w-[min(80vw,1920px)] drop-shadow-2xl">
