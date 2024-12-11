@@ -34,17 +34,12 @@
             <div class="relative overflow-hidden">
                 <div class="flex transition-transform duration-500 ease-in-out" id="questions-container">
                     @foreach ($questions as $index => $question)
-                        <div class="w-full flex-shrink-0 p-2 lg:p-8" data-question="{{ $index + 1 }}">
+                        <div class="w-full flex-shrink-0 p-2 lg:p-8 select-none" data-question="{{ $index + 1 }}">
                             <div
                                 class="lg:h-72 mb-8 mx-4 p-8 flex flex-col items-center justify-center rounded-xl border border-gray-200 shadow-xl lg:shadow-2xl">
-                                {{-- <h2 class="mb-8 text-gray-900 text-3xl font-bold text-center">
-
-                                </h2> --}}
-
                                 <p class="text-gray-700 text-2xl text-center mb-12">
                                     <strong>Pertanyaan {{ $index + 1 }}:</strong> {{ $question->question_text }}
                                 </p>
-
                                 <div class="w-full xl:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                                     <label class="col-span-1 cursor-pointer group">
                                         <input type="radio" name="answers[{{ $question->id }}]" value="never"
