@@ -27,16 +27,16 @@
             <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter text-center">
                 Answer the Questions
             </h1>
-            <p class="my-6 md:max-w-xl lg:max-w-2xl text-sm lg:text-base mx-auto text-center">
+            <p class="px-2 my-6 md:max-w-xl lg:max-w-2xl text-sm lg:text-base mx-auto text-center">
                 Silahkan jawab beberapa pertanyaan ini dengan senang hati ya, Menpy AI akan membantu kamu untuk
                 mengetahui kemungkinan penyakit mental kamu yaa.
             </p>
             <div class="relative overflow-hidden">
                 <div class="flex transition-transform duration-500 ease-in-out" id="questions-container">
                     @foreach ($questions as $index => $question)
-                        <div class="w-full flex-shrink-0 p-8" data-question="{{ $index + 1 }}">
+                        <div class="w-full flex-shrink-0 p-2 lg:p-8" data-question="{{ $index + 1 }}">
                             <div
-                                class="lg:h-72 mb-8 mx-4 p-8 flex flex-col items-center justify-center rounded-xl border border-gray-200 shadow-2xl">
+                                class="lg:h-72 mb-8 mx-4 p-8 flex flex-col items-center justify-center rounded-xl border border-gray-200 shadow-xl lg:shadow-2xl">
                                 {{-- <h2 class="mb-8 text-gray-900 text-3xl font-bold text-center">
 
                                 </h2> --}}
