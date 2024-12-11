@@ -199,7 +199,7 @@
 
     <!-- Testimonials Section -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl tracking-tighter font-bold text-center">
+        <h1 class="text-5xl md:text-6xl xl:text-7xl tracking-tighter font-bold text-center">
             What users love about us
         </h1>
         <div class="relative flex flex-col flex-wrap mt-12 lg:mt-24 gap-8">
