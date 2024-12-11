@@ -21,7 +21,7 @@
 <body class="bg-white">
     <x-navbar />
 
-    <div class="min-h-[calc(100vh-64px)] max-w-7xl mx-auto px-4 pb-24 pt-8 md:pt-12 lg:pt-8 xl:pt-12">
+    <div class="min-h-[calc(100vh-100px)] max-w-7xl mx-auto px-4 pb-24 pt-8 md:pt-12 lg:pt-8 xl:pt-12">
         <form id="diagnosis-form" action="{{ route('front.diagnosis.process') }}" method="POST">
             @csrf
             <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tighter text-center">
