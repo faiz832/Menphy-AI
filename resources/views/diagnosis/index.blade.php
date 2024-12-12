@@ -153,7 +153,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <h2 class="font-medium text-gray-900">Recommendation</h2>
+                    <h2 class="font-medium text-gray-900">AI Recommendation</h2>
                     <p class="mt-1 text-sm text-gray-600">
                         {{ $item->recommendation->recommendation_text }}
                     </p>
