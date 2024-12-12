@@ -41,7 +41,7 @@
                         Certainainty
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
-                        Recommendation
+                        AI Recommendation
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
                         Date
