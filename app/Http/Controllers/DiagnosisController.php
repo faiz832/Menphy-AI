@@ -9,6 +9,7 @@ use App\Models\Recommendation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use PDF;
 
 class DiagnosisController extends Controller
@@ -229,7 +230,14 @@ class DiagnosisController extends Controller
         }
 
         $pdf = PDF::loadView('pdf.diagnosis', ['diagnosis' => $diagnosis]);
-        return $pdf->download('diagnosis_report.pdf');
+    
+        $disorderName = $diagnosis->mentalDisorder 
+            ? Str::slug($diagnosis->mentalDisorder->name) 
+            : 'no-specific-disorder';
+    
+        $fileName = "diagnosis_report_{$disorderName}.pdf";
+    
+        return $pdf->download($fileName);
     }
 }
 
