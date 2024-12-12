@@ -87,7 +87,7 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    {{ __('Are you sure you are doing what the AI recommends?') }}
+                    {{ __('This assessment only can be taken once for each diagnosis in a day') }}
                 </p>
 
                 <div class="mt-4 p-4 rounded-md bg-gray-100">
@@ -95,6 +95,10 @@
                         {{ $item->recommendation->recommendation_text }}
                     </p>
                 </div>
+
+                <p class="mt-4 text-sm text-gray-600">
+                    <strong>Note:</strong> Pastikan kamu sudah melakukan apa yang AI rekomendasikan
+                </p>
 
                 <div class="mt-6 flex justify-end">
                     <x-secondary-button x-on:click="$dispatch('close')">
