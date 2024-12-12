@@ -12,7 +12,7 @@
             </p>
         </header>
         <a href="{{ route('articles.create') }}"
-            class="mt-4 inline-flex px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700">Create
+            class="mt-4 inline-flex px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700 transition">Create
             New Article
         </a>
     </div>
@@ -27,13 +27,13 @@
 
                 <div class="flex gap-2">
                     <a href="{{ route('articles.show', $article) }}"
-                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700">View
+                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700 transition">View
                     </a>
                     <a href="{{ route('articles.edit', $article) }}"
-                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-yellow-500 hover:bg-yellow-600">Edit</a>
+                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-yellow-500 hover:bg-yellow-600 transition">Edit</a>
                     <div x-data="{ articleId: {{ $article->id }} }">
                         <button type="button"
-                            class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-red-600 hover:bg-red-700"
+                            class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-red-600 hover:bg-red-700 transition"
                             x-on:click="$dispatch('open-modal', 'warning-article-' + articleId)">
                             Delete
                         </button>
