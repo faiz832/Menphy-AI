@@ -175,7 +175,7 @@
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600">
-                    {{ __('Penilaian ini hanya dapat dilakukan satu kali dalam sehari yaa') }}
+                    {{ __('This assessment only can be taken once for each diagnosis in a day') }}
                 </p>
 
                 <div class="mt-4 p-4 rounded-md bg-gray-100">
