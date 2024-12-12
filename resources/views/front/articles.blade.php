@@ -50,6 +50,17 @@
                                 class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition duration-300 ease-in-out">
                             <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black bg-opacity-25">
                             </div>
+                            <div class="absolute top-0 right-0 m-4">
+                                <div
+                                    class="rounded-full p-1 lg:p-2 text-white border border-white group-hover:bg-white group-hover:text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-[135deg]"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M11 19l-7-7 7-7M4 12h16">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
                             <div class="absolute bottom-0 left-0 m-4">
                                 <h3 class="text-lg font-semibold text-white">{{ $article->title }}</h3>
                                 <p class="mt-2 text-sm text-gray-300 line-clamp-3">{{ $article->content }}</p>
