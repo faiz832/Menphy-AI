@@ -1,4 +1,4 @@
-@section('title', 'Login - Menpy AI')
+<title>Sign In - Menpy AI</title>
 
 <x-guest-layout>
     <!-- Session Status -->

@@ -2,7 +2,7 @@
 
 <x-guest-layout>
     <h1 class="text-xl tracking-tight font-semibold text-center text-gray-900 mb-6">
-        Sign up to MCLibrary
+        Sign up to Menpy AI
     </h1>
 
     <div class="border rounded-lg bg-white p-6">
