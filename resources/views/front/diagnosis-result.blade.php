@@ -49,7 +49,7 @@
                     @endif
                 </p>
 
-                <h3 class="text-xl font-semibold mb-2">Rekomendasi:</h3>
+                <h3 class="text-xl font-semibold mb-2">Rekomendasi AI:</h3>
                 <p class="mb-4">
                     {{ $diagnosis->recommendation->recommendation_text ?? 'Rekomendasi belum tersedia.' }}
                 </p>
