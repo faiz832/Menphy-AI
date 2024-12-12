@@ -25,6 +25,9 @@ Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('art
 Route::get('/articles', [ArticleController::class, 'articles'])->name('articles.articles');
 
 Route::middleware('auth')->group(function () {
+    // PDF export
+    Route::get('/diagnosis/{diagnosis}/export', [DiagnosisController::class, 'exportPDF'])->name('diagnosis.export');
+
     // front diagnosis
     Route::get('/diagnosis', [DiagnosisController::class, 'index'])->name('front.diagnosis.index');
     Route::post('/diagnosis/process', [DiagnosisController::class, 'process'])->name('front.diagnosis.process');

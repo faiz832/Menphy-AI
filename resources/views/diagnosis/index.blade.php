@@ -27,10 +27,10 @@
                         Date
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
-                        Action
+                        Therapy
                     </th>
                     <th class="px-4 py-3 text-center text-sm font-medium text-gray-900 tracking-wider">
-                        Therapy
+                        Action
                     </th>
                 </tr>
             </thead>
@@ -60,15 +60,6 @@
                             {{ $diagnosis->created_at->format('d M Y') }}
                         </td>
                         <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
-                            <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
-                                <button type="button"
-                                    class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700"
-                                    x-on:click="$dispatch('open-modal', 'view-diagnosis-' + diagnosisId)">
-                                    View
-                                </button>
-                            </div>
-                        </td>
-                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
                             @if ($diagnosis->is_recovered)
                                 <span
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
@@ -82,12 +73,27 @@
                             @else
                                 <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
                                     <button type="button"
-                                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700"
+                                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-gray-900 hover:bg-gray-700 transition"
                                         x-on:click="$dispatch('open-modal', 'warning-diagnosis-' + diagnosisId)">
                                         Take
                                     </button>
                                 </div>
                             @endif
+                        </td>
+                        <td class="px-4 py-4 text-center whitespace-nowrap text-sm text-gray-900">
+                            <div class="flex gap-2">
+                                <div x-data="{ diagnosisId: {{ $diagnosis->id }} }">
+                                    <button type="button"
+                                        class="px-2.5 py-1.5 text-xs text-white font-semibold rounded-md bg-blue-600 hover:bg-blue-700 transition"
+                                        x-on:click="$dispatch('open-modal', 'view-diagnosis-' + diagnosisId)">
+                                        View
+                                    </button>
+                                </div>
+                                <a href="{{ route('diagnosis.export', $diagnosis) }}"
+                                    class="px-2.5 py-1.5 text-xs font-semibold rounded-md border border-gray-300 hover:bg-gray-100 transition">
+                                    Download
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @empty

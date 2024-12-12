@@ -9,6 +9,7 @@ use App\Models\Recommendation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use PDF;
 
 class DiagnosisController extends Controller
 {
@@ -219,6 +220,16 @@ class DiagnosisController extends Controller
                                       olahraga ringan untuk membantu mengelola gejala Anda."
             ]);
         }
+    }
+
+    public function exportPDF(Diagnosis $diagnosis)
+    {
+        if ($diagnosis->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $pdf = PDF::loadView('pdf.diagnosis', ['diagnosis' => $diagnosis]);
+        return $pdf->download('diagnosis_report.pdf');
     }
 }
 
