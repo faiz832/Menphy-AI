@@ -23,7 +23,7 @@ class SearchController extends Controller
             return [
                 'id' => $article->id,
                 'title' => $article->title,
-                'created_at' => $article->created_at->format('M d, Y'),
+                'created_at' => $article->created_at->format('d M Y'),
             ];
         });
 

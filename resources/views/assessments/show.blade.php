@@ -5,7 +5,7 @@
         <div class="max-w-xl">
             <h3 class="text-lg font-semibold mb-4">{{ $assessment->diagnosis->mentalDisorder->name }} Assessment
             </h3>
-            <p class="mb-2"><strong>Date:</strong> {{ $assessment->created_at->format('M d, Y') }}</p>
+            <p class="mb-2"><strong>Date:</strong> {{ $assessment->created_at->format('d M Y') }}</p>
             <p class="mb-2"><strong>Score:</strong> {{ $assessment->score }}</p>
             <p class="mb-4"><strong>Improvement:</strong>
                 {{ number_format($assessment->percentage_improvement) }}%</p>

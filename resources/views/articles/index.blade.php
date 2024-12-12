@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between">
                 <div class="">
                     <h3 class="text-lg font-medium text-gray-900">{{ $article->title }}</h3>
-                    <p class="mt-1 text-sm text-gray-600">Published: {{ $article->created_at->format('M d, Y') }}</p>
+                    <p class="mt-1 text-sm text-gray-600">Published: {{ $article->created_at->format('d M Y') }}</p>
                 </div>
 
                 <div class="flex gap-2">

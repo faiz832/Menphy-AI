@@ -37,7 +37,7 @@
         <div class="my-12 md:my-24 max-w-3xl mx-auto flex flex-col items-center">
             <h1 class="text-4xl md:text-6xl lg:text-7xl text-center font-semibold">{{ $article->title }}</h1>
             <p class="text-sm md:text-base text-gray-600 mt-8">Author: <strong>{{ $article->user->name }}</strong></p>
-            <p class="text-sm md:text-base text-gray-600 mt-1">Published: {{ $article->created_at->format('M d, Y') }}
+            <p class="text-sm md:text-base text-gray-600 mt-1">Published: {{ $article->created_at->format('d M Y') }}
             </p>
         </div>
 

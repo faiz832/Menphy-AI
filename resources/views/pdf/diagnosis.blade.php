@@ -42,7 +42,7 @@
 <body>
     <h1>Diagnosis Report</h1>
     <p><strong>Name:</strong> {{ $diagnosis->user->name }}</p>
-    <p><strong>Diagnosis Date:</strong> {{ $diagnosis->created_at->format('M d, Y') }}</p>
+    <p><strong>Diagnosis Date:</strong> {{ $diagnosis->created_at->format('d M Y') }}</p>
     <p><strong>Mental Disorder:</strong>
         {{ $diagnosis->mentalDisorder ? $diagnosis->mentalDisorder->name : 'No Specific Disorder' }}</p>
     <p><strong>Certainty Factor:</strong> {{ number_format($diagnosis->cf, 2) }}%</p>
@@ -64,7 +64,7 @@
             <tbody>
                 @foreach ($diagnosis->assessments as $assessment)
                     <tr>
-                        <td>{{ $assessment->created_at->format('M d, Y') }}</td>
+                        <td>{{ $assessment->created_at->format('d M Y') }}</td>
                         <td>{{ number_format($assessment->percentage_improvement, 2) }}%</td>
                     </tr>
                 @endforeach

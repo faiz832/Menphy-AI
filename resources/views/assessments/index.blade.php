@@ -44,7 +44,7 @@
                                                 Assessment {{ $diagnosis->assessments->count() - $loop->index }}
                                             </p>
                                             <p class="text-sm text-gray-500">
-                                                Taken on {{ $assessment->created_at->format('M d, Y') }}
+                                                Taken on {{ $assessment->created_at->format('d M Y') }}
                                             </p>
                                             <p class="text-sm text-gray-500">
                                                 Improvement:
