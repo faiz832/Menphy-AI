@@ -41,14 +41,14 @@
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-1 min-w-0">
                                             <p class="text-sm font-medium text-gray-900 truncate">
-                                                Assessment #{{ $loop->iteration }}
+                                                Assessment {{ $diagnosis->assessments->count() - $loop->index }}
                                             </p>
                                             <p class="text-sm text-gray-500">
                                                 Taken on {{ $assessment->created_at->format('M d, Y') }}
                                             </p>
                                             <p class="text-sm text-gray-500">
                                                 Improvement:
-                                                {{ number_format($assessment->percentage_improvement, 2) }}%
+                                                {{ number_format($assessment->percentage_improvement) }}%
                                             </p>
                                         </div>
                                         <div>

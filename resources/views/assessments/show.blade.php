@@ -8,7 +8,7 @@
             <p class="mb-2"><strong>Date:</strong> {{ $assessment->created_at->format('M d, Y') }}</p>
             <p class="mb-2"><strong>Score:</strong> {{ $assessment->score }}</p>
             <p class="mb-4"><strong>Improvement:</strong>
-                {{ number_format($assessment->percentage_improvement, 2) }}%</p>
+                {{ number_format($assessment->percentage_improvement) }}%</p>
 
             <div class="mt-6">
                 <h4 class="text-md font-semibold mb-2">Interpretation:</h4>

@@ -13,9 +13,12 @@ class AssessmentController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $diagnoses = $user->diagnoses()->with(['mentalDisorder', 'assessments' => function ($query) {
+        $diagnoses = $user->diagnoses()
+        ->with(['mentalDisorder', 'assessments' => function ($query) {
             $query->latest();
-        }])->get();
+        }])
+        ->latest()
+        ->get();
         return view('assessments.index', compact('diagnoses'));
     }
 
