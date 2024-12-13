@@ -7,44 +7,53 @@
     <title>Diagnosis Report</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Times New Roman", Times, serif;
             line-height: 1.6;
-            padding: 20px;
+            padding: 40px;
         }
 
         .header {
             position: relative;
-            height: 60px;
-            margin-bottom: 30px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .logo {
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 50px;
-            height: 50px;
+            top: 10px;
+            left: 5px;
+            width: 90px;
+            height: 90px;
         }
 
         .company-name {
-            position: absolute;
-            left: 70px;
-            top: 0;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             margin: 0;
         }
 
+        .company-address {
+            font-size: 16px;
+            line-height: 1.15;
+        }
+
+        .line {
+            display: flex;
+            width: 100%;
+            height: 1px;
+            background-color: #000;
+        }
+
         .report-title {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
-            margin: 30px 0 20px 0;
+            text-align: center;
+            margin: 30px 0;
+            text-transform: uppercase;
+            text-decoration: underline;
         }
 
         .info-section {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
             margin-bottom: 30px;
         }
 
@@ -67,7 +76,7 @@
         }
 
         .recommendation-title {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -75,47 +84,22 @@
         .recommendation-text {
             text-align: justify;
             text-indent: 50px;
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: #fff;
         }
 
         th,
         td {
-            border: 1px solid #ddd;
-            padding: 12px;
+            border: 1px solid #000;
+            padding: 8px;
             text-align: left;
         }
 
         th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-            color: #333;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-
-        .status-recovered {
-            color: #28a745;
-            font-weight: bold;
-        }
-
-        .status-not-recovered {
-            color: #dc3545;
-            font-weight: bold;
-        }
-
-        .status-none {
-            color: #6c757d;
             font-weight: bold;
         }
     </style>
@@ -124,47 +108,53 @@
 <body>
     <div class="header">
         <img src="{{ public_path('assets/images/menpy-logo.png') }}" alt="Menpy AI Logo" class="logo">
-        <h1 class="company-name">Menpy AI</h1>
+        <h1 class="company-name">MENPY AI</h1>
+        <div class="company-address">
+            Jl. Kyai Moch. Syafei Gg 1 No.2450, RT.04/RW.08,<br>
+            Kebondalem, Purwokerto Lor, Kec. Purwokerto Tim.,<br>
+            Kabupaten Banyumas, Jawa Tengah 53114
+        </div>
     </div>
 
-    <h2 class="report-title">Diagnosis Report</h2>
+    <span class="line"></span>
+
+    <h2 class="report-title">Laporan Diagnosis</h2>
 
     <div class="info-section">
         <div class="info-item">
-            <span class="info-label">Name</span>
-            <span class="info-value" style="text-transform: capitalize;">: {{ $diagnosis->user->name }}</span>
+            <span class="info-label">Nama</span>
+            <span class="info-value" style="text-transform: capitalize">: {{ $diagnosis->user->name }}</span>
         </div>
         <div class="info-item">
-            <span class="info-label">Diagnosis Date</span>
-            <span class="info-value">: {{ $diagnosis->created_at->format('d M Y') }}</span>
+            <span class="info-label">Tanggal Diagnosis</span>
+            <span class="info-value">: {{ $diagnosis->created_at->format('d F Y') }}</span>
         </div>
         <div class="info-item">
-            <span class="info-label">Mental Disorder</span>
+            <span class="info-label">Gangguan Mental</span>
             <span class="info-value">:
-                {{ $diagnosis->mentalDisorder ? $diagnosis->mentalDisorder->name : 'No Specific Disorder' }}</span>
+                {{ $diagnosis->mentalDisorder ? $diagnosis->mentalDisorder->name : 'Tidak Ada' }}</span>
         </div>
         <div class="info-item">
-            <span class="info-label">Certainty Factor</span>
+            <span class="info-label">Kepastian</span>
             <span class="info-value">: {{ number_format($diagnosis->cf, 2) }}%</span>
         </div>
         <div class="info-item">
             <span class="info-label">Status</span>
-            @if ($diagnosis->is_recovered)
-                <span class="info-value">:</span>
-                <span class="status-recovered info-value"> Recovered</span>
-            @elseif (!$diagnosis->mentalDisorder)
-                <span class="info-value">:</span>
-                <span class="status-none info-value"> None</span>
-            @else
-                <span class="info-value">:</span>
-                <span class="status-not-recovered info-value"> Not Recovered</span>
-            @endif
+            <span class="info-value">:
+                @if ($diagnosis->is_recovered)
+                    Sembuh
+                @elseif (!$diagnosis->mentalDisorder)
+                    Tidak Ada
+                @else
+                    Belum sembuh
+                @endif
+            </span>
         </div>
     </div>
 
     @if ($diagnosis->recommendation)
         <div class="recommendation-section">
-            <h2 class="recommendation-title">AI Recommendation</h2>
+            <h2 class="recommendation-title">Rekomendasi AI</h2>
             <div class="recommendation-text">
                 {{ $diagnosis->recommendation->recommendation_text }}
             </div>
@@ -173,18 +163,20 @@
 
     @if ($diagnosis->assessments->isNotEmpty())
         <div class="recommendation-section">
-            <h2 class="recommendation-title">Assessments</h2>
+            <h2 class="recommendation-title">Evaluasi Penilaian</h2>
             <table>
                 <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Improvement</th>
+                    <tr style="background: #f2f2f2">
+                        <th>Tanggal</th>
+                        <th>Skor</th>
+                        <th>Peningkatan</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($diagnosis->assessments as $assessment)
                         <tr>
-                            <td>{{ $assessment->created_at->format('d M Y') }}</td>
+                            <td>{{ $assessment->created_at->format('d F Y') }}</td>
+                            <td>{{ $assessment->score }}</td>
                             <td>{{ number_format($assessment->percentage_improvement, 2) }}%</td>
                         </tr>
                     @endforeach
@@ -193,8 +185,8 @@
         </div>
     @else
         <div class="recommendation-section">
-            <h2 class="recommendation-title">Assessments</h2>
-            <p>No assessments found.</p>
+            <h2 class="recommendation-title">Evaluasi Penilaian</h2>
+            <p>Belum ada penilaian yang dilakukan.</p>
         </div>
     @endif
 </body>
